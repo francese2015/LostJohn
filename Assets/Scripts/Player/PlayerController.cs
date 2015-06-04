@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviour {
 
 	public Text lifesText;
 	public Text coinsText;
+	public Text asteroidsText;
+
 	public GameObject deathAnimation;
 
 	private AudioSource audioSoruce;
@@ -96,11 +98,15 @@ public class PlayerController : MonoBehaviour {
 
 
 	void increaseScore(){
-		coins.increaseCoins ();
+		//coins.increaseCoins (); NOT ANYMORE!
 		level.increaseExp ();
 		score.increaseScore ();
 
 		coinsText.text = "" + coins.getCoins ();
+		asteroidsText.text = "" + score.getScore ();
+
+		Debug.Log (score.getScore());
+
 		source.PlayOneShot(point);
 	}
 

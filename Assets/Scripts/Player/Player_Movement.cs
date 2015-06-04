@@ -109,31 +109,10 @@ public class Player_Movement : MonoBehaviour {
 	 * Input value range will be (-1.25, 1.25)
 	 */
 	public void adjustJetpack(float power) {
-		Debug.Log (power);
-		jetpack.emissionRate = power < 1 ? 150f : 300f;
+
+		jetpack.emissionRate = power < 0 ? 50f : 300f;
 
 	}
-
-	/* FIXME
-
-	public void dead(){
-		Instantiate(PlayerDie,transform.position,transform.rotation);
-		Destroy (gameObject);
-		GameObject.FindGameObjectWithTag("MainCamera").GetComponent<ScoreManager> ().checkHighScore ();
-
-	}
-
-	//Play the default audioclip - jump sound
-	void playSound(){
-		if (!audio.isPlaying) {
-			audio.Play();
-		}
-	}
-
-	 */
-
-
-
 }
 
 
