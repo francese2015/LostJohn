@@ -1,19 +1,23 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/**
+ * This script can be applied to all UI object to resize them when
+ * they have been clicked. It increase the sprite's size when clicking 
+ * and decreasing it when the clik is finished. 
+ */
 public class ResizeOnTouch : MonoBehaviour {
 
 	private float scaleFactor = 1.1f;
 	private string myName;
 	private bool clicked = false;
 
-	// Use this for initialization
 	void Start () {
 		myName = gameObject.name;
 	}
 	
-	// Update is called once per frame
 	void Update () {
+		// when click down 
 		if (Input.GetMouseButtonDown(0)) {
 			if(checkInput() == myName) {
 				if(!clicked) {
@@ -24,6 +28,7 @@ public class ResizeOnTouch : MonoBehaviour {
 				}
 			}
 		}
+		// when click is finished
 		if (Input.GetMouseButtonUp(0)) {
 			if(checkInput() == myName) {
 				if(clicked) {
@@ -34,6 +39,9 @@ public class ResizeOnTouch : MonoBehaviour {
 		}
 	}
 
+	/**
+	 * Increase or decrease the object's local size when it is clicked
+	 */
 	private void scaleUp(bool pressed) {
 		if (!pressed) {
 			transform.localScale *= scaleFactor;
@@ -42,6 +50,9 @@ public class ResizeOnTouch : MonoBehaviour {
 		}
 	}
 
+	/**
+	 * Check if the clicked input is this one.
+	 */
 	private string checkInput() {
 		RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
 		if (hit.collider != null) {

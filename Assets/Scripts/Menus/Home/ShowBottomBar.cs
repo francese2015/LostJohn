@@ -1,25 +1,31 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/**
+ * This script allows to move the bottom bar in the HOme screen.
+ */
 public class ShowBottomBar : MonoBehaviour {
 
 	private bool hidden = true;
 	private bool canMove = false, moving = false;
 
+	// bottom bar initial and final position 
 	public Transform startPosition;
 	public Transform endPosition;
 	
+	// the transaction time 
 	public float timeInSec;
 	private Vector3 velocity;
+	// the transaction tollerance distance
 	private float TOLLERANCE_FACTOR = 0.1f;
 
+	// target object to move
 	public GameObject objectToMove;
 
 	void Start() {
 		timeInSec *= Time.deltaTime;
 	}
 	
-
 	public void moveBar() {
 		while (!checkStopAnimation()) {
 			move ();
@@ -34,6 +40,11 @@ public class ShowBottomBar : MonoBehaviour {
 		}
 	}
 
+	/* 
+	 * When the bar is moving check the tollerance factor. If the distance to cover is 
+	 * lesser than the tollerance factor, the final position is considered reached and the
+	 * animation stops.
+	 */
 	private bool checkStopAnimation() {
 		Vector3 myEnd = (hidden ? endPosition.position : startPosition.position);
 

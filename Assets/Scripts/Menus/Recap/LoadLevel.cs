@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/**
+ * This script bring the user back to the game
+ */
 public class LoadLevel : MonoBehaviour {
 
 	GameLevelManager level;

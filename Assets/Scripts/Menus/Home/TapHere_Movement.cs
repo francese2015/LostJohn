@@ -1,13 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/**
+ * This script is holded by the TAP HERE sprite and is used to move 
+ * left and right the sprite itself.
+ */
 public class TapHere_Movement : MonoBehaviour {
 	
 	IEnumerator Start () {
 		Vector3 pointA = transform.position;
 		Vector3 pointB = new Vector3(pointA.x + 0.3f, pointA.y - 0.3f, 0);
 		while (true) {
+			// move the sprite rightward
 			yield return StartCoroutine(MoveObject(transform, pointA, pointB, 1f));
+			// move the sprite leftward
 			yield return StartCoroutine(MoveObject(transform, pointB, pointA, 1f));
 		}
 	}

@@ -1,15 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/**
+ * Script invocked byt the recap menu to animate it.
+ */
 public class Recap_Move : MonoBehaviour {
-
-	
+	// final position
 	private Vector3 endPos;
 
-	Vector3 velocity = Vector3.zero;
-
+	// animation time
 	public float timeInSec = 0.1f;
 
+	// used by smooth function
+	Vector3 velocity = Vector3.zero;
 
 	// Use this for initialization
 	void Start () {

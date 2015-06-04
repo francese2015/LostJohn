@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 
+
 public class PlayerController : MonoBehaviour {
 
 	private SpriteRenderer spriteRender;
@@ -71,8 +72,6 @@ public class PlayerController : MonoBehaviour {
 		level.save ();
 		score.checkBestScore ();
 		score.save ();
-		life.reduceLifes ();
-		life.save ();
 
 		loadRecap ();
 

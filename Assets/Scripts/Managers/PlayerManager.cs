@@ -29,22 +29,13 @@ public class PlayerManager : MonoBehaviour {
 		return instance;
 	}
 
-	// Use this for initialization
-	void Start () {
-		load ();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
 	public string getId() {
 		return this.id;
 	}
 
 	public void setId(string newId) {
 		this.id = newId;
+		save ();
 	}
 
 	public string getName() {
@@ -53,6 +44,7 @@ public class PlayerManager : MonoBehaviour {
 
 	public void setName(string newName) {
 		this.name = newName;
+		save ();
 	}
 
 	public string getSkin() {
@@ -61,6 +53,7 @@ public class PlayerManager : MonoBehaviour {
 
 	public void setSkin(string newSkin) {
 		this.skin = newSkin;
+		save ();
 	}
 
 	public void save() {

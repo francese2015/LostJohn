@@ -2,12 +2,15 @@
 using UnityEngine.UI;
 using System.Collections;
 
+/**
+ * This script loads all necessary data to fill the recap menu
+ */
 public class LoadData : MonoBehaviour {
 
 	public Text avoided;
 	public Text best;
 	public Text coins;
-	public Text lifes;
+	public Text exp;
 	public Text level;
 
 	public GameObject record;
@@ -17,33 +20,18 @@ public class LoadData : MonoBehaviour {
 
 		Debug.Log ("record? " + ScoreManager.isLastScoreBest);
 
+		// if the performed score is the new best starts the NEW RECORD animation
 		if (ScoreManager.isLastScoreBest) {
 			record.SetActive (true);
 		} else {
 			record.SetActive(false);
 		}
 
+		// sets data in text canvases
 		best.text = "" + ScoreManager.getInstance ().getBestScore ();
 		avoided.text = "" + ScoreManager.getInstance ().getScore ();
-
-		lifes.color = Color.red;
-	//	lifes.text = "x " + LifeManager.getInstance ().getLifes ();
-
-		int exp = LevelManager.getInstance ().getExps ();
-		lifes.text = "exp " + exp;
-		coins.text = "next " + (LevelManager.getInstance ().NEXT_GOAL - exp);
-
+		exp.text = "exp " + LevelManager.getInstance ().getExps ();
+	//	coins.text = "next " + (LevelManager.getInstance ().NEXT_GOAL - exp);		
 		level.text = "lvl " + LevelManager.getInstance ().getLevel ();
-
-		CoinsManager.getInstance ().save ();
-		ScoreManager.getInstance ().save ();
-		ScoreManager.getInstance ().save ();
-		LifeManager.getInstance ().save ();
-		LevelManager.getInstance ().save ();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-
 	}
 }

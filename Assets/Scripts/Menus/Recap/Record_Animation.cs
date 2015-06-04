@@ -1,39 +1,37 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/**
+ * Script used to show thr NEW RECORD! animation in the recap menu when a new best score is reached.
+ */
 public class Record_Animation : MonoBehaviour {
-
+	// how much the sprite has to be scaled
 	public float initialScaleFactor = 1f;
 	public float endScaleFactor = 0.3f;
 	public float timeWait = 1.5f;
 
-
 	public static bool canAnimate = false;
 
-	private Vector3 start, end;
-
-	private Vector3 vel = Vector3.zero;
-
+	// audio source and audio clip to animate sound
 	public AudioClip newRecord;
 	private AudioSource source;
 
-	// Use this for initialization
 	IEnumerator Start () {
 		source = GetComponent<AudioSource> ();
 		source.volume = 0.4f;
 
 		transform.localScale = Vector3.zero;
 
+		// wait before start the animation
 		yield return new WaitForSeconds (timeWait);
-
 		source.Play ();
 
+		// calculate the initial and final size the object will have to make a zoom effect
 		Vector3 initialSize = new Vector3 (initialScaleFactor, initialScaleFactor, 0);
 		Vector3 finalSize = new Vector3 (endScaleFactor, endScaleFactor, 0);
 
+		// start animation
 		yield return StartCoroutine (ScaleObject (transform, initialSize, finalSize, 0.5f));
-
-
 	}
 		
 	IEnumerator ScaleObject (Transform thisTransform, Vector3 startSize, Vector3 endSize, float time) {

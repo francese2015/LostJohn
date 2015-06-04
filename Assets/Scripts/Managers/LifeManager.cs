@@ -31,6 +31,7 @@ public class LifeManager : MonoBehaviour {
 
 	public void setLifes(int l) {
 		lifes = l;
+		save ();
 	}
 
 	public void reduceLifes(){
@@ -41,6 +42,7 @@ public class LifeManager : MonoBehaviour {
 			lastAccess = Time.time;
 			//throw new System.AccessViolationException("Your lifes are finished");
 		}
+		save ();
 	}
 	
 
@@ -55,6 +57,7 @@ public class LifeManager : MonoBehaviour {
 		if (canRegenerateLifes()) {
 			lifes = DEFAULT_LIFES;
 		}
+		save ();
 	}
 
 	public void save() {

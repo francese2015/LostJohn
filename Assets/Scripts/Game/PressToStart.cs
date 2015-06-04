@@ -26,6 +26,7 @@ public class PressToStart : MonoBehaviour {
 	void Start () {
 		player = GameObject.FindGameObjectWithTag ("Player");
 		tap = GameObject.FindGameObjectWithTag ("tap");
+		ScoreManager.getInstance ().resetScore ();
 	}
 
 	// Update is called once per frame

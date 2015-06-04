@@ -16,13 +16,17 @@ public class ScoreManager : MonoBehaviour {
 	private static ScoreManager instance = null; 
 
 	private ScoreManager(){
-		load ();
-		save ();
+		Debug.Log ("INSTANZIATO SCOREMANAGER");
+
+
 	}
 
 	public static ScoreManager getInstance(){
 		if(instance == null){
 			instance = new ScoreManager();
+			instance.load ();
+			Debug.Log ("CARICATO");
+			//instance.save ();
 		}
 		return instance;
 	}
@@ -53,20 +57,19 @@ public class ScoreManager : MonoBehaviour {
 		if (bs > bestScore) {
 			bestScore = bs;
 			isLastScoreBest = true;
-			Debug.Log("NEW RECOOORD " + isLastScoreBest);
-			save ();
 		} else {
 			isLastScoreBest = false;
 		}
 	}
 
-	public void checkBestScore() {
+	public bool checkBestScore() {
 		if (score > bestScore) {
 			setBestScore (score);
 			isLastScoreBest = true;
 		} else {
 			isLastScoreBest = false;
 		}
+		return isLastScoreBest;
 	}
 
 	public int getBestScore(){
@@ -87,6 +90,7 @@ public class ScoreManager : MonoBehaviour {
 	}
 
 	public void save() {
+		Debug.Log ("SALVANDO BEST = " + bestScore);
 		StorageManager.storeOnDisk (StorageManager.SCORE, score);
 		StorageManager.storeOnDisk (StorageManager.BEST_SCORE, bestScore);
 	}
@@ -94,6 +98,7 @@ public class ScoreManager : MonoBehaviour {
 	public void load() {
 		setScore	(StorageManager.loadIntFromDisk (StorageManager.SCORE));
 		setBestScore(StorageManager.loadIntFromDisk (StorageManager.BEST_SCORE));
+		Debug.Log ("Caricato BEST: " + bestScore);
 	}
 
 }

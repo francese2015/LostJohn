@@ -11,7 +11,6 @@ public class StoreManager : MonoBehaviour {
 		load ();
 		save ();
 		items = new ArrayList ();
-
 	}
 	
 	public static StoreManager getInstance(){

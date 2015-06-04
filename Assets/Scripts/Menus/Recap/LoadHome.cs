@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/**
+ * This script bring the user back to the Home screen.
+ */
 public class LoadHome : MonoBehaviour {
 
 	GameLevelManager level;

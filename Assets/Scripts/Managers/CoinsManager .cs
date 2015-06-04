@@ -6,9 +6,7 @@ public class CoinsManager : MonoBehaviour {
 	public const int DEFAULT_REDCOINS = 3;
 	
 	private  static int coins = 0;
-
-	private  static int redCoins = 0;
-
+	
 	private static CoinsManager instance = null;
 
 	private CoinsManager() {
@@ -34,19 +32,11 @@ public class CoinsManager : MonoBehaviour {
 
 	private void setCoins(int c){
 		coins = c;
+		save ();
 	}
 	
 	public int getCoins(){
 		return coins;
-	}
-
-
-	private void setRedCoins(int rc){
-		redCoins = rc;
-	}
-	
-	public int getRedCoins(){
-		return redCoins;
 	}
 
 	public void spendCoins(int amount){
@@ -55,34 +45,20 @@ public class CoinsManager : MonoBehaviour {
 			return;
 		}
 		coins -= amount;
+		save ();
 	}
 
 	public bool canSpendCoins(int amount){
 		return coins >= amount;
 	}
-
-
-	public void spendRedCoins(int amount){
-		if(redCoins < amount){
-			throw new System.AccessViolationException("Not enough coins");
-			return;
-		}
-		redCoins -= amount;
-	}
-
 	
-	public bool canSpendRedCoins(int amount){
-		return redCoins >= amount;
-	}
 
 	public void save() {
 		StorageManager.storeOnDisk (StorageManager.COINS, coins);
-		StorageManager.storeOnDisk (StorageManager.REDCOINS, redCoins);
 	}
 
 	public void load() {
 		setCoins	(StorageManager.loadIntFromDisk(StorageManager.COINS));
-		setRedCoins	(StorageManager.loadIntFromDisk (StorageManager.REDCOINS));
 	}
 
 }

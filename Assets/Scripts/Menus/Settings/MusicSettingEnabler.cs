@@ -1,6 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/**
+ * This script is respondible for enabling and disabling the Home music
+ * and setting the appropriate layout to the Music button in the setting bar.
+ */
 public class MusicSettingEnabler : MonoBehaviour {
 
 	private string myName;

@@ -1,0 +1,21 @@
+using UnityEngine;
+using System.Collections;
+
+/**
+ * This class provides many static methods that can help you during the work ;)
+ */
+public class Utility : MonoBehaviour {
+	
+	/**
+	 * Check if the clicked input correspond to the one given in input.
+	 */
+	public static boolean checkInput(GameObject target) {
+		RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+		if (hit.collider != null) {
+			if (hit.collider.gameObject.name == target.name) {
+				return true;
+			}
+		} 
+		return false;
+	}
+}

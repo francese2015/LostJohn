@@ -1,6 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/**
+ * This script is respondible for enabling and disabling the Home sounds
+ * and setting the appropriate layout to the Sound button in the setting bar.
+ */
 public class SoundSettingEnabler : MonoBehaviour {
 
 	private string myName;
