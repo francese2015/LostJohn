@@ -16,7 +16,7 @@ public class Player_Movement : MonoBehaviour {
 	private bool isFlying = false;
 
 	public AudioClip jump;
-	private AudioSource source;
+	private AudioSource jumpAudioSource;
 
 	private Animator animator;
 
@@ -31,8 +31,8 @@ public class Player_Movement : MonoBehaviour {
 		chechDiffucultFactor ();
 		transform.Rotate (new Vector3(0,0,-10));
 
-		source = GetComponents<AudioSource> ()[1];
-		source.bypassReverbZones = true;
+		jumpAudioSource = GetComponents<AudioSource> ()[1];
+		jumpAudioSource.bypassReverbZones = true;
 
 		animator = GetComponent<Animator> ();
 	}
@@ -63,11 +63,7 @@ public class Player_Movement : MonoBehaviour {
 			goDown();
 		}
 	}
-
-
-	private void playSound() {
-		playSound(jump, 0.4f);
-	}
+	
 
 	private void chechDiffucultFactor (){
 		if (difficult_factor > 1) {
@@ -80,7 +76,7 @@ public class Player_Movement : MonoBehaviour {
 	 */
 	private void goUp(){
 		transform.position += Vector3.up * upSpeed * Time.deltaTime;
-		playSound(jump, 0.4f);
+		Utility.playSoundOnSource (jumpAudioSource, jump, true, 0.3f);
 	}
 	
 	private void resetSpeed(){
@@ -92,18 +88,9 @@ public class Player_Movement : MonoBehaviour {
 	 */
 	private void goDown(){
 		transform.position -= Vector3.up * downFactor * Time.deltaTime;
-		playSound(jump, 0.1f);
-	}
+		Utility.playSoundOnSource (jumpAudioSource, jump, true, 0.1f);
 
-	private void playSound(AudioClip clip, float volume) {
-		if (!source.isPlaying) {
-			source.Stop();
-		}
-		source.clip = clip;
-		source.volume = volume;
-		source.Play ();
 	}
-
 
 	/**
 	 * Input value range will be (-1.25, 1.25)

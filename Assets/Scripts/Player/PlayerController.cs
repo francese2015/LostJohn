@@ -20,16 +20,13 @@ public class PlayerController : MonoBehaviour {
 	public Text asteroidsText;
 
 	public GameObject deathAnimation;
-
-	private AudioSource audioSoruce;
-
+	
 	public AudioClip point, death;
-	private AudioSource source;
+	private AudioSource mainAudioSource;
 
 	private bool isAlive = true;
 
 	void Start() {
-		audioSoruce = this.GetComponent<AudioSource>();
 		coins = CoinsManager.getInstance ();
 		level = LevelManager.getInstance ();
 		score = ScoreManager.getInstance ();
@@ -38,7 +35,7 @@ public class PlayerController : MonoBehaviour {
 		lifesText.text = "x " + life.getLifes();
 		coinsText.text = "" + coins.getCoins();
 
-		source = GetComponents<AudioSource> ()[0];
+		mainAudioSource = GetComponents<AudioSource> ()[0];
 		isAlive = true;
 
 		spriteRender = GetComponent<SpriteRenderer> ();
@@ -83,8 +80,7 @@ public class PlayerController : MonoBehaviour {
 
 
 	private void deadAnimation() {
-		//source.volume = 0.5f;
-		source.PlayOneShot (death);
+		Utility.playSoundOnSource (mainAudioSource, death, true, 0.3f);
 
 		Instantiate (deathAnimation, transform.position, transform.rotation);
 		Destroy (gameObject);
@@ -107,8 +103,10 @@ public class PlayerController : MonoBehaviour {
 
 		Debug.Log (score.getScore());
 
-		source.PlayOneShot(point);
+		//mainAudioSource.PlayOneShot(point);
+		Utility.playSoundOnSource (mainAudioSource, point, true, 1f);
 	}
+
 
 	void applyForce(Transform meteor) {
 

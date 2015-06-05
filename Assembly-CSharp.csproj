@@ -52,6 +52,7 @@
      <Compile Include="Assets\Scripts\Enemies\Asteroids\TextureRotation.cs" />
      <Compile Include="Assets\Scripts\Environment\Background\BGLooper.cs" />
      <Compile Include="Assets\Scripts\Environment\Background\BackGroundMover.cs" />
+     <Compile Include="Assets\Scripts\Game\Camera_AudioManager.cs" />
      <Compile Include="Assets\Scripts\Game\Camera_FollowPlayer.cs" />
      <Compile Include="Assets\Scripts\Game\GameInitializer.cs" />
      <Compile Include="Assets\Scripts\Game\GameQuit.cs" />
@@ -98,6 +99,7 @@
      <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
      <Compile Include="Assets\Scripts\Player\Player_FlappyMovement.cs" />
      <Compile Include="Assets\Scripts\Player\Player_Movement.cs" />
+     <Compile Include="Assets\Scripts\Utility.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.3/UnityEngine.UI.dll</HintPath>
  </Reference>
