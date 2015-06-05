@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour {
 
 
 	void OnTriggerEnter2D(Collider2D coll) {
-		Debug.Log("Collision entered with " + coll.gameObject);
+//		Debug.Log("Collision entered with " + coll.gameObject);
 		if (isAlive) {
 			if (coll.gameObject.tag == "Bound") {
 				dead ();
@@ -51,6 +51,10 @@ public class PlayerController : MonoBehaviour {
 
 			if (coll.gameObject.tag == "PointZone") {
 				increaseScore ();
+			}
+
+			if (coll.gameObject.tag == "Coin") {
+				increaseCoins ();
 			}
 
 			if (coll.gameObject.tag == "Asteroid") {
@@ -118,6 +122,11 @@ public class PlayerController : MonoBehaviour {
 		Vector3 dir = (p - m) / 5;
 
 		this.rigidbody2D.AddForceAtPosition(dir, transform.position, ForceMode2D.Impulse);
+	}
+
+
+	private void increaseCoins () {
+		CoinsManager.getInstance ().increaseCoins ();
 	}
 
 }

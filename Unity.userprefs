@@ -1,10 +1,11 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Player\Player_Movement.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Enemies\Asteroids\GeneratorV3.cs">
     <Files>
-      <File FileName="Assets\Scripts\Utility.cs" Line="39" Column="19" />
-      <File FileName="Assets\Scripts\Player\PlayerController.cs" Line="106" Column="5" />
-      <File FileName="Assets\Scripts\Player\Player_Movement.cs" Line="79" Column="62" />
+      <File FileName="Assets\Scripts\Enemies\Asteroids\GeneratorV3.cs" Line="61" Column="64" />
+      <File FileName="Assets\Scripts\Utility.cs" Line="74" Column="1" />
+      <File FileName="Assets\Scripts\Player\PlayerController.cs" Line="129" Column="48" />
+      <File FileName="Assets\Scripts\Managers\ScoreManager.cs" Line="97" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

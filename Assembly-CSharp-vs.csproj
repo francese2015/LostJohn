@@ -49,6 +49,7 @@
      <Compile Include="Assets\Scripts\Enemies\Asteroids\Asteroid_Movement.cs" />
      <Compile Include="Assets\Scripts\Enemies\Asteroids\DestroyWithTTL.cs" />
      <Compile Include="Assets\Scripts\Enemies\Asteroids\GeneratorV2.cs" />
+     <Compile Include="Assets\Scripts\Enemies\Asteroids\GeneratorV3.cs" />
      <Compile Include="Assets\Scripts\Enemies\Asteroids\TextureRotation.cs" />
      <Compile Include="Assets\Scripts\Environment\Background\BGLooper.cs" />
      <Compile Include="Assets\Scripts\Environment\Background\BackGroundMover.cs" />

@@ -16,16 +16,12 @@ public class ScoreManager : MonoBehaviour {
 	private static ScoreManager instance = null; 
 
 	private ScoreManager(){
-		Debug.Log ("INSTANZIATO SCOREMANAGER");
-
-
 	}
 
 	public static ScoreManager getInstance(){
 		if(instance == null){
 			instance = new ScoreManager();
 			instance.load ();
-			Debug.Log ("CARICATO");
 			//instance.save ();
 		}
 		return instance;
@@ -90,7 +86,6 @@ public class ScoreManager : MonoBehaviour {
 	}
 
 	public void save() {
-		Debug.Log ("SALVANDO BEST = " + bestScore);
 		StorageManager.storeOnDisk (StorageManager.SCORE, score);
 		StorageManager.storeOnDisk (StorageManager.BEST_SCORE, bestScore);
 	}
@@ -98,8 +93,6 @@ public class ScoreManager : MonoBehaviour {
 	public void load() {
 		setScore	(StorageManager.loadIntFromDisk (StorageManager.SCORE));
 		setBestScore(StorageManager.loadIntFromDisk (StorageManager.BEST_SCORE));
-		Debug.Log ("Caricato BEST: " + bestScore);
 	}
-
 }
 
