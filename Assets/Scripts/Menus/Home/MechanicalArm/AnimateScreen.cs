@@ -34,7 +34,6 @@ public class AnimateScreen : MonoBehaviour {
 	 */
 	void Update () {
 		if (Time.time - lastCall >= milliSec) {
-			Debug.Log("Cambio");
 			change();
 			lastCall = Time.time;
 		}

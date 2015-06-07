@@ -14,7 +14,6 @@ public class ShipDemolition : MonoBehaviour {
 	public float speed = 1f;
 
 	public GameObject explosionPrefab;
-	public AudioClip explosionSound;
 
 	// objects list to destroy 
 	public GameObject[] toDestroy;
@@ -76,7 +75,6 @@ public class ShipDemolition : MonoBehaviour {
 			starterTrigger.GetComponent<Player_MoveOut>().anim();
 
 			Destroy(asteroid);
-			playSound(explosionSound);
 			Instantiate(explosionPrefab, transform.position, transform.rotation);
 			destroyObjects();
 

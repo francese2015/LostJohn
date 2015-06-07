@@ -46,7 +46,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\DeathSound.cs" />
+     <Compile Include="Assets\PlaySound.cs" />
      <Compile Include="Assets\Scripts\Enemies\Asteroids\Asteroid_Movement.cs" />
      <Compile Include="Assets\Scripts\Enemies\Asteroids\DestroyWithTTL.cs" />
      <Compile Include="Assets\Scripts\Enemies\Asteroids\GeneratorV2.cs" />
