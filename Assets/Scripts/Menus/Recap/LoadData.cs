@@ -31,7 +31,6 @@ public class LoadData : MonoBehaviour {
 		best.text = "" + ScoreManager.getInstance ().getBestScore ();
 		avoided.text = "" + ScoreManager.getInstance ().getScore ();
 		exp.text = "exp " + LevelManager.getInstance ().getExps ();
-	//	coins.text = "next " + (LevelManager.getInstance ().NEXT_GOAL - exp);		
 		level.text = "lvl " + LevelManager.getInstance ().getLevel ();
 	}
 }

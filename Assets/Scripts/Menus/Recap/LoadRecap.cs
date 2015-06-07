@@ -18,7 +18,7 @@ public class LoadRecap : MonoBehaviour {
 	public void loadRecap() {
 		deactivate ();
 		GameObject.Instantiate (recap, startPos.position, Quaternion.identity);
-		recap.transform.parent = GameObject.FindGameObjectWithTag("MainCamera").transform;
+		//recap.transform.parent = GameObject.FindGameObjectWithTag("MainCamera").transform;
 	}
 
 	private void deactivate() {

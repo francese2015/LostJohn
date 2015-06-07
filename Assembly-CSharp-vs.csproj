@@ -46,6 +46,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\DeathSound.cs" />
      <Compile Include="Assets\Scripts\Enemies\Asteroids\Asteroid_Movement.cs" />
      <Compile Include="Assets\Scripts\Enemies\Asteroids\DestroyWithTTL.cs" />
      <Compile Include="Assets\Scripts\Enemies\Asteroids\GeneratorV2.cs" />
@@ -57,6 +58,8 @@
      <Compile Include="Assets\Scripts\Game\Camera_FollowPlayer.cs" />
      <Compile Include="Assets\Scripts\Game\GameInitializer.cs" />
      <Compile Include="Assets\Scripts\Game\GameQuit.cs" />
+     <Compile Include="Assets\Scripts\Game\MoveOnX.cs" />
+     <Compile Include="Assets\Scripts\Game\ObjectCollected.cs" />
      <Compile Include="Assets\Scripts\Game\PressToStart.cs" />
      <Compile Include="Assets\Scripts\Game\TextLifes_UpdateLifes.cs" />
      <Compile Include="Assets\Scripts\Managers\AudioManager.cs" />

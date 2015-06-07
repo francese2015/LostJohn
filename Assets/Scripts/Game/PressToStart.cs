@@ -64,7 +64,7 @@ public class PressToStart : MonoBehaviour {
 	void startToPlay(){
 		if(player != null) {
 			player.GetComponent<Player_Movement> ().enabled = true;
-			asteroidGenerator.GetComponent<GeneratorV2> ().enabled = true;
+			asteroidGenerator.GetComponent<GeneratorV3> ().enabled = true;
 			Destroy (tap);
 		}
 	}

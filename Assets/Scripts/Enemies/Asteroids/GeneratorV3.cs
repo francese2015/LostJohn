@@ -46,11 +46,6 @@ public class GeneratorV3 : MonoBehaviour {
 		return new Vector3(transform.position.x, yrand, transform.position.z);
 	}
 
-	private int probabilityCheck() {
-
-		return 0;
-	}
-
 	private GameObject instantiateRandomObject() {
 		ArrayList probs = new ArrayList();
 		probs.Add (ASTEROID_PROBABILITY);
@@ -61,8 +56,12 @@ public class GeneratorV3 : MonoBehaviour {
 		return randomObj == 0 ? asteroidTransform : randomCoinGroup();
 	}
 
-
+	/* 
+	 * Randomly choose a coin group and increade the 
+	 * time to generate the next item
+	 */
 	private GameObject randomCoinGroup() {
+		wait ();
 		int rand = Random.Range (0, coinGroups.Length);
 		return coinGroups [rand];
 	}

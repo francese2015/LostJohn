@@ -36,6 +36,7 @@ public class PlayerController : MonoBehaviour {
 		coinsText.text = "" + coins.getCoins();
 
 		mainAudioSource = GetComponents<AudioSource> ()[0];
+		mainAudioSource.volume = 0.1f;
 		isAlive = true;
 
 		spriteRender = GetComponent<SpriteRenderer> ();
@@ -58,7 +59,6 @@ public class PlayerController : MonoBehaviour {
 			}
 
 			if (coll.gameObject.tag == "Asteroid") {
-				applyForce (coll.gameObject.transform);
 				dead ();
 			}
 		}
@@ -84,8 +84,6 @@ public class PlayerController : MonoBehaviour {
 
 
 	private void deadAnimation() {
-		Utility.playSoundOnSource (mainAudioSource, death, true, 0.3f);
-
 		Instantiate (deathAnimation, transform.position, transform.rotation);
 		Destroy (gameObject);
 	}
@@ -104,29 +102,12 @@ public class PlayerController : MonoBehaviour {
 
 		coinsText.text = "" + coins.getCoins ();
 		asteroidsText.text = "" + score.getScore ();
-
-		Debug.Log (score.getScore());
-
 		//mainAudioSource.PlayOneShot(point);
-		Utility.playSoundOnSource (mainAudioSource, point, true, 1f);
 	}
-
-
-	void applyForce(Transform meteor) {
-
-		Vector3 p = transform.position;
-		Vector3 m = meteor.position;
-		p *= 10;
-		m *= 10;
-
-		Vector3 dir = (p - m) / 5;
-
-		this.rigidbody2D.AddForceAtPosition(dir, transform.position, ForceMode2D.Impulse);
-	}
-
 
 	private void increaseCoins () {
-		CoinsManager.getInstance ().increaseCoins ();
+		Utility.playSoundOnSource (mainAudioSource, point, true, 0.3f);
+		coins.increaseCoins ();
 	}
 
 }
