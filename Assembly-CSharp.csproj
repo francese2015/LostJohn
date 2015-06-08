@@ -46,7 +46,6 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\PlaySound.cs" />
      <Compile Include="Assets\Scripts\Enemies\Asteroids\Asteroid_Movement.cs" />
      <Compile Include="Assets\Scripts\Enemies\Asteroids\DestroyWithTTL.cs" />
      <Compile Include="Assets\Scripts\Enemies\Asteroids\GeneratorV2.cs" />
@@ -69,6 +68,7 @@
      <Compile Include="Assets\Scripts\Managers\GameLevelManager.cs" />
      <Compile Include="Assets\Scripts\Managers\LevelManager.cs" />
      <Compile Include="Assets\Scripts\Managers\LifeManager.cs" />
+     <Compile Include="Assets\Scripts\Managers\LifeRegenerator.cs" />
      <Compile Include="Assets\Scripts\Managers\PlayerManager.cs" />
      <Compile Include="Assets\Scripts\Managers\RankingManager.cs" />
      <Compile Include="Assets\Scripts\Managers\ScoreManager.cs" />
@@ -103,7 +103,8 @@
      <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
      <Compile Include="Assets\Scripts\Player\Player_FlappyMovement.cs" />
      <Compile Include="Assets\Scripts\Player\Player_Movement.cs" />
-     <Compile Include="Assets\Scripts\Utility.cs" />
+     <Compile Include="Assets\Scripts\Utility\PlaySound.cs" />
+     <Compile Include="Assets\Scripts\Utility\Utility.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.3/UnityEngine.UI.dll</HintPath>
  </Reference>

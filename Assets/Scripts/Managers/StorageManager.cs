@@ -34,7 +34,9 @@ public class StorageManager : MonoBehaviour {
 	public const string MUSIC_SETTING = "musics";
 	
 	public const string SOUNDS_SETTING = "sounds";
-	
+
+	public const string DATE_TIME = "dateTime";
+
 	
 	public static bool storeOnDisk(string key, string value){
 		PlayerPrefs.SetString (key, value);
@@ -67,6 +69,21 @@ public class StorageManager : MonoBehaviour {
 		return PlayerPrefs.GetFloat (key);
 	}
 	
+	public static System.DateTime loadDateFromDisk() {
+		string savedDate = PlayerPrefs.GetString (DATE_TIME);
+
+		if (savedDate == "") {
+			storeDateOnDisk(System.DateTime.Now);
+		}
+		System.DateTime toReturn;
+		System.DateTime.TryParse(savedDate, out toReturn);
+		return toReturn;
+	}
+
+	public static void storeDateOnDisk(System.DateTime dateTime) {
+		PlayerPrefs.SetString(DATE_TIME, dateTime.ToString());
+	}
+
 
 
 }

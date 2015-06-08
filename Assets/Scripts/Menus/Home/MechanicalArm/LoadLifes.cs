@@ -9,8 +9,14 @@ using System.Collections;
  */
 public class LoadLifes : MonoBehaviour {
 
-	void Start () {
-		int lifes = LifeManager.getInstance ().getLifes ();
+	LifeManager lifeManager;
+
+	void Start() {
+		lifeManager = LifeManager.getInstance ();
+	}
+
+	void FixedUpdate () {
+		int lifes = lifeManager.getLifes ();
 		GetComponent<Text> ().text = "" + lifes;
 	
 	}

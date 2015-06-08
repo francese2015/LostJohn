@@ -3,14 +3,12 @@ using System.Collections;
 
 public class LifeManager : MonoBehaviour {
 		
-	private static int lifes = 10;
+	private static int lifes = DEFAULT_LIFES;
 
 	private static float lastAccess = 0;
 
 	public const int DEFAULT_LIFES = 10;
-
-	public const int DEFAULT_REGENERATION_TIME = 5 * 60 * 1000; //5 min
-
+	
 	private static LifeManager instance = null; 
 	
 	private LifeManager(){
@@ -23,7 +21,25 @@ public class LifeManager : MonoBehaviour {
 		}
 		return instance;
 	}
+	
+	public void increaseLifes() {
+		if (lifes < DEFAULT_LIFES) {
+			lifes++;
+			save ();
+		}
+	}
 
+	public void increaseLifes(int l) {
+		if (l < 0) {
+			return;
+		}
+		if (lifes + l > DEFAULT_LIFES) {
+			lifes = DEFAULT_LIFES;
+		} else {
+			lifes += l;
+		}
+		save ();
+	}
 
 	public int getLifes(){
 		return lifes;
@@ -44,21 +60,6 @@ public class LifeManager : MonoBehaviour {
 		}
 		save ();
 	}
-	
-
-	/**
-	 * FIXME: if lastAccess - Time.time > DEFAULT_REGENERATION_TIME then true else false
-	 */
-	public bool canRegenerateLifes(){
-		return((lastAccess - Time.time) >= DEFAULT_REGENERATION_TIME);
-	}
-
-	public void regenerteLifes(){
-		if (canRegenerateLifes()) {
-			lifes = DEFAULT_LIFES;
-		}
-		save ();
-	}
 
 	public void save() {
 		StorageManager.storeOnDisk(StorageManager.LIFES, lifes);
@@ -69,6 +70,5 @@ public class LifeManager : MonoBehaviour {
 		setLifes(StorageManager.loadIntFromDisk (StorageManager.LIFES));
 		lastAccess = StorageManager.loadFloatFromDisk (StorageManager.LAST_ACCESS);
 	}
-
 }
 
