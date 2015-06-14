@@ -90,8 +90,10 @@
      <Compile Include="Assets\Scripts\Menus\Home\ResizeOnTouch.cs" />
      <Compile Include="Assets\Scripts\Menus\Home\ShipDemolition.cs" />
      <Compile Include="Assets\Scripts\Menus\Home\ShowBottomBar.cs" />
+     <Compile Include="Assets\Scripts\Menus\Home\ShowShipAndTimer.cs" />
      <Compile Include="Assets\Scripts\Menus\Home\StartLevel.cs" />
      <Compile Include="Assets\Scripts\Menus\Home\TapHere_Movement.cs" />
+     <Compile Include="Assets\Scripts\Menus\Home\Timer.cs" />
      <Compile Include="Assets\Scripts\Menus\Recap\LoadData.cs" />
      <Compile Include="Assets\Scripts\Menus\Recap\LoadHome.cs" />
      <Compile Include="Assets\Scripts\Menus\Recap\LoadLevel.cs" />

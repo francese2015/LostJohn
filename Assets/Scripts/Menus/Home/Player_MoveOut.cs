@@ -8,17 +8,15 @@ using System.Collections;
  */
 public class Player_MoveOut : MonoBehaviour {
 
-	public float time = 1;
 	private bool canMove;
+	public float speed = 3;
 	
 	void Start () {
 		canMove = false;
 	}
 	
 	void Update () {
-		if (canMove) {
-			transform.Translate(3 * Time.deltaTime, 0, 0);
-		}
+		transform.Translate(speed * Time.deltaTime, 0, 0);
 	}
 
 	/**

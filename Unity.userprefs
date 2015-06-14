@@ -1,11 +1,8 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Managers\LifeRegenerator.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Menus\Home\ShipDemolition.cs">
     <Files>
-      <File FileName="Assets\Scripts\Managers\LifeRegenerator.cs" Line="54" Column="42" />
-      <File FileName="Assets\Scripts\Managers\CoinsManager .cs" Line="45" Column="1" />
-      <File FileName="Assets\Scripts\Managers\LifeManager.cs" Line="34" Column="11" />
-      <File FileName="Assets\Scripts\Menus\Home\MechanicalArm\LoadLifes.cs" Line="18" Column="12" />
+      <File FileName="Assets\Scripts\Menus\Home\ShipDemolition.cs" Line="76" Column="44" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

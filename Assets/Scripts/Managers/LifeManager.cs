@@ -12,7 +12,6 @@ public class LifeManager : MonoBehaviour {
 	private static LifeManager instance = null; 
 	
 	private LifeManager(){
-		load ();
 	}
 	
 	public static LifeManager getInstance(){
@@ -23,6 +22,7 @@ public class LifeManager : MonoBehaviour {
 	}
 	
 	public void increaseLifes() {
+		load ();
 		if (lifes < DEFAULT_LIFES) {
 			lifes++;
 			save ();
@@ -30,6 +30,7 @@ public class LifeManager : MonoBehaviour {
 	}
 
 	public void increaseLifes(int l) {
+		load ();
 		if (l < 0) {
 			return;
 		}
@@ -42,6 +43,7 @@ public class LifeManager : MonoBehaviour {
 	}
 
 	public int getLifes(){
+		load ();
 		return lifes;
 	}
 
@@ -51,6 +53,7 @@ public class LifeManager : MonoBehaviour {
 	}
 
 	public void reduceLifes(){
+		load ();
 		if (lifes > 0) {
 			lifes--;
 		} else {

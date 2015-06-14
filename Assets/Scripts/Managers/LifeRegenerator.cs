@@ -3,18 +3,21 @@ using System.Collections;
 
 public class LifeRegenerator : MonoBehaviour {
 	// Default time between two life regeneration calls.
-	System.TimeSpan DEFAULT_REGENERATION_TIME = new System.TimeSpan (0, 2, 0);
+	private static System.TimeSpan DEFAULT_REGENERATION_TIME = new System.TimeSpan (0, 2, 0);
 
 	// DateTime object that represents the last regeneration date and time.
-	System.DateTime lastRegeneration;
+	private System.DateTime lastRegeneration;
 
 	// Variable used to store the actual system time.
-	System.DateTime now;
+	private System.DateTime now;
 
 	// Effective time between two life regeneration calls.
-	System.TimeSpan regenerationTime;
+	private static System.TimeSpan regenerationTime;
 
-	LifeManager lifeManager;
+	private LifeManager lifeManager;
+
+	// variable which contains the diff time to the next life regeneration
+	private static System.TimeSpan diff;
 
 	public const int DEFAULT_LIFES = 10;
 
@@ -38,15 +41,18 @@ public class LifeRegenerator : MonoBehaviour {
 	 * then a new life is regenerated
 	 */
 	private void regenerationCheck() {
-		System.TimeSpan diff = System.DateTime.Now.Subtract (lastRegeneration);
+		if (lifeManager.getLifes() < 10) {
 
-		if (diff.CompareTo(regenerationTime) >= 0) {
-			rigenerateLifes(diff);
-		} 
-		/*else {
+			 diff = System.DateTime.Now.Subtract (lastRegeneration);
+
+			if (diff.CompareTo (regenerationTime) >= 0) {
+				rigenerateLifes (diff);
+			} 
+			/*else {
 			Debug.Log("Aspetta ancora " + regenerationTime.Subtract(diff));
 		}
 		*/
+		}
 	}
 
 	/**
@@ -64,7 +70,13 @@ public class LifeRegenerator : MonoBehaviour {
 		lifeManager.increaseLifes (lifes);
 		lastRegeneration = System.DateTime.Now;
 		save();
+	}
 
+
+	public static string getRemainingTime() {
+		System.TimeSpan t = regenerationTime.Subtract (diff);
+		string timeText = string.Format("{0:D2}:{1:D2}:{2:D2}", t.Hours, t.Minutes, t.Seconds);
+		return timeText;
 	}
 
 	public void save() {

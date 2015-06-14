@@ -19,7 +19,7 @@ public class ShipDemolition : MonoBehaviour {
 	public GameObject[] toDestroy;
 
 	// the trigger ables to start the game
-	public GameObject starterTrigger;
+	public GameObject starter;
 
 	private bool startAnim = false;
 	private Vector3 asteroidPos;
@@ -27,6 +27,7 @@ public class ShipDemolition : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		asteroidPos = asteroid.transform.position;
+		//starter.SetActive (false);
 	}
 	
 	// Update is called once per frame
@@ -72,16 +73,15 @@ public class ShipDemolition : MonoBehaviour {
 			//Debug.Log("Collision with " + coll.gameObject.name);
 
 			// animate the player
-			starterTrigger.GetComponent<Player_MoveOut>().anim();
+			Instantiate(starter, new Vector3(0, 0, 1), Quaternion.identity);
+			Instantiate(explosionPrefab, transform.position, transform.rotation);
 
 			Destroy(asteroid);
-			Instantiate(explosionPrefab, transform.position, transform.rotation);
 			destroyObjects();
-
-			Destroy(gameObject,0.2f);
+			Destroy(gameObject, 0.2f);
 		}
 	}
-
+	
 	private void destroyObjects() {
 		for (int i = 0; i < toDestroy.Length; i++) {
 			//Debug.Log("Destroying " + toDestroy[i].name);
@@ -89,12 +89,6 @@ public class ShipDemolition : MonoBehaviour {
 				Destroy(toDestroy[i], 0);
 			}
 		}
-	}
-
-
-	private void playSound(AudioClip clip) {
-		// FIXME: can't use local audio source
-		// because this object will be destroyed
 	}
 
 }
