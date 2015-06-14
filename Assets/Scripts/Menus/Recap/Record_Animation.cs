@@ -24,7 +24,7 @@ public class Record_Animation : MonoBehaviour {
 
 		// wait before start the animation
 		yield return new WaitForSeconds (timeWait);
-		source.Play ();
+		Utility.playSoundOnSource (source, null, true, 0.3f);
 
 		// calculate the initial and final size the object will have to make a zoom effect
 		Vector3 initialSize = new Vector3 (initialScaleFactor, initialScaleFactor, 0);

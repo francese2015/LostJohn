@@ -100,14 +100,14 @@ public class PlayerController : MonoBehaviour {
 		level.increaseExp ();
 		score.increaseScore ();
 
-		coinsText.text = "" + coins.getCoins ();
 		asteroidsText.text = "" + score.getScore ();
-		//mainAudioSource.PlayOneShot(point);
 	}
 
 	private void increaseCoins () {
 		Utility.playSoundOnSource (mainAudioSource, point, true, 0.3f);
 		coins.increaseCoins ();
+		coinsText.text = "" + coins.getCoins ();
+
 	}
 
 }
