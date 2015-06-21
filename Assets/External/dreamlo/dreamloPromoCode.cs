@@ -10,7 +10,8 @@ public class dreamloPromoCode : MonoBehaviour {
 	public string value = "";
 	public string error = "";
 
-	public enum State {
+	public enum State
+	{
 		None = 0,
 		WaitingForResponse = 1,
 		ERROR = 2,
@@ -20,10 +21,12 @@ public class dreamloPromoCode : MonoBehaviour {
 	public State state = State.None;
 
 
-	public static dreamloPromoCode GetSceneDreamloPromoCode() {
+	public static dreamloPromoCode GetSceneDreamloPromoCode()
+	{
 		GameObject go = GameObject.Find("dreamloPrefab");
 		
-		if (go == null) {
+		if (go == null) 
+		{
 			Debug.LogError("Could not find dreamloPrefab in the scene.");
 			return null;
 		}
@@ -31,11 +34,13 @@ public class dreamloPromoCode : MonoBehaviour {
 		return go.GetComponent<dreamloPromoCode>();
 	}
 
-	public void RedeemCode(string code) {
+	public void RedeemCode(string code)
+	{
 		this.value = "";
 		this.error = "";
 
-		if (publicCode == "") {
+		if (publicCode == "")
+		{
 			Debug.LogError("You forgot to set the public code variable");
 			return;
 		}
@@ -45,24 +50,29 @@ public class dreamloPromoCode : MonoBehaviour {
 		StartCoroutine(WebService(URL));
 	}
 
-	IEnumerator WebService(string URL) {
+	IEnumerator WebService(string URL)
+	{
 		this.state = State.WaitingForResponse;
 
 		WWW www = new WWW(URL);
 		yield return www;
 
-		if (www.error != "" && www.error != null) {
+		if (www.error != "" && www.error != null)
+		{
 			this.state = State.ERROR;
 		}
 		else {
 			string s = www.text;
-			if (s.Contains("|")) {
+			if (s.Contains("|"))
+			{
 				string[] values = s.Split(new char[] {'|'});
-				if (values[0] == "ERROR") {
+				if (values[0] == "ERROR")
+				{
 					this.state = State.ERROR;
 					this.error = values[1];
 				} 
-				else if (values[0] == "OK") {
+				else if (values[0] == "OK")
+				{
 					this.state = State.OK;
 					if (values.Length > 1) this.value = values[1];
 				}

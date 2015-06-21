@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 
 public class LeaderBoardSample : MonoBehaviour {
-	float startTime = 10.0f;
+	float startTime = 2.0f;
 	float timeLeft = 0.0f;
 	
 	int totalScore = 0;

@@ -1,9 +1,8 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\testLeaderboard.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Menus\Ranking\CreateUILeaderBoard.cs">
     <Files>
-      <File FileName="Assets\Scripts\Managers\LeaderBoardManager.cs" Line="61" Column="25" />
-      <File FileName="Assets\testLeaderboard.cs" Line="73" Column="79" />
+      <File FileName="Assets\Scripts\Menus\Ranking\CreateUILeaderBoard.cs" Line="90" Column="71" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

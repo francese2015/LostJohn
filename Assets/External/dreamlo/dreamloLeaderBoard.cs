@@ -9,7 +9,7 @@ public class dreamloLeaderBoard : MonoBehaviour {
 	public string privateCode = "";
 	public string publicCode = "";
 	
-	string highScores = "";
+	public string highScores = "";
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////
 	
@@ -31,6 +31,7 @@ public class dreamloLeaderBoard : MonoBehaviour {
 		public int seconds;
 		public string shortText;
 		public string dateString;
+		public int position;
 	}
 	
 	void Start()
@@ -102,7 +103,7 @@ public class dreamloLeaderBoard : MonoBehaviour {
 		highScores = www.text;
 	}
 	
-	public IEnumerator GetSingleScore(string playerName)
+	IEnumerator GetSingleScore(string playerName)
 	{
 		highScores = "";
 		WWW www = new WWW(dreamloWebserviceURL +  publicCode  + "/pipe-get/" + WWW.EscapeURL(playerName));
@@ -124,6 +125,8 @@ public class dreamloLeaderBoard : MonoBehaviour {
 		string[] rows = this.highScores.Split(new char[] {'\n'}, System.StringSplitOptions.RemoveEmptyEntries);
 		return rows;
 	}
+
+
 	
 	public List<Score> ToListLowToHigh()
 	{
@@ -137,20 +140,37 @@ public class dreamloLeaderBoard : MonoBehaviour {
 		
 		return genericList;
 	}
+
+
 	
 	public List<Score> ToListHighToLow()
 	{
+		Debug.Log ("dreamlo is running...");
+
 		Score[] scoreList = this.ToScoreArray();
-		
+
+		Debug.Log ("response ok");
+
 		if (scoreList == null) return new List<Score>();
 
 		List<Score> genericList = new List<Score>(scoreList);
 			
 		genericList.Sort((x, y) => y.score.CompareTo(x.score));
+
+		Debug.Log ("dreamlo returns " + genericList.Count + " elements");
+
+		for (int i = 0; i < genericList.Count; i++) {
+			Score tmp = genericList[i];
+			tmp.position = i + 1;
+			genericList[i] = tmp;
+		}
+
 		
 		return genericList;
 	}
-	
+
+
+
 	public Score[] ToScoreArray()
 	{
 		string[] rows = ToStringArray();
@@ -194,15 +214,12 @@ public class dreamloLeaderBoard : MonoBehaviour {
 		
 	}
 	
-	public int CheckInt(string s)
+	int CheckInt(string s)
 	{
 		int x = 0;
-
+		
 		int.TryParse(s, out x);
 		return x;
 	}
-
-	public string getResult() {
-		return highScores;
-	}
+	
 }

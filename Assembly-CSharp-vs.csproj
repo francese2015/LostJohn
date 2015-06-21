@@ -69,7 +69,6 @@
      <Compile Include="Assets\Scripts\Managers\Beans\StoreItem.cs" />
      <Compile Include="Assets\Scripts\Managers\CoinsManager .cs" />
      <Compile Include="Assets\Scripts\Managers\GameLevelManager.cs" />
-     <Compile Include="Assets\Scripts\Managers\LeaderBoardManager.cs" />
      <Compile Include="Assets\Scripts\Managers\LevelManager.cs" />
      <Compile Include="Assets\Scripts\Managers\LifeManager.cs" />
      <Compile Include="Assets\Scripts\Managers\LifeRegenerator.cs" />
@@ -98,6 +97,7 @@
      <Compile Include="Assets\Scripts\Menus\Home\StartLevel.cs" />
      <Compile Include="Assets\Scripts\Menus\Home\TapHere_Movement.cs" />
      <Compile Include="Assets\Scripts\Menus\Home\Timer.cs" />
+     <Compile Include="Assets\Scripts\Menus\Ranking\CreateUILeaderBoard.cs" />
      <Compile Include="Assets\Scripts\Menus\Recap\LoadData.cs" />
      <Compile Include="Assets\Scripts\Menus\Recap\LoadHome.cs" />
      <Compile Include="Assets\Scripts\Menus\Recap\LoadLevel.cs" />
@@ -109,11 +109,10 @@
      <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
      <Compile Include="Assets\Scripts\Player\Player_FlappyMovement.cs" />
      <Compile Include="Assets\Scripts\Player\Player_Movement.cs" />
-     <Compile Include="Assets\Scripts\Test\testLeaderboard.cs" />
      <Compile Include="Assets\Scripts\Utility\PlaySound.cs" />
      <Compile Include="Assets\Scripts\Utility\Utility.cs" />
+     <Compile Include="Assets\testDreamloConManager.cs" />
      <None Include="Assets\External\dreamlo\README_FIRST.txt" />
-     <None Include="Assets\External\dreamlo\Dreamlo URLs.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.3/UnityEngine.UI.dll</HintPath>
  </Reference>
