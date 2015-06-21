@@ -46,6 +46,9 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\External\dreamlo\LeaderBoardSample.cs" />
+     <Compile Include="Assets\External\dreamlo\dreamloLeaderBoard.cs" />
+     <Compile Include="Assets\External\dreamlo\dreamloPromoCode.cs" />
      <Compile Include="Assets\Scripts\Enemies\Asteroids\Asteroid_Movement.cs" />
      <Compile Include="Assets\Scripts\Enemies\Asteroids\DestroyWithTTL.cs" />
      <Compile Include="Assets\Scripts\Enemies\Asteroids\GeneratorV2.cs" />
@@ -66,6 +69,7 @@
      <Compile Include="Assets\Scripts\Managers\Beans\StoreItem.cs" />
      <Compile Include="Assets\Scripts\Managers\CoinsManager .cs" />
      <Compile Include="Assets\Scripts\Managers\GameLevelManager.cs" />
+     <Compile Include="Assets\Scripts\Managers\LeaderBoardManager.cs" />
      <Compile Include="Assets\Scripts\Managers\LevelManager.cs" />
      <Compile Include="Assets\Scripts\Managers\LifeManager.cs" />
      <Compile Include="Assets\Scripts\Managers\LifeRegenerator.cs" />
@@ -105,8 +109,11 @@
      <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
      <Compile Include="Assets\Scripts\Player\Player_FlappyMovement.cs" />
      <Compile Include="Assets\Scripts\Player\Player_Movement.cs" />
+     <Compile Include="Assets\Scripts\Test\testLeaderboard.cs" />
      <Compile Include="Assets\Scripts\Utility\PlaySound.cs" />
      <Compile Include="Assets\Scripts\Utility\Utility.cs" />
+     <None Include="Assets\External\dreamlo\README_FIRST.txt" />
+     <None Include="Assets\External\dreamlo\Dreamlo URLs.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.3/UnityEngine.UI.dll</HintPath>
  </Reference>
