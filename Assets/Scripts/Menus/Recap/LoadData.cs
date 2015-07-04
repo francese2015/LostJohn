@@ -14,7 +14,9 @@ public class LoadData : MonoBehaviour {
 	public Text level;
 
 	public GameObject record;
-	
+	public GameObject levelUp;
+
+
 	// Use this for initialization
 	void Start () {
 
@@ -23,14 +25,23 @@ public class LoadData : MonoBehaviour {
 		// if the performed score is the new best starts the NEW RECORD animation
 		if (ScoreManager.isLastScoreBest) {
 			record.SetActive (true);
+		} 
+
+		if (StorageManager.loadIntFromDisk(StorageManager.LEVELUP) > 0) {
+			Debug.Log ("level UP OK");
+			levelUp.SetActive (true);
 		} else {
-			record.SetActive(false);
+			levelUp.SetActive (false);
+			Debug.Log("no level up");
 		}
 
 		// sets data in text canvases
 		best.text = "" + ScoreManager.getInstance ().getBestScore ();
 		avoided.text = "" + ScoreManager.getInstance ().getScore ();
-		exp.text = "exp " + LevelManager.getInstance ().getExps ();
 		level.text = "lvl " + LevelManager.getInstance ().getLevel ();
+		coins.text = "" + ScoreManager.getInstance ().getActualCoins ();
+		exp.text = "" + LevelManager.getInstance ().getExpToNextLevel ();
 	}
+
+
 }

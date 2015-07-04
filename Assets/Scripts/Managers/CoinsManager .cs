@@ -7,7 +7,7 @@ public class CoinsManager : MonoBehaviour {
 	
 	private  static int coins = 0;
 	
-	private static CoinsManager instance = null;
+	private static CoinsManager instance = new CoinsManager();
 
 	private CoinsManager() {
 		load ();
@@ -15,9 +15,6 @@ public class CoinsManager : MonoBehaviour {
 	}
 	
 	public static CoinsManager getInstance(){
-		if(instance == null){
-			instance = new CoinsManager();
-		}
 		return instance;
 	}
 

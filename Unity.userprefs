@@ -1,8 +1,13 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Menus\Ranking\CreateUILeaderBoard.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Menus\Home\PlayClickSound.cs">
     <Files>
-      <File FileName="Assets\Scripts\Menus\Ranking\CreateUILeaderBoard.cs" Line="90" Column="71" />
+      <File FileName="Assets\Scripts\Menus\Recap\LoadData.cs" Line="34" Column="28" />
+      <File FileName="Assets\Scripts\Managers\LevelManager.cs" Line="100" Column="13" />
+      <File FileName="Assets\Scripts\Managers\StorageManager.cs" Line="40" Column="40" />
+      <File FileName="Assets\testing.cs" Line="10" Column="55" />
+      <File FileName="Assets\Scripts\Menus\Recap\Record_Animation.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Menus\Home\PlayClickSound.cs" Line="14" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

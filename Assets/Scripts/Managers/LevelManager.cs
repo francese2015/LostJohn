@@ -5,19 +5,20 @@ public class LevelManager : MonoBehaviour {
 		
 	public const int STARTING_GOAL = 50;
 
-	private const float LEVEL_UP_FACTOR = 0.2f;
+	private const float LEVEL_UP_FACTOR = 1.5f;
 
-	public int NEXT_GOAL = 0;
+	public int NEXT_GOAL = STARTING_GOAL;
 
 	private int level = 1;
 
 	private int exp = 0;
 
+	private bool levelIncreased = false;
+
 	private static LevelManager instance = null; 
 	
 	private LevelManager(){
 		load ();
-		calcNextLevel ();
 		save ();
 	}
 	
@@ -39,7 +40,7 @@ public class LevelManager : MonoBehaviour {
 
 	private void setExp(int e){
 		this.exp = e;
-		calcLevel ();
+		checkLevel ();
 	}
 	
 	public int getExps(){
@@ -59,18 +60,50 @@ public class LevelManager : MonoBehaviour {
 		this.level = l;
 	}
 
-	private void calcLevel(){
-		if (this.exp >= NEXT_GOAL) {
-			increaseLevel();
-			calcNextLevel();
+
+	public int getExpToNextLevel() {
+		return NEXT_GOAL - exp;
+	}
+
+
+	public int getExptInPercentage() {
+		//e.g   next = 10
+		// 		range = 30
+		//		result = 33%
+		int next = NEXT_GOAL - getExpToNextLevel ();
+		int range = NEXT_GOAL - getPreviousGoal ();
+		return (next / range) * 100; 
+	}
+
+	public int getNextGoal() {
+		return NEXT_GOAL;
+	}
+
+	private void setNextGoal(int ng) {
+		if (ng > STARTING_GOAL) {
+			NEXT_GOAL = ng;
+		} else {
+			NEXT_GOAL = STARTING_GOAL;
 		}
 	}
 
-	private void calcNextLevel(){
-		if (this.level == 1) {
-			NEXT_GOAL = STARTING_GOAL;
+
+	public int getPreviousGoal() {
+		return (int) (NEXT_GOAL / LEVEL_UP_FACTOR);
+	}
+
+	public bool isLevelIncreased() {
+		return levelIncreased;
+	}
+
+	private void checkLevel(){
+		if (exp >= NEXT_GOAL) {
+			level++;
+			NEXT_GOAL = (int)(NEXT_GOAL * LEVEL_UP_FACTOR);
+			StorageManager.storeOnDisk(StorageManager.LEVELUP, 1);
+			save ();
 		} else {
-			NEXT_GOAL += Mathf.RoundToInt(NEXT_GOAL * LEVEL_UP_FACTOR); 
+			StorageManager.storeOnDisk(StorageManager.LEVELUP, 0);
 		}
 	}
 
@@ -84,8 +117,9 @@ public class LevelManager : MonoBehaviour {
 	public void load() {
 		int l = StorageManager.loadIntFromDisk (StorageManager.LEVEL);
 		setLevel(l > 0 ? l : 1);
-		setExp(StorageManager.loadIntFromDisk (StorageManager.EXP));
-		this.NEXT_GOAL = StorageManager.loadIntFromDisk (StorageManager.NEXT_GOAL);
+		exp = StorageManager.loadIntFromDisk (StorageManager.EXP);
+		setNextGoal(StorageManager.loadIntFromDisk (StorageManager.NEXT_GOAL));
+		//Debug.Log("caricato dal disco [lvl = " + level  + "] - [exp = " + exp + "] - [next goal = " + NEXT_GOAL + "]");
 	}
 
 }

@@ -46,6 +46,10 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\External\GradientGUIBars\Script\ControlGUIScript.cs" />
+     <Compile Include="Assets\External\GradientGUIBars\Script\GUIBarScript.cs" />
+     <Compile Include="Assets\External\GradientGUIBars\Script\MoreButtonScript.cs" />
+     <Compile Include="Assets\External\GradientGUIBars\Script\MoveCameraScript.cs" />
      <Compile Include="Assets\External\dreamlo\LeaderBoardSample.cs" />
      <Compile Include="Assets\External\dreamlo\dreamloLeaderBoard.cs" />
      <Compile Include="Assets\External\dreamlo\dreamloPromoCode.cs" />
@@ -65,18 +69,15 @@
      <Compile Include="Assets\Scripts\Game\PressToStart.cs" />
      <Compile Include="Assets\Scripts\Game\TextLifes_UpdateLifes.cs" />
      <Compile Include="Assets\Scripts\Managers\AudioManager.cs" />
-     <Compile Include="Assets\Scripts\Managers\Beans\RankingItem.cs" />
-     <Compile Include="Assets\Scripts\Managers\Beans\StoreItem.cs" />
+     <Compile Include="Assets\Scripts\Managers\Beans\ShopItem.cs" />
      <Compile Include="Assets\Scripts\Managers\CoinsManager .cs" />
      <Compile Include="Assets\Scripts\Managers\GameLevelManager.cs" />
      <Compile Include="Assets\Scripts\Managers\LevelManager.cs" />
      <Compile Include="Assets\Scripts\Managers\LifeManager.cs" />
      <Compile Include="Assets\Scripts\Managers\LifeRegenerator.cs" />
      <Compile Include="Assets\Scripts\Managers\PlayerManager.cs" />
-     <Compile Include="Assets\Scripts\Managers\RankingManager.cs" />
      <Compile Include="Assets\Scripts\Managers\ScoreManager.cs" />
      <Compile Include="Assets\Scripts\Managers\StorageManager.cs" />
-     <Compile Include="Assets\Scripts\Managers\StoreManager.cs" />
      <Compile Include="Assets\Scripts\Menus\Home\BackgroundLooper.cs" />
      <Compile Include="Assets\Scripts\Menus\Home\ChangeColor.cs" />
      <Compile Include="Assets\Scripts\Menus\Home\Facebook_Link.cs" />
@@ -104,15 +105,25 @@
      <Compile Include="Assets\Scripts\Menus\Recap\LoadRecap.cs" />
      <Compile Include="Assets\Scripts\Menus\Recap\Recap_Move.cs" />
      <Compile Include="Assets\Scripts\Menus\Recap\Record_Animation.cs" />
+     <Compile Include="Assets\Scripts\Menus\Recap\progressBar.cs" />
+     <Compile Include="Assets\Scripts\Menus\ScrollableList.cs" />
      <Compile Include="Assets\Scripts\Menus\Settings\MusicSettingEnabler.cs" />
      <Compile Include="Assets\Scripts\Menus\Settings\SoundSettingEnabler.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
      <Compile Include="Assets\Scripts\Player\Player_FlappyMovement.cs" />
      <Compile Include="Assets\Scripts\Player\Player_Movement.cs" />
+     <Compile Include="Assets\Scripts\Shop\GadgetActivator.cs" />
+     <Compile Include="Assets\Scripts\Shop\LoadCoins.cs" />
+     <Compile Include="Assets\Scripts\Shop\ShopFactory.cs" />
+     <Compile Include="Assets\Scripts\Shop\ShopList.cs" />
+     <Compile Include="Assets\Scripts\Shop\ShopManager.cs" />
+     <Compile Include="Assets\Scripts\Shop\TouchAndBuy.cs" />
      <Compile Include="Assets\Scripts\Utility\PlaySound.cs" />
      <Compile Include="Assets\Scripts\Utility\Utility.cs" />
      <Compile Include="Assets\testDreamloConManager.cs" />
+     <Compile Include="Assets\testing.cs" />
      <None Include="Assets\External\dreamlo\README_FIRST.txt" />
+     <None Include="Assets\External\GradientGUIBars\ReadMe\AboutFonts.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.3/UnityEngine.UI.dll</HintPath>
  </Reference>

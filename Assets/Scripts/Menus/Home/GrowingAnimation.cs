@@ -9,17 +9,23 @@ public class GrowingAnimation : MonoBehaviour {
 
 	public float scaleFactor = 1.2f;
 	
-	IEnumerator Start () {
-		Vector3 initialSize = transform.localScale;
-		Vector3 finalSize = initialSize * scaleFactor;
-
-		while (true) {
-			yield return StartCoroutine(ScaleObject(transform, initialSize, finalSize, 1f));
-			yield return StartCoroutine(ScaleObject(transform, finalSize, initialSize, 1f));
-		}
-
+	void Start () {
+		StartCoroutine (anim ());
 	}
 
+	void OnEnable () {
+		StartCoroutine (anim ());
+	}
+
+	IEnumerator anim() {
+		Vector3 initialSize = transform.localScale;
+		Vector3 finalSize = initialSize * scaleFactor;
+		
+		while (true) {
+			yield return StartCoroutine (ScaleObject (transform, initialSize, finalSize, 1f));
+			yield return StartCoroutine (ScaleObject (transform, finalSize, initialSize, 1f));
+		}
+	}
 
 	IEnumerator ScaleObject (Transform thisTransform, Vector3 startSize, Vector3 endSize, float time) {
 		float i = 0.0f;

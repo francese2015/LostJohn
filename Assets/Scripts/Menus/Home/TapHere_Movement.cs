@@ -6,8 +6,16 @@ using System.Collections;
  * left and right the sprite itself.
  */
 public class TapHere_Movement : MonoBehaviour {
-	
-	IEnumerator Start () {
+
+	void Start () {
+		StartCoroutine (anim ());
+	}
+
+	void OnEnable () {
+		StartCoroutine (anim ());
+	}
+
+	IEnumerator anim() {
 		Vector3 pointA = transform.position;
 		Vector3 pointB = new Vector3(pointA.x + 0.3f, pointA.y - 0.3f, 0);
 		while (true) {

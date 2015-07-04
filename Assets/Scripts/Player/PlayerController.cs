@@ -107,7 +107,7 @@ public class PlayerController : MonoBehaviour {
 		Utility.playSoundOnSource (mainAudioSource, point, true, 0.3f);
 		coins.increaseCoins ();
 		coinsText.text = "" + coins.getCoins ();
-
+		score.increaseActualCoin ();
 	}
 
 }

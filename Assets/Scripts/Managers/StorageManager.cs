@@ -37,6 +37,8 @@ public class StorageManager : MonoBehaviour {
 
 	public const string DATE_TIME = "dateTime";
 
+	public const string LEVELUP = "levelUp";
+
 	
 	public static bool storeOnDisk(string key, string value){
 		PlayerPrefs.SetString (key, value);
@@ -56,6 +58,12 @@ public class StorageManager : MonoBehaviour {
 		return (PlayerPrefs.GetFloat (key) == value);
 	}
 
+	public static bool storeOnDisk(string key, bool value){
+		PlayerPrefs.SetFloat (key, value ? 1 : 0);
+		//check if storage process had success
+		return (loadBoolFromDisk(key));
+	}
+
 
 	public static string loadStringFromDisk(string key){
 		return PlayerPrefs.GetString (key);
@@ -67,6 +75,11 @@ public class StorageManager : MonoBehaviour {
 	
 	public static float loadFloatFromDisk(string key){
 		return PlayerPrefs.GetFloat (key);
+	}
+
+	public static bool loadBoolFromDisk(string key){
+		int value = loadIntFromDisk (key);
+		return value == 1;
 	}
 	
 	public static System.DateTime loadDateFromDisk() {
@@ -83,7 +96,6 @@ public class StorageManager : MonoBehaviour {
 	public static void storeDateOnDisk(System.DateTime dateTime) {
 		PlayerPrefs.SetString(DATE_TIME, dateTime.ToString());
 	}
-
 
 
 }

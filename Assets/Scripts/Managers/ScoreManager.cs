@@ -9,6 +9,8 @@ public class ScoreManager : MonoBehaviour {
 
 	private static int score = 0;
 
+	private static int coins = 0;
+
 	private static int bestScore = 0;
 
 	public static bool isLastScoreBest = false;
@@ -36,6 +38,10 @@ public class ScoreManager : MonoBehaviour {
 		setScore (score + (1 * multiplier));
 	}
 
+	public void increaseActualCoin() {
+		coins++;
+	}
+
 	public void increaseScore(int s){
 		setScore (score + (s * multiplier));
 	}
@@ -48,6 +54,9 @@ public class ScoreManager : MonoBehaviour {
 		return score;
 	}
 
+	public int getActualCoins() {
+		return coins;
+	}
 
 	public void setBestScore(int bs){
 		if (bs > bestScore) {
