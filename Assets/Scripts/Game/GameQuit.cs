@@ -10,7 +10,7 @@ public class GameQuit : MonoBehaviour {
 
 	void Update () {
 		if (Input.GetKey (KeyCode.Escape)) {
-			if (Application.levelCount == 0) {
+			if (Application.loadedLevel == 0) {
 				Application.Quit();
 			} else {
 				GameLevelManager.getInstance().loadHome();

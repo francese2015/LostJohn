@@ -10,7 +10,7 @@ public class ScrollableList : MonoBehaviour {
 	private List<GameObject> listItems;
 
     void Start() {
-		createList (itemPrefab, 6);
+		createList (itemPrefab, itemCount);
     }
 
 

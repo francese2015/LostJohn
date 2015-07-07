@@ -44,9 +44,9 @@ public class ResizeOnTouch : MonoBehaviour {
 	 */
 	private void scaleUp(bool pressed) {
 		if (!pressed) {
-			transform.localScale *= scaleFactor;
-		} else {
 			transform.localScale /= scaleFactor;
+		} else {
+			transform.localScale *= scaleFactor;
 		}
 	}
 

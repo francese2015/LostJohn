@@ -12,7 +12,7 @@ public class CreateUILeaderBoard : MonoBehaviour {
 	public GameObject scoresContainer;
 
 	public float startY = -50f;
-	public float ySpace = -2.5f;
+	public float ySpace = 0;
 	private float startZ = 5f;
 
 

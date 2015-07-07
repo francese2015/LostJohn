@@ -43,8 +43,10 @@ public class SoundSettingEnabler : MonoBehaviour {
 
 
 	private void setGraphicButton() {
-		bool sound = audioManager.canPlaySounds();
-		renderer.sprite = (sound ? soundOn : soundOff);
+		bool sound = audioManager.canPlaySounds ();
+		if (renderer != null) {
+			renderer.sprite = (sound ? soundOn : soundOff);
+		}
 	}
 	
 	private void invertState() {
