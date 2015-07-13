@@ -78,16 +78,16 @@ public class Player_FlappyMovement : MonoBehaviour {
 
 	private void physicFlying() {
 		//check rigidbody configuration
-		if (rigidbody2D.gravityScale == 0) {
-			rigidbody2D.gravityScale = 0.2f;
-			rigidbody2D.mass = 0.5f;
+		if (GetComponent<Rigidbody2D>().gravityScale == 0) {
+			GetComponent<Rigidbody2D>().gravityScale = 0.2f;
+			GetComponent<Rigidbody2D>().mass = 0.5f;
 		}
 		if (isFlying) {
 			Vector2 force = Vector2.up * flyVelocity.y*4f;
 			if(force.y > maxSpeed*4) {
 				force = Vector2.ClampMagnitude(force, maxSpeed);
 			}
-			rigidbody2D.AddForce (force);
+			GetComponent<Rigidbody2D>().AddForce (force);
 			//animator.SetTrigger("fly")
 			isFlying = false;
 
@@ -97,7 +97,7 @@ public class Player_FlappyMovement : MonoBehaviour {
 
 
 	private void checkPhysicRotation() {
-		float angle = Mathf.Lerp (0, -15, (-rigidbody2D.velocity.y / maxSpeed));
+		float angle = Mathf.Lerp (0, -15, (-GetComponent<Rigidbody2D>().velocity.y / maxSpeed));
 		transform.rotation = Quaternion.Euler (0, 0, angle);
 	}
 

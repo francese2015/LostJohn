@@ -4,27 +4,26 @@ using System.Collections.Generic;
 
 public class GadgetActivator : MonoBehaviour {
 
-	private List<ShopItem> gadgets;
+	private static List<ShopItem> gadgets;
 	private ShopList shopList;
 
-	// Use this for initialization
-	void Start () {
-		shopList = ShopList.getInstance ();
-		gadgets = shopList.getItems ();
+	private static GadgetActivator instnce = new global::GadgetActivator();
 
-		foreach (ShopItem item in gadgets) {
-			activateInGame(item);
-		}
-	}
-	
-	private void activateInGame(ShopItem item) {
-		if(item.activatable) {
-			GameObject toActivate = GameObject.Find (item.name);
-			toActivate.SetActive(true);
-		}
+	private GadgetActivator(){
 	}
 
-	public void deactivateGadget(string itemName) {
-		shopList.destroyItem (itemName);
+	public static GadgetActivator getInstance() {
+		return instnce;
 	}
+
+
+	public void activate(string itemName) {
+		Debug.Log("activating " + itemName);
+		ShopItem gadget = ShopManager.getInstance ().getItem (itemName);
+		gadget.use ();
+	}
+
+
+
+
 }

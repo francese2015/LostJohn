@@ -4,13 +4,13 @@ using System.Collections.Generic;
 
 public class ShopList : MonoBehaviour {
 
-	private const string oneLife = "OneLife";
-	private const string tenLife = "TenLife";
-	private const string exp1	 = "exp1";
-	private const string exp2 	 = "exp2";
-	private const string shield 	   = "shield";
-	private const string coinsMul6     = "coinsMul6";
-	private const string BUY_1000coins = "BUY_1000coins";
+	private const string oneLife = "buy_life";
+	private const string tenLife = "buy_lifes";
+	private const string exp1	 = "buy_exp";
+	private const string exp2 	 = "buy_exp2";
+	private const string shield 	   = "buy_shield";
+	private const string coinsMul6     = "buy_mul";
+	private const string BUY_1000coins = "buy_coins";
 
 	private LevelManager levelManager;
 
@@ -21,6 +21,7 @@ public class ShopList : MonoBehaviour {
 	private ShopList(){
 		levelManager = LevelManager.getInstance ();
 		items = createList ();
+		save ();
 	}
 
 	public static ShopList getInstance() {
@@ -52,7 +53,6 @@ public class ShopList : MonoBehaviour {
 		list.Add (getBUY1000coins());
 
 		update (list);
-		save ();
 		return list;
 	}
 	
@@ -76,8 +76,8 @@ public class ShopList : MonoBehaviour {
 	}
 
 	public void save() {
-		foreach (ShopItem tmpItem in items) {
-			StorageManager.storeOnDisk(tmpItem.name, tmpItem.activatable);
+		foreach (ShopItem i in items) {
+			StorageManager.storeOnDisk(i.name, i.activatable);
 		}
 	}
 
@@ -117,7 +117,9 @@ public class ShopList : MonoBehaviour {
 
 	private ShopItem getExtraLifeItem() {
 		ShopItem item = new ShopItem ();
+		item.setAction (new ExtraLifeAction ());
 		item.name = oneLife;
+		item.description = "extra life";
 		item.coins = 100;
 		item.price = 0;
 		item.expToUnlock = 50;
@@ -130,6 +132,7 @@ public class ShopList : MonoBehaviour {
 	private ShopItem getExtraLifesItem() {
 		ShopItem item = new ShopItem ();
 		item.name = tenLife;
+		item.description = "10 extra lifes";
 		item.coins = 800;
 		item.price = 0;
 		item.expToUnlock = 200;
@@ -137,11 +140,14 @@ public class ShopList : MonoBehaviour {
 		item.activatable = false;
 		item.permanent = false;
 		return item;
+
+
 	}
 
 	private ShopItem getExpMultiplier1() {
 		ShopItem item = new ShopItem ();
 		item.name = exp1;
+		item.description = "1/2 exp extra";
 		item.coins = 5000;
 		item.price = 0;
 		item.expToUnlock = 1000;
@@ -149,11 +155,13 @@ public class ShopList : MonoBehaviour {
 		item.activatable = false;
 		item.permanent = true;
 		return item;
+
 	}
 
 	private ShopItem getExpMultiplier2() {
 		ShopItem item = new ShopItem ();
 		item.name = exp2;
+		item.description = "1/1 exp extra";
 		item.coins = 9000;
 		item.price = 0;
 		item.expToUnlock = 5000;
@@ -161,11 +169,13 @@ public class ShopList : MonoBehaviour {
 		item.activatable = false;
 		item.permanent = true;
 		return item;
+
 	}
 
 	private ShopItem getCoinsMultiplier6() {
 		ShopItem item = new ShopItem ();
 		item.name = coinsMul6;
+		item.description = "coins x2";
 		item.coins = 12000;
 		item.price = 0;
 		item.expToUnlock = 2500;
@@ -173,11 +183,13 @@ public class ShopList : MonoBehaviour {
 		item.activatable = false;
 		item.permanent = false;
 		return item;
+
 	}
 
 	private ShopItem getShield() {
 		ShopItem item = new ShopItem ();
 		item.name = shield;
+		item.description = "shield";
 		item.coins = 500;
 		item.price = 0;
 		item.expToUnlock = 6000;
@@ -185,11 +197,13 @@ public class ShopList : MonoBehaviour {
 		item.activatable = false;
 		item.permanent = false;
 		return item;
+
 	}
 
 	private ShopItem getBUY1000coins() {
 		ShopItem item = new ShopItem ();
 		item.name = BUY_1000coins;
+		item.description = "1000 coins pack";
 		item.coins = 0;
 		item.price = 0.49;
 		item.expToUnlock = 10;
@@ -197,6 +211,7 @@ public class ShopList : MonoBehaviour {
 		item.activatable = false;
 		item.permanent = false;
 		return item;
+
 	}
 
 }

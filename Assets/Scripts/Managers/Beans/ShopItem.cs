@@ -1,6 +1,9 @@
 public class ShopItem {
 
+	public Action action;
+
 	public string name;
+	public string description;
 	public int coins;
 	public double price;
 	public int expToUnlock;
@@ -10,6 +13,19 @@ public class ShopItem {
 
 
 	public ShopItem () {
+	}
+
+	public void use() {
+		action.act ();
+	}
+
+	public void setAction(Action a) {
+		this.action = a;
+	}
+
+
+	public Action getAction() {
+		return this.action;
 	}
 
 }

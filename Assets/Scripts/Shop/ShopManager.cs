@@ -23,6 +23,10 @@ public class ShopManager : MonoBehaviour {
 		return instance;
 	}
 
+	public List<ShopItem> getShopItems(){
+		return items;
+	}
+
 	public ShopItem getItem(string name) {
 		foreach (ShopItem i in items) {
 			if(i.name == name) {
@@ -32,25 +36,27 @@ public class ShopManager : MonoBehaviour {
 		return null;
 	}
 
-	public void buyItem(string itemName) {
+	public bool buyItem(string itemName) {
+		Debug.Log ("trying to buy " + items);
 		ShopItem item = getItem(itemName);
 
 		if (item.coins == 0 && item.price > 0) {
 			purchase (item);
-			return;
+			return false;
 		} else {
 		
 			if(item.price <= coins.getCoins()) {
 				// spends coin and make the item activatable
 				coins.spendCoins(item.coins);
 				shopList.buyItem(item);
+				return true;
 			
 			} else {
 				Debug.LogError ("You don't have enough coins to buy " + item.name);
 			}
 		
 		}
-
+		return false;
 	}
 
 	public void purchase(ShopItem item) {

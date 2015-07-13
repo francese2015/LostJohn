@@ -7,7 +7,7 @@ public class DialogBoxYesNo : MonoBehaviour {
 
 	private GameObject buttonYes;
 	private GameObject buttonNo;
-	private static List<Observer> observers;
+	private static Observer observer;
 
 	public int distance = 1;
 	public Text dialogTextField;
@@ -16,8 +16,6 @@ public class DialogBoxYesNo : MonoBehaviour {
 	void Start () {
 		buttonYes = GameObject.FindGameObjectWithTag ("yes");
 		buttonNo = GameObject.FindGameObjectWithTag ("no");
-
-
 	}
 	
 	// Update is called once per frame
@@ -25,38 +23,36 @@ public class DialogBoxYesNo : MonoBehaviour {
 		if (Input.GetMouseButtonDown(0)) {
 
 			if(Utility.checkInput(buttonYes)) {
-				notifyObservers(true);
+				notifyObserver(true);
 
 			} else if(Utility.checkInput(buttonNo)) {
-				notifyObservers(false);
+				notifyObserver(false);
 			}
 		}
 	}
 
-	private void notifyObservers(bool state) {
-		foreach (Observer o in observers) {
-			o.notify(state);
+	private void notifyObserver(bool state) {
+		if (observer != null) {
+			observer.notify (state);
 		}
+		Destroy (gameObject, 0.2f);
 	}
 
 	public void register(Observer o) {
-		if (observers == null) {
-			observers = new List<Observer>();
-		}
 		if (o != null) {
-			int count = observers.Count;
-			observers.Add (o);
+			observer = o;
 		} else {
 			Debug.LogError("trying to registrate a null observer");
 		}
 	}
 
 	public void unregister(Observer o) {
-		observers.Remove (o);
+		observer = null;
 	}
 
 
 	public void setDialogText(string s) {
 		dialogTextField.text = s;
 	}
+	
 }

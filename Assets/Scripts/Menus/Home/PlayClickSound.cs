@@ -11,9 +11,12 @@ public class PlayClickSound : MonoBehaviour {
 
 	public static void play() {
 		GameObject cam = GameObject.FindGameObjectWithTag ("MainCamera");
-		source = cam.GetComponents<AudioSource> ()[1];
-		if (AudioManager.getInstance ().canPlaySounds ()) {
-			source.Play ();
+
+		if (cam.GetComponents<AudioSource> ().Length > 0) {
+			source = cam.GetComponents<AudioSource> () [1];
+			if (source != null && AudioManager.getInstance ().canPlaySounds ()) {
+				source.Play ();
+			}
 		}
 	}
 }

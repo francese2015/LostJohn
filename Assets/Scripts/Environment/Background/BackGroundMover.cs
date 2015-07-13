@@ -9,7 +9,7 @@ public class BackGroundMover : MonoBehaviour {
 	Rigidbody2D player;
 
 	void Start () {
-		player = GameObject.FindGameObjectWithTag("Player").rigidbody2D;
+		player = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>();
 	}
 
 	void FixedUpdate() {
