@@ -38,11 +38,11 @@ public class CreateUILeaderBoard : MonoBehaviour {
 			Debug.LogError("dreamlo component not loaded!");
 		}
 
-		Debug.Log("invio dati!");
+		Debug.Log("Sending data for leaderboard.");
 
 		dl.AddScore ("zero", 0);
 		
-		Debug.Log("dati inviati");
+		Debug.Log("data sent correctly");
 		
 		yield return new WaitForSeconds(2);
 		

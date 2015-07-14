@@ -3,6 +3,8 @@ using System.Collections;
 
 public class LevelManager : MonoBehaviour {
 		
+	public const int DEFAULT_MULTIPLIER = 0;
+
 	public const int STARTING_GOAL = 50;
 
 	private const float LEVEL_UP_FACTOR = 1.5f;
@@ -13,9 +15,11 @@ public class LevelManager : MonoBehaviour {
 
 	private int exp = 0;
 
+	private float multiplier = DEFAULT_MULTIPLIER;
+
 	private bool levelIncreased = false;
 
-	private static LevelManager instance = null; 
+	private static LevelManager instance = new LevelManager();
 	
 	private LevelManager(){
 		load ();
@@ -23,12 +27,19 @@ public class LevelManager : MonoBehaviour {
 	}
 	
 	public static LevelManager getInstance(){
-		if(instance == null){
-			instance = new LevelManager();
-		}
 		return instance;
 	}
 
+
+	public void setMultiplier(float mul) {
+
+		this.multiplier = mul;
+		save ();
+	}
+
+	public float getMultiplier() {
+		return this.multiplier;
+	}
 	
 	public void increaseExp(){
 		setExp (this.exp + 1);
@@ -58,6 +69,7 @@ public class LevelManager : MonoBehaviour {
 
 	public void setLevel(int l) {
 		this.level = l;
+		save ();
 	}
 
 
@@ -87,6 +99,10 @@ public class LevelManager : MonoBehaviour {
 		}
 	}
 
+	public int calcExtraExp(int exp) {
+		return (int) (exp * multiplier);
+	}
+
 
 	public int getPreviousGoal() {
 		return (int) (NEXT_GOAL / LEVEL_UP_FACTOR);
@@ -111,7 +127,8 @@ public class LevelManager : MonoBehaviour {
 		StorageManager.storeOnDisk (StorageManager.LEVEL, this.level);
 		StorageManager.storeOnDisk (StorageManager.EXP, this.exp);
 		StorageManager.storeOnDisk (StorageManager.NEXT_GOAL, this.NEXT_GOAL);
-
+		Debug.Log ("Salvo su disco multiplier = " + this.multiplier);
+		StorageManager.storeOnDisk (StorageManager.MULTIPLIER, this.multiplier);
 	}
 	
 	public void load() {
@@ -119,6 +136,9 @@ public class LevelManager : MonoBehaviour {
 		setLevel(l > 0 ? l : 1);
 		exp = StorageManager.loadIntFromDisk (StorageManager.EXP);
 		setNextGoal(StorageManager.loadIntFromDisk (StorageManager.NEXT_GOAL));
+
+		float mul = StorageManager.loadFloatFromDisk (StorageManager.MULTIPLIER);
+		setMultiplier(mul);
 		//Debug.Log("caricato dal disco [lvl = " + level  + "] - [exp = " + exp + "] - [next goal = " + NEXT_GOAL + "]");
 	}
 

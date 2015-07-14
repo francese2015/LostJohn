@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
@@ -33,7 +33,7 @@ public class ShopFactory : MonoBehaviour {
 		GameObject p = (GameObject) Instantiate (prefab, new Vector3 (startX, startY, 0), Quaternion.identity);
 		p.name = item.name;
 		applyProperties (p, item);
-		transform.SetParent (p.transform);
+		p.transform.SetParent (transform);
 		return p;
 	}
 
@@ -49,7 +49,7 @@ public class ShopFactory : MonoBehaviour {
 			}
 
 			if (t.name == "lvl") {
-				t.gameObject.GetComponent<Text>().text = i.expToUnlock + "";
+				t.gameObject.GetComponent<Text>().text = "lvl " + i.lvlToUnlock;
 			}
 
 			if (t.name == "coins") {

@@ -24,12 +24,10 @@ public class DialogBoxOk : MonoBehaviour {
 	}
 
 	private void okAction() {
-		Debug.Log ("DESTROYYY");
 		Destroy (gameObject, 0.2f);
 	}
 
 	public void setDialogText(string s) {
-		Debug.Log ("setting text to dialogbox = " + s);
 		dialogTextField.text = s;
 	}
 }

@@ -48,7 +48,7 @@ public class ShopList : MonoBehaviour {
 		list.Add (getExtraLifesItem ());
 		list.Add (getExpMultiplier1());
 		list.Add (getExpMultiplier2());
-		list.Add (getCoinsMultiplier6());
+		list.Add (getCoinsMultiplier());
 		list.Add (getShield());
 		list.Add (getBUY1000coins());
 
@@ -66,7 +66,7 @@ public class ShopList : MonoBehaviour {
 
 			// if player has enough experience and the object 
 			// and the object wasn't already bought then the item is available
-			item.available = (!activatable) && (item.expToUnlock <= actualExp);
+			item.available = (!activatable) && (item.lvlToUnlock <= actualExp);
 
 			// if the object is activatable and permanent, then it becomes free
 			if(item.permanent && item.activatable) {
@@ -117,12 +117,14 @@ public class ShopList : MonoBehaviour {
 
 	private ShopItem getExtraLifeItem() {
 		ShopItem item = new ShopItem ();
+
 		item.setAction (new ExtraLifeAction ());
+
 		item.name = oneLife;
 		item.description = "extra life";
 		item.coins = 100;
 		item.price = 0;
-		item.expToUnlock = 50;
+		item.lvlToUnlock = 2;
 		item.available = false;
 		item.activatable = false;
 		item.permanent = false;
@@ -131,11 +133,14 @@ public class ShopList : MonoBehaviour {
 
 	private ShopItem getExtraLifesItem() {
 		ShopItem item = new ShopItem ();
+
+		item.setAction (new ExtraLifesAction ());
+
 		item.name = tenLife;
 		item.description = "10 extra lifes";
 		item.coins = 800;
 		item.price = 0;
-		item.expToUnlock = 200;
+		item.lvlToUnlock = 4;
 		item.available = false;
 		item.activatable = false;
 		item.permanent = false;
@@ -146,11 +151,14 @@ public class ShopList : MonoBehaviour {
 
 	private ShopItem getExpMultiplier1() {
 		ShopItem item = new ShopItem ();
+
+		item.setAction (new ExtraExp1Action());
+
 		item.name = exp1;
-		item.description = "1/2 exp extra";
+		item.description = "50% exp extra";
 		item.coins = 5000;
 		item.price = 0;
-		item.expToUnlock = 1000;
+		item.lvlToUnlock = 10;
 		item.available = false;
 		item.activatable = false;
 		item.permanent = true;
@@ -160,11 +168,14 @@ public class ShopList : MonoBehaviour {
 
 	private ShopItem getExpMultiplier2() {
 		ShopItem item = new ShopItem ();
+
+		item.setAction (new ExtraExp2Action());
+
 		item.name = exp2;
-		item.description = "1/1 exp extra";
+		item.description = "100% exp extra";
 		item.coins = 9000;
 		item.price = 0;
-		item.expToUnlock = 5000;
+		item.lvlToUnlock = 20;
 		item.available = false;
 		item.activatable = false;
 		item.permanent = true;
@@ -172,13 +183,13 @@ public class ShopList : MonoBehaviour {
 
 	}
 
-	private ShopItem getCoinsMultiplier6() {
+	private ShopItem getCoinsMultiplier() {
 		ShopItem item = new ShopItem ();
 		item.name = coinsMul6;
 		item.description = "coins x2";
 		item.coins = 12000;
 		item.price = 0;
-		item.expToUnlock = 2500;
+		item.lvlToUnlock = 25;
 		item.available = false;
 		item.activatable = false;
 		item.permanent = false;
@@ -192,7 +203,7 @@ public class ShopList : MonoBehaviour {
 		item.description = "shield";
 		item.coins = 500;
 		item.price = 0;
-		item.expToUnlock = 6000;
+		item.lvlToUnlock = 8;
 		item.available = false;
 		item.activatable = false;
 		item.permanent = false;
@@ -206,7 +217,7 @@ public class ShopList : MonoBehaviour {
 		item.description = "1000 coins pack";
 		item.coins = 0;
 		item.price = 0.49;
-		item.expToUnlock = 10;
+		item.lvlToUnlock = 1;
 		item.available = false;
 		item.activatable = false;
 		item.permanent = false;

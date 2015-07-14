@@ -36,8 +36,18 @@ public class ShopManager : MonoBehaviour {
 		return null;
 	}
 
+	public bool canBuyItem(string itemName) {
+		ShopItem item = getItem(itemName);
+		return canBuyItem (item);
+	}
+
+	public bool canBuyItem(ShopItem item) {
+		bool coinsCondition = CoinsManager.getInstance().canSpendCoins(item.coins);
+		bool lvlCondition = LevelManager.getInstance ().getLevel() >= item.lvlToUnlock;
+		return coinsCondition && lvlCondition;
+	}
+
 	public bool buyItem(string itemName) {
-		Debug.Log ("trying to buy " + items);
 		ShopItem item = getItem(itemName);
 
 		if (item.coins == 0 && item.price > 0) {
@@ -45,7 +55,7 @@ public class ShopManager : MonoBehaviour {
 			return false;
 		} else {
 		
-			if(item.price <= coins.getCoins()) {
+			if(canBuyItem(item)) {
 				// spends coin and make the item activatable
 				coins.spendCoins(item.coins);
 				shopList.buyItem(item);

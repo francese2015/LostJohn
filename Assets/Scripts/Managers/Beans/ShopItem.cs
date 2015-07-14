@@ -6,7 +6,7 @@ public class ShopItem {
 	public string description;
 	public int coins;
 	public double price;
-	public int expToUnlock;
+	public int lvlToUnlock;
 	public bool available;
 	public bool activatable;
 	public bool permanent;

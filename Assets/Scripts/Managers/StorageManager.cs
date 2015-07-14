@@ -27,6 +27,8 @@ public class StorageManager : MonoBehaviour {
 
 	public const string NEXT_GOAL = "nextGoal";
 
+	public const string MULTIPLIER = "mult";
+
 	public const string PLAYER_ID = "idPlayer";
 	
 	public const string PLAYER_NAME = "namePlayer";

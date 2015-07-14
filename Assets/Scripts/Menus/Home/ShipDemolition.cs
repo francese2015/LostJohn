@@ -76,9 +76,9 @@ public class ShipDemolition : MonoBehaviour {
 			Instantiate(starter, new Vector3(0, 0, 1), Quaternion.identity);
 			Instantiate(explosionPrefab, transform.position, transform.rotation);
 
-			Destroy(asteroid);
 			destroyObjects();
 			Destroy(gameObject, 0.2f);
+			Destroy(asteroid, 0.2f);
 		}
 	}
 	

@@ -24,7 +24,7 @@ public class LoadLevel : MonoBehaviour {
 	private string checkInput() {
 		RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
 		if (hit.collider != null) {
-			Debug.Log(hit.collider.gameObject.name);
+//			Debug.Log(hit.collider.gameObject.name);
 			return hit.collider.gameObject.name;
 		} else {
 			return null;

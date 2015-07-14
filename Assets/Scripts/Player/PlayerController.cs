@@ -69,8 +69,13 @@ public class PlayerController : MonoBehaviour {
 	 * 
 	 */
 	private void dead()	{
-		isAlive = false;
+		//add extra exp if a multiplier has been bought
+		Debug.LogError ("moltiplicatore: " + LevelManager.getInstance ().getMultiplier ());
+		Debug.LogError ("You scored " + score.getScore() + "  and now EXTRA EXP adds " + level.calcExtraExp (score.getScore()));
 
+		level.increaseExp (level.calcExtraExp (score.getScore())); 
+
+		isAlive = false;
 		coins.save ();
 		level.save ();
 		score.checkBestScore ();

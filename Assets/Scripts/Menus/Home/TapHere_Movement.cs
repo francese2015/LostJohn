@@ -7,11 +7,15 @@ using System.Collections;
  */
 public class TapHere_Movement : MonoBehaviour {
 
+	Vector3 ls;
+
 	void Start () {
+		ls = transform.localScale;
 		StartCoroutine (anim ());
 	}
 
 	void OnEnable () {
+		//transform.localScale = ls;
 		StartCoroutine (anim ());
 	}
 

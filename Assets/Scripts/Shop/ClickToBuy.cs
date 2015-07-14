@@ -9,20 +9,29 @@ public class ClickToBuy : MonoBehaviour, Observer {
 
 	private float scaleFactor = 1.1f;
 	private string myName;
+	private string itemName;
 	private string dialogText;
 	private bool clicked = false;
 
 	public GameObject dialogBox;
 	public GameObject messageBox;
 
+	public float dialogX = -0.48f;
+
 	GameObject refereceToDialogBox;
 
 	void Start () {
 		myName = gameObject.name;
 
+		Transform[] tList = GetComponentsInChildren<Transform> ();
+		foreach (Transform t in tList) {
+			if(t.name == "name") {
+				itemName = t.gameObject.GetComponent<Text>().text;
+			}
+		}
 	}
 	
-	void Update () {
+	void FixedUpdate () {
 		// when click down 
 		if (Input.GetMouseButtonDown(0)) {
 			if(checkInput() == myName) {
@@ -82,47 +91,44 @@ public class ClickToBuy : MonoBehaviour, Observer {
 			string itemName = transform.name;
 			int amount = ShopManager.getInstance().getItem(itemName).coins;
 
-			bool canBuy = CoinsManager.getInstance().canSpendCoins(amount);
+			bool canBuy = ShopManager.getInstance().canBuyItem(itemName);
 
 			if (canBuy) {
 				GadgetActivator.getInstance().activate (itemName);
 				ShopManager.getInstance ().buyItem (itemName);
 			}
-			Debug.Log("continui");
 		
 			if (refereceToDialogBox != null) {
 				refereceToDialogBox.SetActive(false);
 			}
 
-			Debug.LogError ("MSG BOX!!!");
-
 			showMessageBox(canBuy);
-
-			Debug.LogError ("MSG BOX1111");
-
 		}
 	}
 
 	private void showDialogBox() {
-		string desc = "";
-		Transform[] tList = GetComponentsInChildren<Transform> ();
-		
-		foreach (Transform t in tList) {
-			if(t.name == "name") {
-				desc = t.gameObject.GetComponent<Text>().text;
-			}
-		}
-		 string dialogtext = "Do you want to buy" + '\n'  + desc + "?";
+		string itemName = transform.name;
 
-		refereceToDialogBox = (GameObject) Instantiate (dialogBox, new Vector3(-2.2f, -15, -5), Quaternion.identity);
-		refereceToDialogBox.GetComponent<DialogBoxYesNo> ().setDialogText(dialogtext);
-		refereceToDialogBox.GetComponent<DialogBoxYesNo> ().register (this);
+		int lvlToUnlock = ShopManager.getInstance ().getItem (itemName).lvlToUnlock;
+		int playerLevel = LevelManager.getInstance ().getLevel ();
+
+		//if cannot buy because of the low level
+		if (lvlToUnlock > playerLevel) {
+			showMessageBox (false);
+		
+		} else {
+
+			string dialogtext = "Do you want to buy" + '\n' + itemName + "?";
+
+			refereceToDialogBox = (GameObject)Instantiate (dialogBox, new Vector3 (dialogX, -15, -5), Quaternion.identity);
+			refereceToDialogBox.GetComponent<DialogBoxYesNo> ().setDialogText (dialogtext);
+			refereceToDialogBox.GetComponent<DialogBoxYesNo> ().register (this);
+		}
 	}
 
 
 	private void showMessageBox(bool state) {
-		Debug.Log ("MSG BOX");
-		GameObject refereceToMsgBox = (GameObject) Instantiate (messageBox, new Vector3(-2.2f, -15, -5), Quaternion.identity);
+		GameObject refereceToMsgBox = (GameObject) Instantiate (messageBox, new Vector3(dialogX, -15, -5), Quaternion.identity);
 		string msg = state ? BUY_OK : BUY_ERROR;
 		refereceToMsgBox.GetComponent<DialogBoxOk> ().setDialogText (msg);
 	}
