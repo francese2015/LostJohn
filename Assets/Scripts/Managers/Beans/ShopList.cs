@@ -1,16 +1,25 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
+/**
+ * When a shop item is available means that it can be bought 
+ * with coins or money. When an item is bought then it become 
+ * activatable. If the item is permanent is will remain activatable
+ * forever, that means it can not be bought again; viceversa,
+ * if it is not permanent then it can be bought again.
+ * 
+ * For this reason, when an item is activatable its price becomes 0.
+ */
 public class ShopList : MonoBehaviour {
 
-	private const string oneLife = "buy_life";
-	private const string tenLife = "buy_lifes";
-	private const string exp1	 = "buy_exp";
-	private const string exp2 	 = "buy_exp2";
-	private const string shield 	   = "buy_shield";
-	private const string coinsMul6     = "buy_mul";
-	private const string BUY_1000coins = "buy_coins";
+	public const string oneLife  = "buy_life";
+	public const string tenLifes = "buy_lifes";
+	public const string exp1	  = "buy_exp";
+	public const string exp2 	  = "buy_exp2";
+	public const string shield 	   = "buy_shield";
+	public const string coinsMul      = "buy_mul";
+	public const string BUY_1000coins = "buy_coins";
 
 	private LevelManager levelManager;
 
@@ -21,7 +30,6 @@ public class ShopList : MonoBehaviour {
 	private ShopList(){
 		levelManager = LevelManager.getInstance ();
 		items = createList ();
-		save ();
 	}
 
 	public static ShopList getInstance() {
@@ -64,35 +72,12 @@ public class ShopList : MonoBehaviour {
 			bool activatable = StorageManager.loadBoolFromDisk(item.name);
 			item.activatable = activatable;
 
-			// if player has enough experience and the object 
-			// and the object wasn't already bought then the item is available
-			item.available = (!activatable) && (item.lvlToUnlock <= actualExp);
-
 			// if the object is activatable and permanent, then it becomes free
 			if(item.permanent && item.activatable) {
 				item.coins = 0;
 			}
 		}
 	}
-
-	public void save() {
-		foreach (ShopItem i in items) {
-			StorageManager.storeOnDisk(i.name, i.activatable);
-		}
-	}
-
-	public void buyItem(ShopItem item) {
-		if (item.available) {
-			item.activatable = true;
-			item.activatable = false;
-		}
-
-		if (item.permanent) {
-			item.coins = 0;
-		}
-		save ();
-	}
-
 
 	public ShopItem getItem(string name) {
 		foreach (ShopItem i in items) {
@@ -103,15 +88,7 @@ public class ShopList : MonoBehaviour {
 		return null;
 	}
 
-	public void destroyItem(string itemName) {
-		ShopItem item = getItem (itemName);
-		if (item == null) {
-			Debug.LogError("Cannot deactivate null item from shop list");
-			return;
-		}
-		item.activatable = false;
-		save ();
-	}
+
 
 //============= SHOP DATABASE ================
 
@@ -121,13 +98,14 @@ public class ShopList : MonoBehaviour {
 		item.setAction (new ExtraLifeAction ());
 
 		item.name = oneLife;
-		item.description = "extra life";
-		item.coins = 100;
-		item.price = 0;
-		item.lvlToUnlock = 2;
-		item.available = false;
-		item.activatable = false;
+		item.ALWAYS_AVAILABLE = false;
 		item.permanent = false;
+		item.lvlToUnlock = 2;
+		item.description = "extra life";
+
+		item.activatable = StorageManager.loadBoolFromDisk(oneLife);
+
+		setProperCoins (item, 100, 0);
 		return item;
 	}
 
@@ -136,17 +114,16 @@ public class ShopList : MonoBehaviour {
 
 		item.setAction (new ExtraLifesAction ());
 
-		item.name = tenLife;
-		item.description = "10 extra lifes";
-		item.coins = 800;
-		item.price = 0;
-		item.lvlToUnlock = 4;
-		item.available = false;
-		item.activatable = false;
+		item.name = tenLifes;
+		item.ALWAYS_AVAILABLE = false;
 		item.permanent = false;
+		item.lvlToUnlock = 4;
+		item.description = "10 extra lifes";
+
+		item.activatable = StorageManager.loadBoolFromDisk(tenLifes);
+
+		setProperCoins (item, 800, 0);
 		return item;
-
-
 	}
 
 	private ShopItem getExpMultiplier1() {
@@ -155,13 +132,14 @@ public class ShopList : MonoBehaviour {
 		item.setAction (new ExtraExp1Action());
 
 		item.name = exp1;
-		item.description = "50% exp extra";
-		item.coins = 5000;
-		item.price = 0;
-		item.lvlToUnlock = 10;
-		item.available = false;
-		item.activatable = false;
+		item.ALWAYS_AVAILABLE = true;
 		item.permanent = true;
+		item.lvlToUnlock = 10;
+		item.description = "50% exp extra";
+		
+		item.activatable = StorageManager.loadBoolFromDisk(exp1);
+
+		setProperCoins (item, 5000, 0);
 		return item;
 
 	}
@@ -172,57 +150,79 @@ public class ShopList : MonoBehaviour {
 		item.setAction (new ExtraExp2Action());
 
 		item.name = exp2;
-		item.description = "100% exp extra";
-		item.coins = 9000;
-		item.price = 0;
-		item.lvlToUnlock = 20;
-		item.available = false;
-		item.activatable = false;
+		item.ALWAYS_AVAILABLE = true;
 		item.permanent = true;
-		return item;
+		item.lvlToUnlock = 20;
+		item.description = "100% exp extra";
+		
+		item.activatable = StorageManager.loadBoolFromDisk(exp2);
 
+		setProperCoins (item, 9000, 0);
+		return item;
 	}
 
 	private ShopItem getCoinsMultiplier() {
 		ShopItem item = new ShopItem ();
-		item.name = coinsMul6;
-		item.description = "coins x2";
-		item.coins = 12000;
-		item.price = 0;
+
+		item.setAction (null);
+
+		item.name = coinsMul;
+		item.ALWAYS_AVAILABLE = true;
+		item.permanent = true;
 		item.lvlToUnlock = 25;
-		item.available = false;
-		item.activatable = false;
-		item.permanent = false;
+		item.description = "coins x2";
+		
+		item.activatable = StorageManager.loadBoolFromDisk(coinsMul);
+
+		setProperCoins (item, 12000, 0);
 		return item;
 
 	}
 
 	private ShopItem getShield() {
 		ShopItem item = new ShopItem ();
+
+		item.setAction (null);
+		
 		item.name = shield;
-		item.description = "shield";
-		item.coins = 500;
-		item.price = 0;
-		item.lvlToUnlock = 8;
-		item.available = false;
-		item.activatable = false;
+		item.ALWAYS_AVAILABLE = true;
 		item.permanent = false;
+		item.lvlToUnlock = 8;
+		item.description = "shield";
+		
+		item.activatable = StorageManager.loadBoolFromDisk(shield);
+
+		setProperCoins (item, 500, 0);
 		return item;
 
 	}
 
 	private ShopItem getBUY1000coins() {
 		ShopItem item = new ShopItem ();
+
+		item.setAction (null);
+		
 		item.name = BUY_1000coins;
-		item.description = "1000 coins pack";
-		item.coins = 0;
-		item.price = 0.49;
-		item.lvlToUnlock = 1;
-		item.available = false;
-		item.activatable = false;
+		item.ALWAYS_AVAILABLE = false;
 		item.permanent = false;
+		item.lvlToUnlock = 1;
+		item.description = "1000 coins pack";
+		
+		item.activatable = StorageManager.loadBoolFromDisk(BUY_1000coins);
+
+		setProperCoins (item, 0, 0.49);
 		return item;
 
+	}
+
+	private void setProperCoins(ShopItem i, int coins, double price) {
+		if (i.activatable) {
+			i.coins = 0;
+			i.price = 0;
+		} else {
+			i.coins = coins;
+			i.price = price;
+		}
 	}
 
 }

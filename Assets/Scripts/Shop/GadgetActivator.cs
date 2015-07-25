@@ -21,6 +21,9 @@ public class GadgetActivator : MonoBehaviour {
 		Debug.Log("activating " + itemName);
 		ShopItem gadget = ShopManager.getInstance ().getItem (itemName);
 		gadget.use ();
+		if (gadget.permanent) {
+			ShopManager.getInstance().destroyItem(itemName);
+		}
 	}
 
 

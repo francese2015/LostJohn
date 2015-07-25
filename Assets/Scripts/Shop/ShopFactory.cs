@@ -29,7 +29,7 @@ public class ShopFactory : MonoBehaviour {
 		}
 	}
 
-	private GameObject createShopItem(ShopItem item) {
+	public GameObject createShopItem(ShopItem item) {
 		GameObject p = (GameObject) Instantiate (prefab, new Vector3 (startX, startY, 0), Quaternion.identity);
 		p.name = item.name;
 		applyProperties (p, item);
@@ -39,33 +39,32 @@ public class ShopFactory : MonoBehaviour {
 
 
 	private void applyProperties(GameObject o, ShopItem i) {
-		Transform[] tList = o.GetComponentsInChildren<Transform> ();
-
 		//Debug.Log("aggiungendo " + i.name + ": " + i.description + ", " + i.coins);
 
-		foreach (Transform t in tList) {
-			if (t.name == "name") {
-				t.gameObject.GetComponent<Text>().text = i.description;
-			}
+		Transform[] tList = o.GetComponentsInChildren<Transform> ();
 
-			if (t.name == "lvl") {
-				t.gameObject.GetComponent<Text>().text = "lvl " + i.lvlToUnlock;
-			}
+		GraphicButtonManager button =  o.GetComponent<GraphicButtonManager> ();
+		button.setDescription(i.description);
+		button.setLevel("lvl " + i.lvlToUnlock);
 
-			if (t.name == "coins") {
-				if (i.coins > 0) {
-					t.gameObject.GetComponent<Text>().text = i.coins + "";
-				} else {
-					t.gameObject.GetComponent<Text>().text = i.price + " €";
+		button.setIco (getSprite (i.name));
 
-				}
-			}
+		bool useCoin = i.coins > 0;
+		bool activatable = i.activatable;
 
-			if (t.name == "ico") {
-				t.gameObject.GetComponent<Image>().sprite = getSprite(i.name);
-			}
 
+		if (i.canBeBought ()) {
+			button.setCoins (useCoin ? (i.coins + "") : (i.price + " €"));
+			button.setCoinsImage (useCoin);
+			button.setBuyable ();
+
+		} else if (!i.isUnlocked () && !i.isActivatable()) {
+			button.setLocked ();
+
+		} else if (i.isBought ()) {
+			button.setBought();
 		}
+
 	}
 
 

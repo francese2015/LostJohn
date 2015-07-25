@@ -12,7 +12,6 @@ public class ShopManager : MonoBehaviour {
 
 	private CoinsManager coins;
 
-
 	private ShopManager() {
 		shopList = ShopList.getInstance ();
 		coins = CoinsManager.getInstance ();
@@ -44,9 +43,10 @@ public class ShopManager : MonoBehaviour {
 	public bool canBuyItem(ShopItem item) {
 		bool coinsCondition = CoinsManager.getInstance().canSpendCoins(item.coins);
 		bool lvlCondition = LevelManager.getInstance ().getLevel() >= item.lvlToUnlock;
+		Debug.Log("can buy " + item.name + "?  " + (coinsCondition && lvlCondition));
 		return coinsCondition && lvlCondition;
 	}
-
+	
 	public bool buyItem(string itemName) {
 		ShopItem item = getItem(itemName);
 
@@ -58,7 +58,7 @@ public class ShopManager : MonoBehaviour {
 			if(canBuyItem(item)) {
 				// spends coin and make the item activatable
 				coins.spendCoins(item.coins);
-				shopList.buyItem(item);
+				setItemAsBought(item);
 				return true;
 			
 			} else {
@@ -68,6 +68,40 @@ public class ShopManager : MonoBehaviour {
 		}
 		return false;
 	}
+
+
+
+	private void setItemAsBought(ShopItem item) {
+		item.activatable = true;
+		
+		if (item.permanent) {
+			item.coins = 0;
+		}
+		saveItemState (item);
+	}
+
+
+
+	private void saveItemState(ShopItem item) {
+		if (item.ALWAYS_AVAILABLE) {
+			StorageManager.storeOnDisk (item.name, item.activatable);
+		}
+	}
+
+
+	public void destroyItem(string itemName) {
+		Debug.LogError ("destroying " + itemName);
+		ShopItem item = getItem (itemName);
+
+		if (item == null) {
+			Debug.LogError("Cannot deactivate null item from shop list");
+			return;
+		}
+		item.activatable = false;
+
+		saveItemState (item);
+	}
+
 
 	public void purchase(ShopItem item) {
 		Debug.LogError ("Purchasing operations not yet available.");

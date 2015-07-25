@@ -6,6 +6,7 @@ public class ClickToBuy : MonoBehaviour, Observer {
 
 	private string BUY_OK = "Your gadget has " + '\n' + "been bought! :D";
 	private string BUY_ERROR = "Sorry, can't buy " + '\n' + " the gadget :(";
+	private string ALREADY_BOUGHT = "You already have" + '\n' + " this gadget!";
 
 	private float scaleFactor = 1.1f;
 	private string myName;
@@ -89,32 +90,44 @@ public class ClickToBuy : MonoBehaviour, Observer {
 		if (state) {// YES has been clicked
 
 			string itemName = transform.name;
-			int amount = ShopManager.getInstance().getItem(itemName).coins;
+			ShopItem item = ShopManager.getInstance().getItem(itemName);
 
 			bool canBuy = ShopManager.getInstance().canBuyItem(itemName);
-
+		
 			if (canBuy) {
-				GadgetActivator.getInstance().activate (itemName);
-				ShopManager.getInstance ().buyItem (itemName);
+				// if buy action has success then activate the gadget
+				if (ShopManager.getInstance ().buyItem (itemName)) {
+					GadgetActivator.getInstance().activate (itemName);
+				}
 			}
 		
 			if (refereceToDialogBox != null) {
 				refereceToDialogBox.SetActive(false);
 			}
 
-			showMessageBox(canBuy);
+			string msgState = canBuy ? BUY_OK : BUY_ERROR;
+			showMessageBox(msgState);
+
+			GetComponent<GraphicButtonManager>().update(item);
 		}
 	}
 
 	private void showDialogBox() {
 		string itemName = transform.name;
+		ShopItem item = ShopManager.getInstance ().getItem (itemName);
 
-		int lvlToUnlock = ShopManager.getInstance ().getItem (itemName).lvlToUnlock;
+		int lvlToUnlock = item.lvlToUnlock;
 		int playerLevel = LevelManager.getInstance ().getLevel ();
+		//if the item has already been bought you can not buy it
+		bool alreadyBought = item.activatable;
+
+		if (alreadyBought) {
+			showMessageBox(ALREADY_BOUGHT);
+		} 
 
 		//if cannot buy because of the low level
-		if (lvlToUnlock > playerLevel) {
-			showMessageBox (false);
+		else if (lvlToUnlock > playerLevel) {
+			showMessageBox (BUY_ERROR);
 		
 		} else {
 
@@ -127,9 +140,8 @@ public class ClickToBuy : MonoBehaviour, Observer {
 	}
 
 
-	private void showMessageBox(bool state) {
+	private void showMessageBox(string msg) {
 		GameObject refereceToMsgBox = (GameObject) Instantiate (messageBox, new Vector3(dialogX, -15, -5), Quaternion.identity);
-		string msg = state ? BUY_OK : BUY_ERROR;
 		refereceToMsgBox.GetComponent<DialogBoxOk> ().setDialogText (msg);
 	}
 	

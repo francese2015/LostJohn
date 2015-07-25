@@ -127,7 +127,6 @@ public class LevelManager : MonoBehaviour {
 		StorageManager.storeOnDisk (StorageManager.LEVEL, this.level);
 		StorageManager.storeOnDisk (StorageManager.EXP, this.exp);
 		StorageManager.storeOnDisk (StorageManager.NEXT_GOAL, this.NEXT_GOAL);
-		Debug.Log ("Salvo su disco multiplier = " + this.multiplier);
 		StorageManager.storeOnDisk (StorageManager.MULTIPLIER, this.multiplier);
 	}
 	

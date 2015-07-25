@@ -23,10 +23,13 @@ public class LifeManager : MonoBehaviour {
 	
 	public void increaseLifes() {
 		load ();
+		/*
 		if (lifes < DEFAULT_LIFES) {
 			lifes++;
 			save ();
 		}
+		*/
+		lifes++;
 	}
 
 	public void increaseLifes(int l) {
@@ -34,11 +37,14 @@ public class LifeManager : MonoBehaviour {
 		if (l < 0) {
 			return;
 		}
+		/*
 		if (lifes + l > DEFAULT_LIFES) {
 			lifes = DEFAULT_LIFES;
 		} else {
 			lifes += l;
 		}
+		  */
+		lifes += l;
 		save ();
 	}
 

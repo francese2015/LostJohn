@@ -125,6 +125,7 @@
      <Compile Include="Assets\Scripts\Shop\ApplyColorToShopItem.cs" />
      <Compile Include="Assets\Scripts\Shop\ClickToBuy.cs" />
      <Compile Include="Assets\Scripts\Shop\GadgetActivator.cs" />
+     <Compile Include="Assets\Scripts\Shop\GraphicButtonManager.cs" />
      <Compile Include="Assets\Scripts\Shop\LoadCoins.cs" />
      <Compile Include="Assets\Scripts\Shop\ShopFactory.cs" />
      <Compile Include="Assets\Scripts\Shop\ShopManager.cs" />

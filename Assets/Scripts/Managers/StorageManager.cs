@@ -61,9 +61,11 @@ public class StorageManager : MonoBehaviour {
 	}
 
 	public static bool storeOnDisk(string key, bool value){
-		PlayerPrefs.SetFloat (key, value ? 1 : 0);
+		PlayerPrefs.SetInt (key, value ? 1 : 0);
+
+		int v = loadIntFromDisk (key);
 		//check if storage process had success
-		return (loadBoolFromDisk(key));
+		return loadBoolFromDisk(key);
 	}
 
 
@@ -81,6 +83,7 @@ public class StorageManager : MonoBehaviour {
 
 	public static bool loadBoolFromDisk(string key){
 		int value = loadIntFromDisk (key);
+		//Debug.LogError ("READING BOOL FROM DISK " + key + " = " + ("" + value));
 		return value == 1;
 	}
 	

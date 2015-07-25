@@ -18,6 +18,7 @@ public class ExtraLifeAction : Action{
 
 	public void act() {
 		LifeManager.getInstance ().increaseLifes ();
+		ShopManager.getInstance ().destroyItem (ShopList.oneLife);
 	}
 }
 
