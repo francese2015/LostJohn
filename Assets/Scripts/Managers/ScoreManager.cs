@@ -32,6 +32,7 @@ public class ScoreManager : MonoBehaviour {
 
 	public void resetScore() {
 		score = 0;
+		coins = 0;
 	}
 	
 	public void increaseScore(){

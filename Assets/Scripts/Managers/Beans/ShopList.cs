@@ -105,7 +105,7 @@ public class ShopList : MonoBehaviour {
 
 		item.activatable = StorageManager.loadBoolFromDisk(oneLife);
 
-		setProperCoins (item, 100, 0);
+		setProperCoins (item, 10, 0);
 		return item;
 	}
 
@@ -122,7 +122,7 @@ public class ShopList : MonoBehaviour {
 
 		item.activatable = StorageManager.loadBoolFromDisk(tenLifes);
 
-		setProperCoins (item, 800, 0);
+		setProperCoins (item, 30, 0);
 		return item;
 	}
 
@@ -134,12 +134,12 @@ public class ShopList : MonoBehaviour {
 		item.name = exp1;
 		item.ALWAYS_AVAILABLE = false;
 		item.permanent = true;
-		item.lvlToUnlock = 10;
+		item.lvlToUnlock = 6;
 		item.description = "50% exp extra";
 		
 		item.activatable = StorageManager.loadBoolFromDisk(exp1);
 
-		setProperCoins (item, 5000, 0);
+		setProperCoins (item, 5, 0);
 		return item;
 
 	}
@@ -152,12 +152,12 @@ public class ShopList : MonoBehaviour {
 		item.name = exp2;
 		item.ALWAYS_AVAILABLE = false;
 		item.permanent = true;
-		item.lvlToUnlock = 20;
+		item.lvlToUnlock = 12;
 		item.description = "100% exp extra";
 		
 		item.activatable = StorageManager.loadBoolFromDisk(exp2);
 
-		setProperCoins (item, 9000, 0);
+		setProperCoins (item, 90, 0);
 		return item;
 	}
 
@@ -187,12 +187,12 @@ public class ShopList : MonoBehaviour {
 		item.name = shield;
 		item.ALWAYS_AVAILABLE = false;
 		item.permanent = false;
-		item.lvlToUnlock = 8;
+		item.lvlToUnlock = 2;
 		item.description = "shield";
 		
 		item.activatable = StorageManager.loadBoolFromDisk(shield);
 
-		setProperCoins (item, 500, 0);
+		setProperCoins (item, 50, 0);
 		return item;
 
 	}

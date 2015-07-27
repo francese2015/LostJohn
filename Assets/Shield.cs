@@ -7,7 +7,11 @@ public class Shield : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D coll) {
 		if (coll.gameObject.tag == "Asteroid") {
-			Instantiate(explosion, coll.transform.position, Quaternion.identity);
+
+			Vector3 pos = coll.transform.position;
+			pos.z = 2;
+
+			Instantiate(explosion, pos, Quaternion.identity);
 			Destroy(coll.gameObject);
 			Destroy(gameObject);
 
