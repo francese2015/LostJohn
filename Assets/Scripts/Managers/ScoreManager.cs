@@ -43,6 +43,7 @@ public class ScoreManager : MonoBehaviour {
 	}
 
 	public void increaseScore(int s){
+		Debug.Log("Increasing of " + s + " * " + multiplier); 
 		setScore (score + (s * multiplier));
 	}
 

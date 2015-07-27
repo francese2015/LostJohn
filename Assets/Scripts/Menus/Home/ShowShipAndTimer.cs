@@ -19,7 +19,7 @@ public class ShowShipAndTimer : MonoBehaviour {
 		lifeManager = LifeManager.getInstance();
 	}
 	
-	void Update() {
+	void FixedUpdate() {
 		if (lifeManager.getLifes () == 0) {
 			showTimer ();
 		} else {

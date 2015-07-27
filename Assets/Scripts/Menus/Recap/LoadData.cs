@@ -27,12 +27,11 @@ public class LoadData : MonoBehaviour {
 			record.SetActive (true);
 		} 
 
-		if (StorageManager.loadIntFromDisk(StorageManager.LEVELUP) > 0) {
-			Debug.Log ("level UP OK");
+		if (LevelManager.isLevelUp) {
+			//Debug.Log ("level UP OK");
 			levelUp.SetActive (true);
 		} else {
 			levelUp.SetActive (false);
-			Debug.Log("no level up");
 		}
 
 		// sets data in text canvases

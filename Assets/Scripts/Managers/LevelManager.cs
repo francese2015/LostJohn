@@ -19,11 +19,14 @@ public class LevelManager : MonoBehaviour {
 
 	private bool levelIncreased = false;
 
+	public static bool isLevelUp = false;
+
 	private static LevelManager instance = new LevelManager();
+
+	int i = 0;
 	
 	private LevelManager(){
 		load ();
-		save ();
 	}
 	
 	public static LevelManager getInstance(){
@@ -32,7 +35,6 @@ public class LevelManager : MonoBehaviour {
 
 
 	public void setMultiplier(float mul) {
-
 		this.multiplier = mul;
 		save ();
 	}
@@ -92,11 +94,8 @@ public class LevelManager : MonoBehaviour {
 	}
 
 	private void setNextGoal(int ng) {
-		if (ng > STARTING_GOAL) {
-			NEXT_GOAL = ng;
-		} else {
-			NEXT_GOAL = STARTING_GOAL;
-		}
+		NEXT_GOAL = ng;
+
 	}
 
 	public int calcExtraExp(int exp) {
@@ -113,17 +112,19 @@ public class LevelManager : MonoBehaviour {
 	}
 
 	private void checkLevel(){
-		if (exp >= NEXT_GOAL) {
-			level++;
-			NEXT_GOAL = (int)(NEXT_GOAL * LEVEL_UP_FACTOR);
-			StorageManager.storeOnDisk(StorageManager.LEVELUP, 1);
-			save ();
-		} else {
-			StorageManager.storeOnDisk(StorageManager.LEVELUP, 0);
+		// synchronization
+		lock (this) {
+			if (exp >= NEXT_GOAL) {
+				level++;
+				NEXT_GOAL = Mathf.RoundToInt(NEXT_GOAL * LEVEL_UP_FACTOR);
+				isLevelUp = true;
+				save();
+			}
 		}
 	}
 
 	public void save() {
+
 		StorageManager.storeOnDisk (StorageManager.LEVEL, this.level);
 		StorageManager.storeOnDisk (StorageManager.EXP, this.exp);
 		StorageManager.storeOnDisk (StorageManager.NEXT_GOAL, this.NEXT_GOAL);
@@ -131,13 +132,21 @@ public class LevelManager : MonoBehaviour {
 	}
 	
 	public void load() {
-		int l = StorageManager.loadIntFromDisk (StorageManager.LEVEL);
-		setLevel(l > 0 ? l : 1);
+
+		int ng = StorageManager.loadIntFromDisk (StorageManager.NEXT_GOAL);
+		NEXT_GOAL = ng < STARTING_GOAL ? STARTING_GOAL : ng;
+
 		exp = StorageManager.loadIntFromDisk (StorageManager.EXP);
-		setNextGoal(StorageManager.loadIntFromDisk (StorageManager.NEXT_GOAL));
+
+		int l = StorageManager.loadIntFromDisk (StorageManager.LEVEL);
+		this.level = l > 0 ? l : 1;
 
 		float mul = StorageManager.loadFloatFromDisk (StorageManager.MULTIPLIER);
-		setMultiplier(mul);
+		this.multiplier = mul;
+
+		isLevelUp = false;
+
+		save ();
 		//Debug.Log("caricato dal disco [lvl = " + level  + "] - [exp = " + exp + "] - [next goal = " + NEXT_GOAL + "]");
 	}
 

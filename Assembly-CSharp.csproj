@@ -46,6 +46,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\BackgroundAnim.cs" />
      <Compile Include="Assets\External\GradientGUIBars\Script\ControlGUIScript.cs" />
      <Compile Include="Assets\External\GradientGUIBars\Script\GUIBarScript.cs" />
      <Compile Include="Assets\External\GradientGUIBars\Script\MoreButtonScript.cs" />
@@ -132,6 +133,8 @@
      <Compile Include="Assets\Scripts\Utility\PlaySound.cs" />
      <Compile Include="Assets\Scripts\Utility\Utility.cs" />
      <Compile Include="Assets\TextLevel.cs" />
+     <Compile Include="Assets\TwitterLink.cs" />
+     <Compile Include="Assets\WebsiteLink.cs" />
      <None Include="Assets\External\dreamlo\README_FIRST.txt" />
      <None Include="Assets\External\GradientGUIBars\ReadMe\AboutFonts.txt" />
  <Reference Include="UnityEngine.UI">

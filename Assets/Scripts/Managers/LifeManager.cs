@@ -9,26 +9,24 @@ public class LifeManager : MonoBehaviour {
 
 	public const int DEFAULT_LIFES = 10;
 	
-	private static LifeManager instance = null; 
+	private static LifeManager instance = new LifeManager(); 
 	
 	private LifeManager(){
+		load ();
 	}
 	
 	public static LifeManager getInstance(){
-		if(instance == null){
-			instance = new LifeManager();
-		}
 		return instance;
 	}
 	
 	public void increaseLifes() {
 		load ();
-		/*
+
 		if (lifes < DEFAULT_LIFES) {
 			lifes++;
 			save ();
 		}
-		*/
+
 		lifes++;
 	}
 
@@ -37,14 +35,19 @@ public class LifeManager : MonoBehaviour {
 		if (l < 0) {
 			return;
 		}
-		/*
 		if (lifes + l > DEFAULT_LIFES) {
 			lifes = DEFAULT_LIFES;
 		} else {
 			lifes += l;
 		}
-		  */
-		lifes += l;
+
+		save ();
+	}
+
+
+
+	public void addExtraLifes(int amount) {
+		lifes += amount;
 		save ();
 	}
 
@@ -76,8 +79,13 @@ public class LifeManager : MonoBehaviour {
 	}
 	
 	public void load() {
-		setLifes(StorageManager.loadIntFromDisk (StorageManager.LIFES));
+		int lifes = StorageManager.loadIntFromDisk (StorageManager.LIFES);
+		if (lifes > 100) {
+			lifes = DEFAULT_LIFES;
+		} // FIXME non so per quale cazzo di motivo!!!!
+		setLifes(lifes);
 		lastAccess = StorageManager.loadFloatFromDisk (StorageManager.LAST_ACCESS);
+		save ();
 	}
 }
 
