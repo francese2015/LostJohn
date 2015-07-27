@@ -98,7 +98,7 @@ public class ShopList : MonoBehaviour {
 		item.setAction (new ExtraLifeAction ());
 
 		item.name = oneLife;
-		item.ALWAYS_AVAILABLE = false;
+		item.ALWAYS_AVAILABLE = true;
 		item.permanent = false;
 		item.lvlToUnlock = 2;
 		item.description = "extra life";
@@ -115,7 +115,7 @@ public class ShopList : MonoBehaviour {
 		item.setAction (new ExtraLifesAction ());
 
 		item.name = tenLifes;
-		item.ALWAYS_AVAILABLE = false;
+		item.ALWAYS_AVAILABLE = true;
 		item.permanent = false;
 		item.lvlToUnlock = 4;
 		item.description = "10 extra lifes";
@@ -132,7 +132,7 @@ public class ShopList : MonoBehaviour {
 		item.setAction (new ExtraExp1Action());
 
 		item.name = exp1;
-		item.ALWAYS_AVAILABLE = true;
+		item.ALWAYS_AVAILABLE = false;
 		item.permanent = true;
 		item.lvlToUnlock = 10;
 		item.description = "50% exp extra";
@@ -150,7 +150,7 @@ public class ShopList : MonoBehaviour {
 		item.setAction (new ExtraExp2Action());
 
 		item.name = exp2;
-		item.ALWAYS_AVAILABLE = true;
+		item.ALWAYS_AVAILABLE = false;
 		item.permanent = true;
 		item.lvlToUnlock = 20;
 		item.description = "100% exp extra";
@@ -167,7 +167,7 @@ public class ShopList : MonoBehaviour {
 		item.setAction (null);
 
 		item.name = coinsMul;
-		item.ALWAYS_AVAILABLE = true;
+		item.ALWAYS_AVAILABLE = false;
 		item.permanent = true;
 		item.lvlToUnlock = 25;
 		item.description = "coins x2";
@@ -185,7 +185,7 @@ public class ShopList : MonoBehaviour {
 		item.setAction (null);
 		
 		item.name = shield;
-		item.ALWAYS_AVAILABLE = true;
+		item.ALWAYS_AVAILABLE = false;
 		item.permanent = false;
 		item.lvlToUnlock = 8;
 		item.description = "shield";
@@ -203,7 +203,7 @@ public class ShopList : MonoBehaviour {
 		item.setAction (null);
 		
 		item.name = BUY_1000coins;
-		item.ALWAYS_AVAILABLE = false;
+		item.ALWAYS_AVAILABLE = true;
 		item.permanent = false;
 		item.lvlToUnlock = 1;
 		item.description = "1000 coins pack";
@@ -216,13 +216,8 @@ public class ShopList : MonoBehaviour {
 	}
 
 	private void setProperCoins(ShopItem i, int coins, double price) {
-		if (i.activatable) {
-			i.coins = 0;
-			i.price = 0;
-		} else {
 			i.coins = coins;
 			i.price = price;
-		}
 	}
 
 }

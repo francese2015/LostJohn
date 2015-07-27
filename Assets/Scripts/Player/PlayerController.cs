@@ -5,6 +5,9 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour {
 
+	public GameObject shield;
+	private bool isShieldActive = false;
+
 	private SpriteRenderer spriteRender;
 
 	private CoinsManager coins;
@@ -40,6 +43,9 @@ public class PlayerController : MonoBehaviour {
 		isAlive = true;
 
 		spriteRender = GetComponent<SpriteRenderer> ();
+
+		checkChield ();
+
 	}
 
 
@@ -59,7 +65,12 @@ public class PlayerController : MonoBehaviour {
 			}
 
 			if (coll.gameObject.tag == "Asteroid") {
-				dead ();
+				if (!isShieldActive) {
+					dead ();
+				} else {
+					Debug.Log("Shield has been destroyed against you");
+					isShieldActive = false;
+				}
 			}
 		}
 	}
@@ -115,4 +126,19 @@ public class PlayerController : MonoBehaviour {
 		score.increaseActualCoin ();
 	}
 
+
+	private void checkChield() {
+		if (ShopList.getInstance ().getItem (ShopList.shield).isActivatable ()) {
+			Debug.Log("Can activate shield");
+			GameObject shieldObject = (GameObject) Instantiate(shield, transform.position, transform.rotation);
+			shieldObject.transform.SetParent(transform);
+
+			//put the shield on top of the player
+			Vector3 pos = shieldObject.transform.position;
+			pos.z = -2;
+			shieldObject.transform.position = pos;
+
+			isShieldActive = true;
+		}
+	}
 }

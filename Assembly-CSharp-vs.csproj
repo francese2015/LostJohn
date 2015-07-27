@@ -75,6 +75,7 @@
      <Compile Include="Assets\Scripts\Managers\Beans\Actions\ExtraExp2Action.cs" />
      <Compile Include="Assets\Scripts\Managers\Beans\Actions\ExtraLifeAction.cs" />
      <Compile Include="Assets\Scripts\Managers\Beans\Actions\ExtraLifesAction.cs" />
+     <Compile Include="Assets\Scripts\Managers\Beans\Actions\ShieldAction.cs" />
      <Compile Include="Assets\Scripts\Managers\Beans\ShopItem.cs" />
      <Compile Include="Assets\Scripts\Managers\Beans\ShopList.cs" />
      <Compile Include="Assets\Scripts\Managers\CoinsManager .cs" />
@@ -132,6 +133,7 @@
      <Compile Include="Assets\Scripts\Shop\ShopManager.cs" />
      <Compile Include="Assets\Scripts\Utility\PlaySound.cs" />
      <Compile Include="Assets\Scripts\Utility\Utility.cs" />
+     <Compile Include="Assets\Shield.cs" />
      <Compile Include="Assets\TextLevel.cs" />
      <Compile Include="Assets\TwitterLink.cs" />
      <Compile Include="Assets\WebsiteLink.cs" />

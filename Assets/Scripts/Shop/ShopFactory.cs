@@ -49,20 +49,19 @@ public class ShopFactory : MonoBehaviour {
 
 		button.setIco (getSprite (i.name));
 
-		bool useCoin = i.coins > 0;
-		bool activatable = i.activatable;
+		bool useCoin = i.price == 0;
 
-
-		if (i.canBeBought ()) {
+		// already bought
+		if (i.isActivatable()) {
+			button.setBought ();
+		// locked
+		} else if (!i.isUnlocked ()) {
+			button.setLocked ();
+		// to buy
+		} else {
 			button.setCoins (useCoin ? (i.coins + "") : (i.price + " €"));
 			button.setCoinsImage (useCoin);
 			button.setBuyable ();
-
-		} else if (!i.isUnlocked () && !i.isActivatable()) {
-			button.setLocked ();
-
-		} else if (i.isBought ()) {
-			button.setBought();
 		}
 
 	}

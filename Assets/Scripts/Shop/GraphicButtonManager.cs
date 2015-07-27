@@ -55,23 +55,17 @@ public class GraphicButtonManager : MonoBehaviour {
 	
 	public void update(ShopItem i) {
 		Debug.Log ("UPDATING " + i.name);
-		bool useCoin = i.coins > 0;
+		bool useCoin = i.price == 0;;
 
-		if (i.isBought ()) {
-			setBought();
-			Debug.Log ("è comprato gia");
-			
-		}
-		else if (i.canBeBought ()) {
+		if (i.isActivatable()) {
+			setBought ();
+		} else if (!i.isUnlocked ()) {
+			setLocked ();
+		} else {
 			setCoins (useCoin ? (i.coins + "") : (i.price + " €"));
 			setCoinsImage (useCoin);
 			setBuyable ();
-			Debug.Log ("puo essere compato di nuovo");
+		}
 
-		} else if (!i.isUnlocked () && !i.isActivatable()) {
-			setLocked ();
-			Debug.Log ("è bloccato ");
-
-		}  
 	}
 }

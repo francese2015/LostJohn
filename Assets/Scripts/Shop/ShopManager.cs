@@ -83,7 +83,7 @@ public class ShopManager : MonoBehaviour {
 
 
 	private void saveItemState(ShopItem item) {
-		if (item.ALWAYS_AVAILABLE) {
+		if (!item.ALWAYS_AVAILABLE) {
 			StorageManager.storeOnDisk (item.name, item.activatable);
 		}
 	}
