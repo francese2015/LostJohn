@@ -3,7 +3,7 @@ using System.Collections;
 
 public class LifeManager : MonoBehaviour {
 		
-	private static int lifes = DEFAULT_LIFES;
+	public static int lifes = DEFAULT_LIFES;
 
 	private static float lastAccess = 0;
 

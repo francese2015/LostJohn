@@ -46,7 +46,6 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\BackgroundAnim.cs" />
      <Compile Include="Assets\External\GradientGUIBars\Script\ControlGUIScript.cs" />
      <Compile Include="Assets\External\GradientGUIBars\Script\GUIBarScript.cs" />
      <Compile Include="Assets\External\GradientGUIBars\Script\MoreButtonScript.cs" />
@@ -86,12 +85,14 @@
      <Compile Include="Assets\Scripts\Managers\PlayerManager.cs" />
      <Compile Include="Assets\Scripts\Managers\ScoreManager.cs" />
      <Compile Include="Assets\Scripts\Managers\StorageManager.cs" />
+     <Compile Include="Assets\Scripts\Menus\Home\BackgroundAnim.cs" />
      <Compile Include="Assets\Scripts\Menus\Home\BackgroundLooper.cs" />
      <Compile Include="Assets\Scripts\Menus\Home\ChangeColor.cs" />
      <Compile Include="Assets\Scripts\Menus\Home\Facebook_Link.cs" />
      <Compile Include="Assets\Scripts\Menus\Home\FollowVerticallyTarget.cs" />
      <Compile Include="Assets\Scripts\Menus\Home\GoToTarget.cs" />
      <Compile Include="Assets\Scripts\Menus\Home\GrowingAnimation.cs" />
+     <Compile Include="Assets\Scripts\Menus\Home\HiddenTimer.cs" />
      <Compile Include="Assets\Scripts\Menus\Home\MainCamera_Game_AudioManager.cs" />
      <Compile Include="Assets\Scripts\Menus\Home\MechanicalArm\AnimateScreen.cs" />
      <Compile Include="Assets\Scripts\Menus\Home\MechanicalArm\LoadBestScore.cs" />
@@ -106,6 +107,9 @@
      <Compile Include="Assets\Scripts\Menus\Home\StartLevel.cs" />
      <Compile Include="Assets\Scripts\Menus\Home\TapHere_Movement.cs" />
      <Compile Include="Assets\Scripts\Menus\Home\Timer.cs" />
+     <Compile Include="Assets\Scripts\Menus\Info\TextLevel.cs" />
+     <Compile Include="Assets\Scripts\Menus\Info\TwitterLink.cs" />
+     <Compile Include="Assets\Scripts\Menus\Info\WebsiteLink.cs" />
      <Compile Include="Assets\Scripts\Menus\Ranking\CreateUILeaderBoard.cs" />
      <Compile Include="Assets\Scripts\Menus\Recap\LoadData.cs" />
      <Compile Include="Assets\Scripts\Menus\Recap\LoadHome.cs" />
@@ -129,14 +133,11 @@
      <Compile Include="Assets\Scripts\Shop\GadgetActivator.cs" />
      <Compile Include="Assets\Scripts\Shop\GraphicButtonManager.cs" />
      <Compile Include="Assets\Scripts\Shop\LoadCoins.cs" />
+     <Compile Include="Assets\Scripts\Shop\Shield.cs" />
      <Compile Include="Assets\Scripts\Shop\ShopFactory.cs" />
      <Compile Include="Assets\Scripts\Shop\ShopManager.cs" />
      <Compile Include="Assets\Scripts\Utility\PlaySound.cs" />
      <Compile Include="Assets\Scripts\Utility\Utility.cs" />
-     <Compile Include="Assets\Shield.cs" />
-     <Compile Include="Assets\TextLevel.cs" />
-     <Compile Include="Assets\TwitterLink.cs" />
-     <Compile Include="Assets\WebsiteLink.cs" />
      <None Include="Assets\External\dreamlo\README_FIRST.txt" />
      <None Include="Assets\External\GradientGUIBars\ReadMe\AboutFonts.txt" />
  <Reference Include="UnityEngine.UI">
