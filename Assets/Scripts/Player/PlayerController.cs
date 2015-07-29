@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour {
 		life = LifeManager.getInstance ();
 
 		lifesText.text = "x " + life.getLifes();
-		coinsText.text = "" + coins.getCoins();
+		coinsText.text = "0";
 
 		mainAudioSource = GetComponents<AudioSource> ()[0];
 		mainAudioSource.volume = 0.1f;
@@ -122,8 +122,9 @@ public class PlayerController : MonoBehaviour {
 	private void increaseCoins () {
 		Utility.playSoundOnSource (mainAudioSource, point, true, 0.3f);
 		coins.increaseCoins ();
-		coinsText.text = "" + coins.getCoins ();
 		score.increaseActualCoin ();
+		coinsText.text = "" + score.getActualCoins();
+
 	}
 
 

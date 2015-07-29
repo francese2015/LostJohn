@@ -36,11 +36,14 @@ public class LoadData : MonoBehaviour {
 		}
 
 		// sets data in text canvases
-		best.text = "" + ScoreManager.getInstance ().getBestScore ();
 		avoided.text = "" + ScoreManager.getInstance ().getScore ();
 		level.text = "lvl " + LevelManager.getInstance ().getLevel ();
 		exp.text = "" + LevelManager.getInstance ().getExpToNextLevel ();
-		coins.text = "" + ScoreManager.getInstance ().getActualCoins ();
+		coins.text = "" + CoinsManager.getInstance ().getCoins ();
+
+		// needs to add "BEST: " to this text field!
+		best.text = "best: " + ScoreManager.getInstance ().getBestScore ();
+
 	}
 
 
