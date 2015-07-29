@@ -30,6 +30,7 @@ public class LoadData : MonoBehaviour {
 		if (LevelManager.isLevelUp) {
 			//Debug.Log ("level UP OK");
 			levelUp.SetActive (true);
+			LevelManager.isLevelUp = false;
 		} else {
 			levelUp.SetActive (false);
 		}
