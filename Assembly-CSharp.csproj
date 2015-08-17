@@ -136,6 +136,7 @@
      <Compile Include="Assets\Scripts\Shop\Shield.cs" />
      <Compile Include="Assets\Scripts\Shop\ShopFactory.cs" />
      <Compile Include="Assets\Scripts\Shop\ShopManager.cs" />
+     <Compile Include="Assets\Scripts\Utility\GameTags.cs" />
      <Compile Include="Assets\Scripts\Utility\PlaySound.cs" />
      <Compile Include="Assets\Scripts\Utility\Utility.cs" />
      <None Include="Assets\External\dreamlo\README_FIRST.txt" />

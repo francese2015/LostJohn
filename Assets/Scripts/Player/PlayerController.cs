@@ -52,19 +52,19 @@ public class PlayerController : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D coll) {
 //		Debug.Log("Collision entered with " + coll.gameObject);
 		if (isAlive) {
-			if (coll.gameObject.tag == "Bound") {
+			if (coll.gameObject.tag == GameTags.bound) {
 				dead ();
 			}
 
-			if (coll.gameObject.tag == "PointZone") {
+			if (coll.gameObject.tag == GameTags.point) {
 				increaseScore ();
 			}
 
-			if (coll.gameObject.tag == "Coin") {
+			if (coll.gameObject.tag == GameTags.coin) {
 				increaseCoins ();
 			}
 
-			if (coll.gameObject.tag == "Asteroid") {
+			if (coll.gameObject.tag == GameTags.asteroid || coll.gameObject.tag == GameTags.boundaryAsteroid) {
 				if (!isShieldActive) {
 					dead ();
 				} else {

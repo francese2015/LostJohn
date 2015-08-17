@@ -6,13 +6,17 @@ public class Shield : MonoBehaviour {
 	public GameObject explosion;
 
 	void OnTriggerEnter2D(Collider2D coll) {
-		if (coll.gameObject.tag == "Asteroid") {
+		if (coll.gameObject.tag == GameTags.asteroid || coll.gameObject.tag == GameTags.boundaryAsteroid) {
 
 			Vector3 pos = transform.position;
 			pos.z = 2;
 
 			Instantiate(explosion, pos, Quaternion.identity);
-			Destroy(coll.gameObject);
+			// boundary asteroids cannot be destroyed
+			if (coll.gameObject.tag == GameTags.asteroid) {
+				Debug.Log("distruggo " + coll.transform.name);
+				Destroy(coll.gameObject);
+			}
 			Destroy(gameObject);
 
 			destroyShield();
