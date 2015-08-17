@@ -49,12 +49,12 @@ public class Player_Movement : MonoBehaviour {
 		adjustJetpack (transform.position.y);
 	}
 
-
+	/*
 	void FixedUpdate() {
 		Vector3 vel = new Vector3 (forwardSpeed, 0, 0);
 		transform.position += vel * Time.deltaTime;
 	}
-
+	*/
 
 	private void fly(bool isflying) {
 		if (isflying) {

@@ -44,7 +44,7 @@ public class PlayerController : MonoBehaviour {
 
 		spriteRender = GetComponent<SpriteRenderer> ();
 
-		checkChield ();
+		checkShield ();
 
 	}
 
@@ -128,7 +128,7 @@ public class PlayerController : MonoBehaviour {
 	}
 
 
-	private void checkChield() {
+	private void checkShield() {
 		if (ShopList.getInstance ().getItem (ShopList.shield).isActivatable ()) {
 			Debug.Log("Can activate shield");
 			GameObject shieldObject = (GameObject) Instantiate(shield, transform.position, transform.rotation);
@@ -137,6 +137,7 @@ public class PlayerController : MonoBehaviour {
 			//put the shield on top of the player
 			Vector3 pos = shieldObject.transform.position;
 			pos.z = -2;
+			pos.y -= 0.02f;
 			shieldObject.transform.position = pos;
 
 			isShieldActive = true;

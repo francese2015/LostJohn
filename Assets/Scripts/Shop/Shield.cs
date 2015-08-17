@@ -8,7 +8,7 @@ public class Shield : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D coll) {
 		if (coll.gameObject.tag == "Asteroid") {
 
-			Vector3 pos = coll.transform.position;
+			Vector3 pos = transform.position;
 			pos.z = 2;
 
 			Instantiate(explosion, pos, Quaternion.identity);

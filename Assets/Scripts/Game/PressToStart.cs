@@ -16,10 +16,13 @@ public class PressToStart : MonoBehaviour {
 
 	public GameObject asteroidGenerator;
 
+	private const float TOLLERANCE_FACTOR = 0.05f;
+	// indicates if the game is started
+	private bool gameIsStarted = false;
+
 	//object to rotate
 	public float time = 10;
 	public Transform playerTargetPos;
-	
 
 
 	// Use this for initialization
@@ -51,9 +54,8 @@ public class PressToStart : MonoBehaviour {
 			newPos.x = x;
 			player.transform.position = newPos;
 
-			if (player.transform.position.x >= (playerTargetPos.position.x - 0.01)) {
-				GetComponent<Camera_FollowPlayer>().enabled = true;
-			}
+			checkPosition();
+
 		}
 	}
 	
@@ -66,9 +68,20 @@ public class PressToStart : MonoBehaviour {
 			player.GetComponent<Player_Movement> ().enabled = true;
 			asteroidGenerator.GetComponent<GeneratorV3> ().enabled = true;
 			Destroy (tap);
+			gameIsStarted = true;
 		}
 	}
 
-
+	private void checkPosition() {
+		if (playerTargetPos.position.x - player.transform.position.x <= TOLLERANCE_FACTOR) {
+			// this check is necessary:
+			// without it, if the player reaches the target point and
+			// user has not tapped to start the game, the game can not start
+			// due to the destruction of this script.
+			if (gameIsStarted) {
+				Destroy(this);
+			}
+		}
+	}
 
 }

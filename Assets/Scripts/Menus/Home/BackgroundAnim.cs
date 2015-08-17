@@ -9,11 +9,11 @@ public class BackgroundAnim : MonoBehaviour {
 	private Vector3 translation;
 
 	void Start() {
-		translation = new Vector3 (-speed, 0, 0);
 	}
 
 	// Move this object on the X axe.
 	void Update() {
+		translation = new Vector3 (-speed * Time.deltaTime, 0, 0);
 		transform.Translate (translation);
 	}
 
