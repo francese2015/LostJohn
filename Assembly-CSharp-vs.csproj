@@ -53,6 +53,8 @@
      <Compile Include="Assets\External\dreamlo\LeaderBoardSample.cs" />
      <Compile Include="Assets\External\dreamlo\dreamloLeaderBoard.cs" />
      <Compile Include="Assets\External\dreamlo\dreamloPromoCode.cs" />
+     <Compile Include="Assets\GamePause.cs" />
+     <Compile Include="Assets\PauseResume.cs" />
      <Compile Include="Assets\Scripts\Enemies\Asteroids\Asteroid_Movement.cs" />
      <Compile Include="Assets\Scripts\Enemies\Asteroids\DestroyWithTTL.cs" />
      <Compile Include="Assets\Scripts\Enemies\Asteroids\GeneratorV2.cs" />

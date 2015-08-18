@@ -23,5 +23,8 @@ public class MainCamera_Game_AudioManager : MonoBehaviour {
 	void Update () {
 		musicSource.enabled = audioManager.canPlayMusic ();
 		soundsSource.enabled = audioManager.canPlaySounds ();
+		if (!audioManager.canPlaySounds()) {
+			Utility.stopSource(soundsSource);
+		}
 	}
 }

@@ -12,7 +12,7 @@ public class Utility : MonoBehaviour {
 	public static bool checkInput(GameObject target) {
 		RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
 		if (hit.collider != null) {
-			//	Debug.Log("clicked " + hit.collider.gameObject.name);
+				// Debug.Log("clicked " + hit.collider.gameObject.name);
 			if (hit.collider.gameObject.name == target.name) {
 				return true;
 			}
@@ -34,18 +34,27 @@ public class Utility : MonoBehaviour {
 		} else {
 			canPlay = AudioManager.getInstance ().canPlayMusic();
 		}
+		source.enabled = true;
+
 		if (canPlay && source != null) {
 			source.volume = volume;
 			if (source.isPlaying) {
 				source.Stop();
 			}
 			if (clip != null) {
-				source.PlayOneShot(clip);
+				source.clip = clip;
+				source.Play();
 			} else {
 				source.Play();
 			}
 		}
 		return canPlay;
+	}
+
+
+	public static void stopSource(AudioSource source) {
+		source.Stop ();
+		source.enabled = false;
 	}
 
 	/**

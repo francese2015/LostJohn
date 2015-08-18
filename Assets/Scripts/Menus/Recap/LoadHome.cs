@@ -16,6 +16,7 @@ public class LoadHome : MonoBehaviour {
 	void Update () {
 		if (Input.GetMouseButtonDown(0)) {
 			if(checkInput() == gameObject.name) {
+				Time.timeScale = 1;
 				level.loadHome();
 			}
 		}

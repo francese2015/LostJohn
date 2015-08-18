@@ -8,6 +8,7 @@ using System.Collections;
 public class BackgroundLooper : MonoBehaviour {
 
 	public GameObject startPoint;
+	public GameObject edge;
 	public float speed = 1f;
 	
 	// Move this object on the X axe.
@@ -22,7 +23,7 @@ public class BackgroundLooper : MonoBehaviour {
 	 * the sprite is moved back at the startPoint.
 	 */
 	void OnTriggerExit2D(Collider2D other) {
-		if (other.name == "edge") {
+		if (other.gameObject == edge) {
 			transform.position = startPoint.transform.position;
 		}
 	}

@@ -25,7 +25,7 @@ public class GeneratorV3 : MonoBehaviour {
 	private const int COINS_PROBABILITY = 100 - ASTEROID_PROBABILITY;
 
 
-	void Update () {
+	void FixedUpdate () {
 		timeOffset--;
 
 		if(timeOffset < 0){
