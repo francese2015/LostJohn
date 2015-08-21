@@ -83,6 +83,8 @@ public class GoToTarget : MonoBehaviour {
 			canMove = false;
 			moving = false;
 			setActive(objToDeactivate,false);
+
+			CameraManager.setActualPosition(end, objToDeactivate, objToActivate);
 		}
 	}
 

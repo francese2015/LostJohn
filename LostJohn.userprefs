@@ -1,10 +1,9 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Menus\Home\CameraManager.cs">
     <Files>
-      <File FileName="Assets\Scripts\Menus\Home\CameraManager.cs" Line="38" Column="4" />
-      <File FileName="Assets\Scripts\Menus\Home\GoToTarget.cs" Line="83" Column="4" />
-      <File FileName="Assets\Scripts\Game\GameQuit.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Menus\Home\CameraManager.cs" Line="37" Column="35" />
+      <File FileName="Assets\Scripts\Menus\Home\GoToTarget.cs" Line="87" Column="71" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
