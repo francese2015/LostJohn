@@ -89,6 +89,7 @@
      <Compile Include="Assets\Scripts\Managers\StorageManager.cs" />
      <Compile Include="Assets\Scripts\Menus\Home\BackgroundAnim.cs" />
      <Compile Include="Assets\Scripts\Menus\Home\BackgroundLooper.cs" />
+     <Compile Include="Assets\Scripts\Menus\Home\CameraManager.cs" />
      <Compile Include="Assets\Scripts\Menus\Home\ChangeColor.cs" />
      <Compile Include="Assets\Scripts\Menus\Home\Facebook_Link.cs" />
      <Compile Include="Assets\Scripts\Menus\Home\FollowVerticallyTarget.cs" />

@@ -18,9 +18,15 @@ public class MainCamera_Game_AudioManager : MonoBehaviour {
 		audioManager = AudioManager.getInstance ();
 		musicSource = GetComponents<AudioSource> () [0];
 		soundsSource = GetComponents<AudioSource> () [1];
+		checkAudio ();
 	}
 	
 	void Update () {
+		checkAudio ();
+	}
+
+
+	private void checkAudio() {
 		musicSource.enabled = audioManager.canPlayMusic ();
 		soundsSource.enabled = audioManager.canPlaySounds ();
 		if (!audioManager.canPlaySounds()) {
