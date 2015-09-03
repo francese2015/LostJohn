@@ -36,6 +36,7 @@ public class PlayerController : MonoBehaviour {
 		level = LevelManager.getInstance ();
 		score = ScoreManager.getInstance ();
 		life = LifeManager.getInstance ();
+		score.resetScore ();
 
 		lifesText.text = "x " + life.getLifes();
 		coinsText.text = "0";
@@ -57,7 +58,7 @@ public class PlayerController : MonoBehaviour {
 			}
 
 			if (coll.gameObject.tag == GameTags.point) {
-				increaseScore ();
+				asteroidPassed ();
 			}
 
 			if (coll.gameObject.tag == GameTags.coin) {
@@ -110,11 +111,12 @@ public class PlayerController : MonoBehaviour {
 	}
 
 
-	void increaseScore(){
-		//coins.increaseCoins (); NOT ANYMORE!
+	void asteroidPassed(){
+		//Debug.Log("+1");
 		level.increaseExp ();
 		score.increaseScore ();
 		asteroidsText.text = "" + score.getScore ();
+		Debug.Log ("actual score: " + ScoreManager.getInstance ().getScore ());
 	}
 
 	private void increaseCoins () {

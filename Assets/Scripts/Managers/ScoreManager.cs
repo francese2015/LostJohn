@@ -2,16 +2,12 @@ using UnityEngine;
 using System.Collections;
 
 public class ScoreManager : MonoBehaviour {
-		
-	public const int DEFAULT_MULTIPLIER = 1;
 
-	private static int multiplier = 1;
+	private int score = 0;
 
-	private static int score = 0;
+	private int coins = 0;
 
-	private static int coins = 0;
-
-	private static int bestScore = 0;
+	private int bestScore = 0;
 
 	public static bool isLastScoreBest = false;
 	
@@ -31,42 +27,31 @@ public class ScoreManager : MonoBehaviour {
 	
 
 	public void resetScore() {
-		score = 0;
-		coins = 0;
+		this.score = 0;
+		this.coins = 0;
 	}
-	
-	public void increaseScore(){
-		setScore (score + (1 * multiplier));
-	}
+
 
 	public void increaseActualCoin() {
-		coins++;
+		this.coins++;
 	}
 
-	public void increaseActualScore() {
-		score++;
+	public void increaseScore() {
+		this.score++;
+		Debug.LogWarning ("ScoreManager dice: SCORE = " + score);
 	}
-
-	public void increaseScore(int s){
-		Debug.Log("Increasing of " + s + " * " + multiplier); 
-		setScore (score + (s * multiplier));
-	}
-
-	private void setScore(int s){
-		score = s;
-	}
-
+	
 	public int getScore(){
-		return score;
+		return this.score;
 	}
 
 	public int getActualCoins() {
-		return coins;
+		return this.coins;
 	}
 
 	public void setBestScore(int bs){
-		if (bs > bestScore) {
-			bestScore = bs;
+		if (bs > this.bestScore) {
+			this.bestScore = bs;
 			isLastScoreBest = true;
 		} else {
 			isLastScoreBest = false;
@@ -74,7 +59,7 @@ public class ScoreManager : MonoBehaviour {
 	}
 
 	public bool checkBestScore() {
-		if (score > bestScore) {
+		if (this.score > this.bestScore) {
 			setBestScore (score);
 			isLastScoreBest = true;
 		} else {
@@ -84,21 +69,9 @@ public class ScoreManager : MonoBehaviour {
 	}
 
 	public int getBestScore(){
-		return bestScore;
+		return this.bestScore;
 	}
-
-
-	public void increaseMultiplier(){
-		multiplier++;
-	}
-
-	public void setMultiplier(int m){
-		multiplier = m;
-	}
-
-	public void restoreMultiplier(){
-		multiplier = DEFAULT_MULTIPLIER;
-	}
+	
 
 	public void save() {
 		StorageManager.storeOnDisk (StorageManager.SCORE, score);
@@ -106,7 +79,7 @@ public class ScoreManager : MonoBehaviour {
 	}
 	
 	public void load() {
-		setScore	(StorageManager.loadIntFromDisk (StorageManager.SCORE));
+		score =	(StorageManager.loadIntFromDisk (StorageManager.SCORE));
 		setBestScore(StorageManager.loadIntFromDisk (StorageManager.BEST_SCORE));
 	}
 }
