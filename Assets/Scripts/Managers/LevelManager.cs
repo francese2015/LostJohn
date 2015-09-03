@@ -116,7 +116,7 @@ public class LevelManager : MonoBehaviour {
 		lock (this) {
 			if (exp >= NEXT_GOAL) {
 				level++;
-				NEXT_GOAL = Mathf.RoundToInt(NEXT_GOAL * LEVEL_UP_FACTOR);
+				NEXT_GOAL += Mathf.RoundToInt(NEXT_GOAL * LEVEL_UP_FACTOR);
 				isLevelUp = true;
 				save();
 			}
