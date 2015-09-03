@@ -3,13 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 
 /**
- * When a shop item is available means that it can be bought 
- * with coins or money. When an item is bought then it become 
- * activatable. If the item is permanent is will remain activatable
- * forever, that means it can not be bought again; viceversa,
- * if it is not permanent then it can be bought again.
- * 
- * For this reason, when an item is activatable its price becomes 0.
+ * At the moment there are 3 kinds of item:
+ * 1- can ALWAYS BUY and NOT PERMANENT -> you can bay as you want, like lifes
+ * 2- can NOT ALWAYS BUY and PERMANENT -> buy once and then you have it forever, like +50% exp
+ * 3- can NOT ALWAYS BUY and NOT PERMANENT -> buy it, then use it, then you can buy it again, like shield.
  */
 public class ShopList : MonoBehaviour {
 
@@ -56,9 +53,9 @@ public class ShopList : MonoBehaviour {
 		list.Add (getExtraLifesItem ());
 		list.Add (getExpMultiplier1());
 		list.Add (getExpMultiplier2());
-		list.Add (getCoinsMultiplier());
+		//list.Add (getCoinsMultiplier());
 		list.Add (getShield());
-		list.Add (getBUY1000coins());
+		//list.Add (getBUY1000coins());
 
 		update (list);
 		return list;
@@ -105,7 +102,7 @@ public class ShopList : MonoBehaviour {
 
 		item.activatable = StorageManager.loadBoolFromDisk(oneLife);
 
-		setProperCoins (item, 10, 0);
+		setProperCoins (item, 250, 0);
 		return item;
 	}
 
@@ -117,12 +114,12 @@ public class ShopList : MonoBehaviour {
 		item.name = tenLifes;
 		item.ALWAYS_AVAILABLE = true;
 		item.permanent = false;
-		item.lvlToUnlock = 4;
+		item.lvlToUnlock = 6;
 		item.description = "10 extra lifes";
 
 		item.activatable = StorageManager.loadBoolFromDisk(tenLifes);
 
-		setProperCoins (item, 30, 0);
+		setProperCoins (item, 2000, 0);
 		return item;
 	}
 
@@ -134,12 +131,12 @@ public class ShopList : MonoBehaviour {
 		item.name = exp1;
 		item.ALWAYS_AVAILABLE = false;
 		item.permanent = true;
-		item.lvlToUnlock = 6;
+		item.lvlToUnlock = 10;
 		item.description = "50% exp extra";
 		
 		item.activatable = StorageManager.loadBoolFromDisk(exp1);
 
-		setProperCoins (item, 5, 0);
+		setProperCoins (item, 5000, 0);
 		return item;
 
 	}
@@ -152,15 +149,35 @@ public class ShopList : MonoBehaviour {
 		item.name = exp2;
 		item.ALWAYS_AVAILABLE = false;
 		item.permanent = true;
-		item.lvlToUnlock = 12;
+		item.lvlToUnlock = 20;
 		item.description = "100% exp extra";
 		
 		item.activatable = StorageManager.loadBoolFromDisk(exp2);
 
-		setProperCoins (item, 90, 0);
+		setProperCoins (item, 10000, 0);
 		return item;
 	}
 
+	private ShopItem getShield() {
+		ShopItem item = new ShopItem ();
+		
+		item.setAction (null);
+		
+		item.name = shield;
+		item.ALWAYS_AVAILABLE = false;
+		item.permanent = false;
+		item.lvlToUnlock = 5;
+		item.description = "shield";
+		
+		item.activatable = StorageManager.loadBoolFromDisk(shield);
+		
+		setProperCoins (item, 300, 0);
+		return item;
+		
+	}
+
+
+	/*
 	private ShopItem getCoinsMultiplier() {
 		ShopItem item = new ShopItem ();
 
@@ -169,34 +186,18 @@ public class ShopList : MonoBehaviour {
 		item.name = coinsMul;
 		item.ALWAYS_AVAILABLE = false;
 		item.permanent = true;
-		item.lvlToUnlock = 25;
+		item.lvlToUnlock = 30;
 		item.description = "coins x2";
 		
 		item.activatable = StorageManager.loadBoolFromDisk(coinsMul);
 
-		setProperCoins (item, 12000, 0);
+		setProperCoins (item, 30000, 0);
 		return item;
 
 	}
+*/
 
-	private ShopItem getShield() {
-		ShopItem item = new ShopItem ();
-
-		item.setAction (null);
-		
-		item.name = shield;
-		item.ALWAYS_AVAILABLE = false;
-		item.permanent = false;
-		item.lvlToUnlock = 2;
-		item.description = "shield";
-		
-		item.activatable = StorageManager.loadBoolFromDisk(shield);
-
-		setProperCoins (item, 50, 0);
-		return item;
-
-	}
-
+	/*
 	private ShopItem getBUY1000coins() {
 		ShopItem item = new ShopItem ();
 
@@ -214,7 +215,7 @@ public class ShopList : MonoBehaviour {
 		return item;
 
 	}
-
+*/
 	private void setProperCoins(ShopItem i, int coins, double price) {
 			i.coins = coins;
 			i.price = price;
