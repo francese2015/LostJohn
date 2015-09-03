@@ -115,7 +115,6 @@ public class PlayerController : MonoBehaviour {
 		//coins.increaseCoins (); NOT ANYMORE!
 		level.increaseExp ();
 		score.increaseScore ();
-
 		asteroidsText.text = "" + score.getScore ();
 	}
 
