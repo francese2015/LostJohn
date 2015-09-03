@@ -27,9 +27,11 @@ public class PlayerController : MonoBehaviour {
 	public AudioClip point, death;
 	private AudioSource mainAudioSource;
 
-	private bool isAlive = true;
 
 	void Start() {
+
+		GameStatus.setPlayerAlive (true);
+
 		coins = CoinsManager.getInstance ();
 		level = LevelManager.getInstance ();
 		score = ScoreManager.getInstance ();
@@ -40,7 +42,6 @@ public class PlayerController : MonoBehaviour {
 
 		mainAudioSource = GetComponents<AudioSource> ()[0];
 		mainAudioSource.volume = 0.1f;
-		isAlive = true;
 
 		spriteRender = GetComponent<SpriteRenderer> ();
 
@@ -51,7 +52,6 @@ public class PlayerController : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D coll) {
 //		Debug.Log("Collision entered with " + coll.gameObject);
-		if (isAlive) {
 			if (coll.gameObject.tag == GameTags.bound) {
 				dead ();
 			}
@@ -72,7 +72,7 @@ public class PlayerController : MonoBehaviour {
 					isShieldActive = false;
 				}
 			}
-		}
+		
 	}
 	
 	/*
@@ -81,19 +81,18 @@ public class PlayerController : MonoBehaviour {
 	 */
 	private void dead()	{
 		//add extra exp if a multiplier has been bought
-		Debug.LogError ("moltiplicatore: " + LevelManager.getInstance ().getMultiplier ());
-		Debug.LogError ("You scored " + score.getScore() + "  and now EXTRA EXP adds " + level.calcExtraExp (score.getScore()));
+		//Debug.LogError ("moltiplicatore: " + LevelManager.getInstance ().getMultiplier ());
+		//Debug.LogError ("You scored " + score.getScore() + "  and now EXTRA EXP adds " + level.calcExtraExp (score.getScore()));
+		GameStatus.setPlayerAlive (false);
 
 		level.increaseExp (level.calcExtraExp (score.getScore())); 
 
-		isAlive = false;
 		coins.save ();
 		level.save ();
 		score.checkBestScore ();
 		score.save ();
 
 		loadRecap ();
-
 		deadAnimation ();
 	}
 

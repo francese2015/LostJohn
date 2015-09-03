@@ -12,7 +12,7 @@ public class GamePause : MonoBehaviour {
 	void Update () {
 		// when click down 
 		if (Input.GetMouseButtonDown (0)) {
-			if (Utility.checkInput(gameObject)) {
+			if (Utility.checkInput(gameObject) && GameStatus.isPlayerAlive()) {
 				pauseGame();
 			}
 		}
