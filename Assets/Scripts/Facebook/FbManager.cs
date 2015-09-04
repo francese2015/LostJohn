@@ -77,6 +77,7 @@ public class FbManager : MonoBehaviour {
 			}
 		}
 	}
+
 	//if you log, get photo profile and name
 	void showUILogin(bool logIn){
 		if(logIn){
@@ -109,6 +110,8 @@ public class FbManager : MonoBehaviour {
 		welcomeMessage.text = "Hello, " + profile["first_name"];
 
 	}
+
+
 	//get Picture Profile
 	void DealWithProfilePicture (FBResult result){
 		if(result.Error != null){
@@ -119,9 +122,9 @@ public class FbManager : MonoBehaviour {
 		}
 
 		profilePicture.sprite = Sprite.Create(result.Texture,new Rect(0,0,128,128),new Vector2(0,0));
-
-
 	}
+
+
 	//to save score on Fb
 	public void sendScoreOnFb(){
 
@@ -142,6 +145,7 @@ public class FbManager : MonoBehaviour {
 	}
 
 	private int i = 0;
+
 
 	void ScoreCallback(FBResult result){
 
