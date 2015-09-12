@@ -9,21 +9,27 @@ using System.Collections;
  */
 public class GeneratorV3 : MonoBehaviour {
 	
+	
+	private const int MIN_TIME_MIN = 25;
+	private const int MIN_TIME_MAX = 50;
+	private int TIME_REDUCER = 2;
+	
 	public GameObject asteroidTransform;
 	public GameObject[] coinGroups;
-
-
-	// good start values: 80 and 100
+	
+	// good start values: 40 and 70
 	public int timeMin, timeMax;
-
+	
 	// random value between timeMin and timeMax
 	// to add to timeMin to generate a gameObject.
 	// For actual usage a value of 70 seems good.
 	public int timeOffset; 
-
+	
 	private const int ASTEROID_PROBABILITY = 80;
 	private const int COINS_PROBABILITY = 100 - ASTEROID_PROBABILITY;
-
+	
+	//number of asteroids created
+	private int numAsteroids = 0;
 
 	void FixedUpdate () {
 		timeOffset--;
@@ -31,6 +37,7 @@ public class GeneratorV3 : MonoBehaviour {
 		if(timeOffset < 0){
 			GameObject toInstantiate = instantiateRandomObject();
 			Instantiate(toInstantiate, where(),transform.rotation);
+			checkDifficulty();
 			wait();
 		}
 	}
@@ -64,6 +71,32 @@ public class GeneratorV3 : MonoBehaviour {
 		wait ();
 		int rand = Random.Range (0, coinGroups.Length);
 		return coinGroups [rand];
+	}
+
+	
+	/**
+	 * increase the number of asteroids. Every 10 asteroids, the 
+	 * timeMin and timeMax variables are decreased until they reach their min values.
+	 */
+	private void checkDifficulty() {
+		numAsteroids++;
+		Debug.Log ("#" + numAsteroids);
+		
+		if (numAsteroids % 10 == 0) {
+			if (timeMin - TIME_REDUCER > MIN_TIME_MIN) {
+				Debug.Log("Increasing difficulty!");
+				timeMin -= TIME_REDUCER;
+			}
+			
+			if (timeMax - TIME_REDUCER > MIN_TIME_MAX) {
+				timeMax -= TIME_REDUCER;
+			}
+			
+			if (numAsteroids >= 70 && TIME_REDUCER > 0) {
+				TIME_REDUCER--;
+				Debug.Log("Time reducer = " + TIME_REDUCER);
+			}
+		}
 	}
 }
 
