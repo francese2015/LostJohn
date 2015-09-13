@@ -43,10 +43,10 @@ public class ShowBottomBar : MonoBehaviour {
 	private void move() {
 		if (hidden) {
 			objectToMove.transform.position = Vector3.SmoothDamp (transform.position, endPosition.position, ref velocity, timeInSec);
-			enableButtons(true);
+			StartCoroutine(enableButtons(true));
 		} else {
 			objectToMove.transform.position = Vector3.SmoothDamp (transform.position, startPosition.position, ref velocity, timeInSec);
-			enableButtons(false);
+			StartCoroutine(enableButtons(false));
 		}
 	}
 
@@ -71,9 +71,14 @@ public class ShowBottomBar : MonoBehaviour {
 			return false;
 		}
 	}
+	/*
+	 * enable and disable the menu buttons when the bar is on and off.
+	 * This solve the issue #19
+	 */
+	private IEnumerator enableButtons(bool state) {
+		// used to delay the activation
+		yield return new WaitForSeconds (0.1f);
 
-	private void enableButtons(bool state) {
-		Debug.Log ("Buttons: " + state); 
 		settingButton.GetComponent<BoxCollider2D> ().enabled = state;
 		leaderboardButton.GetComponent<BoxCollider2D> ().enabled = state;
 		shopButton.GetComponent<BoxCollider2D> ().enabled = state;
