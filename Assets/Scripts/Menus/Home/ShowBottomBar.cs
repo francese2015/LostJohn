@@ -6,6 +6,10 @@ using System.Collections;
  */
 public class ShowBottomBar : MonoBehaviour {
 
+	private GameObject settingButton;
+	private GameObject leaderboardButton;
+	private GameObject shopButton;
+
 	private bool hidden = true;
 	private bool canMove = false, moving = false;
 
@@ -24,6 +28,10 @@ public class ShowBottomBar : MonoBehaviour {
 
 	void Start() {
 		timeInSec *= Time.deltaTime;
+		leaderboardButton = GameObject.FindGameObjectWithTag (GameTags.leaderboardButton);
+		shopButton = GameObject.FindGameObjectWithTag (GameTags.shopButton);
+		settingButton = GameObject.FindGameObjectWithTag (GameTags.settingButton);
+
 	}
 	
 	public void moveBar() {
@@ -35,8 +43,10 @@ public class ShowBottomBar : MonoBehaviour {
 	private void move() {
 		if (hidden) {
 			objectToMove.transform.position = Vector3.SmoothDamp (transform.position, endPosition.position, ref velocity, timeInSec);
+			enableButtons(true);
 		} else {
 			objectToMove.transform.position = Vector3.SmoothDamp (transform.position, startPosition.position, ref velocity, timeInSec);
+			enableButtons(false);
 		}
 	}
 
@@ -60,5 +70,12 @@ public class ShowBottomBar : MonoBehaviour {
 		} else {
 			return false;
 		}
+	}
+
+	private void enableButtons(bool state) {
+		Debug.Log ("Buttons: " + state); 
+		settingButton.GetComponent<BoxCollider2D> ().enabled = state;
+		leaderboardButton.GetComponent<BoxCollider2D> ().enabled = state;
+		shopButton.GetComponent<BoxCollider2D> ().enabled = state;
 	}
 }

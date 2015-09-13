@@ -29,6 +29,14 @@ public class GameTags {
 	public static string no = "no";
 	
 	public static string ok = "ok";
+
+	public static string settingButton = "settingButton";
+	
+	public static string leaderboardButton = "leaderboardButton";
+	
+	public static string shopButton = "shopButton";
+	
+
 }
 
 
