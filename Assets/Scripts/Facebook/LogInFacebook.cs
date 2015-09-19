@@ -10,6 +10,8 @@ public class LogInFacebook : MonoBehaviour {
 		if (Input.GetMouseButtonDown (0)) {
 			if (Utility.checkInput (gameObject)) {
 				FB.GetComponent<FbManager> ().fbLogin ();
+				StorageManager.storeOnDisk(StorageManager.CONNECTED_TO_FACEBOOK, true);
+				Debug.LogError("NOW U CAN CONNECT TO FB AUTOMATICALLY");
 			}
 		}
 	}

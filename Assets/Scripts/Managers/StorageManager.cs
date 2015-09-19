@@ -41,6 +41,8 @@ public class StorageManager : MonoBehaviour {
 
 	public const string LEVELUP = "levelUp";
 
+	public static string CONNECTED_TO_FACEBOOK = "connectedToFB";
+
 	
 	public static bool storeOnDisk(string key, string value){
 		PlayerPrefs.SetString (key, value);
