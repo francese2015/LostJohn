@@ -17,7 +17,10 @@ public class ClickToBuy : MonoBehaviour, Observer {
 	public GameObject dialogBox;
 	public GameObject messageBox;
 
-	public float dialogX = -0.48f;
+	public Image buttonBackground;
+
+	private float dialogX = -0.48f;
+	private float dialogY = -15f;
 
 	GameObject refereceToDialogBox;
 
@@ -32,14 +35,13 @@ public class ClickToBuy : MonoBehaviour, Observer {
 		}
 	}
 	
-	void FixedUpdate () {
+	void Update () {
 		// when click down 
 		if (Input.GetMouseButtonDown(0)) {
 			if(checkInput() == myName) {
 				if(!clicked) {
 					clicked = true;
-					scaleUp(true);
-					clickSound();
+					StartCoroutine(click());
 				}
 			}
 		}
@@ -47,26 +49,22 @@ public class ClickToBuy : MonoBehaviour, Observer {
 		if (Input.GetMouseButtonUp(0)) {
 			if(checkInput() == myName) {
 				if(clicked) {
-					scaleUp(false);
 					clicked = false;
-
 					showDialogBox();
-
 				}
 			}
 		}
 	}
-	
-	/**
-	 * Increase or decrease the object's local size when it is clicked
-	 */
-	private void scaleUp(bool pressed) {
-		if (!pressed) {
-			transform.localScale /= scaleFactor;
-		} else {
-			transform.localScale *= scaleFactor;
-		}
+
+
+	private IEnumerator click() {
+		PlayClickSound.play();
+		transform.localScale /= scaleFactor;
+		yield return new WaitForSeconds (0.1f);
+		transform.localScale *= scaleFactor;
 	}
+	
+
 	
 	/**
 	 * Check if the clicked input is this one.
@@ -79,10 +77,7 @@ public class ClickToBuy : MonoBehaviour, Observer {
 			return null;
 		}
 	}
-	
-	public void clickSound() {
-		PlayClickSound.play();
-	}
+
 
 	
 	
@@ -133,7 +128,7 @@ public class ClickToBuy : MonoBehaviour, Observer {
 
 			string dialogtext = "Do you want to buy" + '\n' + itemName + "?";
 
-			refereceToDialogBox = (GameObject)Instantiate (dialogBox, new Vector3 (dialogX, -15, -5), Quaternion.identity);
+			refereceToDialogBox = (GameObject)Instantiate (dialogBox, new Vector3 (dialogX, dialogY, -5), Quaternion.identity);
 			refereceToDialogBox.GetComponent<DialogBoxYesNo> ().setDialogText (dialogtext);
 			refereceToDialogBox.GetComponent<DialogBoxYesNo> ().register (this);
 		}
@@ -141,8 +136,8 @@ public class ClickToBuy : MonoBehaviour, Observer {
 
 
 	private void showMessageBox(string msg) {
-		GameObject refereceToMsgBox = (GameObject) Instantiate (messageBox, new Vector3(dialogX, -15, -5), Quaternion.identity);
+		GameObject refereceToMsgBox = (GameObject) Instantiate (messageBox, new Vector3(dialogX, dialogY, -5), Quaternion.identity);
 		refereceToMsgBox.GetComponent<DialogBoxOk> ().setDialogText (msg);
 	}
-	
+
 }

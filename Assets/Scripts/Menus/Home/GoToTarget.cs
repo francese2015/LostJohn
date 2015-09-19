@@ -20,6 +20,12 @@ public class GoToTarget : MonoBehaviour {
 	public Transform startPosition;
 	public Transform targetPosition;
 
+	// FIXME:
+	// In case EventSystem objects are involved in this action
+	// it needs to be enabled/disabled to work
+	// DON'T KNOW WHY
+	public GameObject eventSystem;
+
 	public float timeInSec;
 
 	// vectors usend in the target movement.
@@ -84,6 +90,10 @@ public class GoToTarget : MonoBehaviour {
 			moving = false;
 			setActive(objToDeactivate,false);
 
+			if (eventSystem != null) {
+				eventSystem.SetActive (false);
+				eventSystem.SetActive (true);
+			} 
 			CameraManager.setActualPosition(end, objToDeactivate, objToActivate);
 		}
 	}
