@@ -35,7 +35,11 @@ public class GameTags {
 	public static string leaderboardButton = "leaderboardButton";
 	
 	public static string shopButton = "shopButton";
+
+	public static string dialogBoxOk = "dialogBoxOk";
 	
+	public static string dialogBoxYesNo = "dialogBoxYesNo";
+
 
 }
 
