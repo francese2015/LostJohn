@@ -74,11 +74,13 @@ public class ShipDemolition : MonoBehaviour {
 
 			// animate the player
 			Instantiate(starter, new Vector3(0, 0, 1), Quaternion.identity);
-			Instantiate(explosionPrefab, transform.position, transform.rotation);
+			Vector3 v = transform.position;
+			v.z = -10; //bring it on the front
+			Instantiate(explosionPrefab, v, transform.rotation);
 
 			destroyObjects();
-			Destroy(gameObject, 0.2f);
-			Destroy(asteroid, 0.2f);
+			Destroy(gameObject, 0.1f);
+			Destroy(asteroid, 0.1f);
 		}
 	}
 	
