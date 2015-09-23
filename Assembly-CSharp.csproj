@@ -113,6 +113,7 @@
      <Compile Include="Assets\Scripts\Managers\StorageManager.cs" />
      <Compile Include="Assets\Scripts\Menus\Home\BackgroundAnim.cs" />
      <Compile Include="Assets\Scripts\Menus\Home\BackgroundLooper.cs" />
+     <Compile Include="Assets\Scripts\Menus\Home\ButtonClickEffect.cs" />
      <Compile Include="Assets\Scripts\Menus\Home\CameraManager.cs" />
      <Compile Include="Assets\Scripts\Menus\Home\ChangeColor.cs" />
      <Compile Include="Assets\Scripts\Menus\Home\Facebook_Link.cs" />
@@ -127,7 +128,6 @@
      <Compile Include="Assets\Scripts\Menus\Home\PlayClickSound.cs" />
      <Compile Include="Assets\Scripts\Menus\Home\Player_MoveOut.cs" />
      <Compile Include="Assets\Scripts\Menus\Home\Player_RollingOut.cs" />
-     <Compile Include="Assets\Scripts\Menus\Home\ResizeOnTouch.cs" />
      <Compile Include="Assets\Scripts\Menus\Home\ShipDemolition.cs" />
      <Compile Include="Assets\Scripts\Menus\Home\ShowBottomBar.cs" />
      <Compile Include="Assets\Scripts\Menus\Home\ShowShipAndTimer.cs" />
