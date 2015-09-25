@@ -8,13 +8,23 @@ using System.Collections;
  */
 public class GameQuit : MonoBehaviour {
 
+	public static bool GAME_IN_PAUSE;
+
 	void Update () {
 		if (Input.GetKey (KeyCode.Escape)) {
 			if (Application.loadedLevel == 0) {
-				Application.Quit();
+				Application.Quit ();
 			} else {
-				GameLevelManager.getInstance().loadHome();
+				// pressing back user will not exit but will pause the game
+				if (!GAME_IN_PAUSE) {
+					pause();
+				} 
 			}
 		}
+	}
+
+
+	private void pause() {
+		GameObject.FindGameObjectWithTag (GameTags.pauseButton).GetComponent<GamePause> ().pauseGame ();
 	}
 }

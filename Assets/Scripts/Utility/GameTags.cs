@@ -40,6 +40,7 @@ public class GameTags {
 	
 	public static string dialogBoxYesNo = "dialogBoxYesNo";
 
+	public static string pauseButton = "pauseButton";
 
 }
 
