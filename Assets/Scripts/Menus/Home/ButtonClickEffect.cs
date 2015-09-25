@@ -44,7 +44,9 @@ public class ButtonClickEffect : MonoBehaviour {
 	 * the given input is true, else the basic color is backported to white
 	 */
 	private void darkerColor(bool state) {
-		renderer.color = state ? Color.gray : Color.white;
+		if (renderer != null) {
+			renderer.color = state ? Color.gray : Color.white;
+		}
 	}
 
 }

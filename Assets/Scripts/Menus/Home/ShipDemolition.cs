@@ -24,9 +24,14 @@ public class ShipDemolition : MonoBehaviour {
 	private bool startAnim = false;
 	private Vector3 asteroidPos;
 
+	public AudioClip explosion;
+	private AudioSource source;
+
 	// Use this for initialization
 	void Start () {
 		asteroidPos = asteroid.transform.position;
+		//use the CLICK cource to play explosion sound
+		source = GameObject.FindGameObjectWithTag (GameTags.camera).GetComponents<AudioSource> ()[1];
 		//starter.SetActive (false);
 	}
 	
@@ -34,7 +39,7 @@ public class ShipDemolition : MonoBehaviour {
 	void Update () {
 		// if the ship is clicked
 		if (Input.GetMouseButtonDown(0)) {
-			if(checkInput() == this.name) {
+			if(Utility.checkInput(gameObject)) {
 				startAnim = true;
 			}
 		}
@@ -77,6 +82,7 @@ public class ShipDemolition : MonoBehaviour {
 			Vector3 v = transform.position;
 			v.z = -10; //bring it on the front
 			Instantiate(explosionPrefab, v, transform.rotation);
+			Utility.playSoundOnSource(source, explosion, true, 0.7f);
 
 			destroyObjects();
 			Destroy(gameObject, 0.1f);

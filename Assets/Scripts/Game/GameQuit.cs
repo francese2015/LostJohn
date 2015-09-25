@@ -15,6 +15,8 @@ public class GameQuit : MonoBehaviour {
 			if (Application.loadedLevel == 0) {
 				Application.Quit ();
 			} else {
+				Debug.Log("Clicked BACK. Game is " + (GAME_IN_PAUSE ? "" : " not") + " in pause");
+
 				// pressing back user will not exit but will pause the game
 				if (!GAME_IN_PAUSE) {
 					pause();

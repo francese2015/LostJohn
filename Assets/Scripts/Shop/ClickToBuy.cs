@@ -37,22 +37,10 @@
 		}
 		
 		void Update () {
-			// when click down 
-			if (Input.GetMouseButtonDown(0)) {
-				if(checkInput() == myName) {
-					if(!clicked) {
-						clicked = true;
-						StartCoroutine(click());
-					}
-				}
-			}
 			// when click is finished
 			if (Input.GetMouseButtonUp(0)) {
-				if(checkInput() == myName) {
-					if(clicked) {
-						clicked = false;
-						showDialogBox();
-					}
+				if(Utility.checkInput(gameObject)) {
+					showDialogBox();
 				}
 			}
 		}
@@ -65,21 +53,6 @@
 			transform.localScale *= scaleFactor;
 		}
 		
-
-		
-		/**
-		 * Check if the clicked input is this one.
-		 */
-		private string checkInput() {
-			RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
-			if (hit.collider != null) {
-				return hit.collider.gameObject.name;
-			} else {
-				return null;
-			}
-		}
-
-
 		
 		
 		public void notify (bool state) {
@@ -99,11 +72,13 @@
 				GameObject.Destroy(GameObject.FindGameObjectWithTag(GameTags.dialogBoxOk));
 
 				string msgState = canBuy ? BUY_OK : BUY_ERROR;
-				showMessageBox(msgState);
+				StartCoroutine(showMessageBox(msgState));
 
 				GetComponent<GraphicButtonManager>().update(item);
 			}
 		}
+
+
 
 		private void showDialogBox() {
 			// this branch is active when user click on an item after
@@ -129,12 +104,12 @@
 			bool alreadyBought = item.activatable;
 
 			if (alreadyBought) {
-				showMessageBox (ALREADY_BOUGHT);
+				StartCoroutine(showMessageBox (ALREADY_BOUGHT));
 			} 
 
 			//if cannot buy because of the low level
 			else if (lvlToUnlock > playerLevel) {
-				showMessageBox (BUY_ERROR);
+			StartCoroutine(showMessageBox (BUY_ERROR));
 		
 			} else {
 
@@ -148,7 +123,8 @@
 		}
 
 
-		private void showMessageBox(string msg) {
+		private IEnumerator showMessageBox(string msg) {
+		yield return new WaitForSeconds (0.2f);
 			GameObject refereceToMsgBox = (GameObject) Instantiate (messageBox, new Vector3(dialogX, dialogY, -5), Quaternion.identity);
 			refereceToMsgBox.GetComponent<DialogBoxOk> ().setDialogText (msg);
 		}
