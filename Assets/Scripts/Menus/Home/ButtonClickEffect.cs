@@ -15,9 +15,6 @@ public class ButtonClickEffect : MonoBehaviour {
 	void Start () {
 		myName = gameObject.name;
 		renderer = gameObject.GetComponent<SpriteRenderer> ();
-		if (renderer == null) {
-			Debug.LogError("Can't change color because no sprite renderer is attached to this object");
-		}
 	}
 	
 	void Update () {

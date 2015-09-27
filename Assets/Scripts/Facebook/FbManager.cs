@@ -26,13 +26,13 @@ public class FbManager : MonoBehaviour {
 	//to initialize unity sdk
 	void SetInit(){
 
-		Debug.Log("Init OK!");
+		Debug.Log("Initialization Facebook Manager!");
 
 		if(FB.IsLoggedIn){
-			Debug.Log("Log Init OK!");
+			Debug.Log("Log-in done.");
 		}
 		else{
-			Debug.Log("Login Init NOT OK!");
+			Debug.LogError("Can not log-in!");
 		}
 	}
 	//need for documentation
@@ -48,14 +48,14 @@ public class FbManager : MonoBehaviour {
 	//logIn Menù
 	public void fbLogin(){
 		if(FB.IsLoggedIn){
-			Debug.Log("Alredy Login!");
+			Debug.Log("Already logged in!");
 			if(Application.loadedLevel == 0){
 				sendScoreOnFb();
 				showUILogin(true);
 			}
 		}
 		else{
-			FB.Login("user_friends, email, publish_actions, public_profile",AuthCallback);
+			FB.Login("user_friends, email, publish_actions, public_profile", AuthCallback);
 		}
 
 	}

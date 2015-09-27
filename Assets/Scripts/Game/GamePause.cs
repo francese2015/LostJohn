@@ -21,7 +21,7 @@ public class GamePause : MonoBehaviour {
 	public void pauseGame() {
 		if (Time.timeScale > 0) {
 			Time.timeScale = 0;
-			GameQuit.GAME_IN_PAUSE = true;
+			GameStatus.setGameInPause(true);
 			//scaleButton(SCALE_FACTOR);
 			Instantiate(pauseWindow, pausePosition, Quaternion.identity);
 		}/* else {

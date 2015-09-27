@@ -8,6 +8,10 @@ public class Player_Movement : MonoBehaviour {
 	public float DEFAULT_SPEED = 1f;
 	public float forwardSpeed; //forward
 
+	private const float UPPER_LIMIT = 2f;
+	private const float BOTTOM_LIMIT = -2f;
+
+
 	// Player movement fields
 	public float difficult_factor = 0.005f; //must be between 0 and 1
 	private float upSpeed;
@@ -75,6 +79,9 @@ public class Player_Movement : MonoBehaviour {
 	 * make the player goes up
 	 */
 	private void goUp(){
+		if (transform.position.y >= UPPER_LIMIT) { 
+			return;
+		}
 		transform.position += Vector3.up * upSpeed * Time.deltaTime;
 		Utility.playSoundOnSource (jumpAudioSource, jump, true, 0.3f);
 	}
@@ -87,6 +94,9 @@ public class Player_Movement : MonoBehaviour {
 	 * make the player goes down
 	 */
 	private void goDown(){
+		if (transform.position.y <= BOTTOM_LIMIT) { 
+			return;
+		}
 		transform.position -= Vector3.up * downFactor * Time.deltaTime;
 		Utility.playSoundOnSource (jumpAudioSource, jump, true, 0.1f);
 

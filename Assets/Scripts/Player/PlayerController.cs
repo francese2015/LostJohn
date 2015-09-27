@@ -5,6 +5,8 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour {
 
+	private const float INVULNERABILITY_DEFAULT = 1f;
+
 	public GameObject shield;
 	private bool isShieldActive = false;
 
@@ -27,10 +29,15 @@ public class PlayerController : MonoBehaviour {
 	public AudioClip point, death;
 	private AudioSource mainAudioSource;
 
+	private static bool isInvulnerable = false;
+	private SpriteRenderer spriteRenderer;
+
+	private bool blinking = false;
+	public Material alternativeMaterial, originalMaterial;
 
 	void Start() {
-
 		GameStatus.setPlayerAlive (true);
+		spriteRenderer = GetComponent<SpriteRenderer> ();
 
 		coins = CoinsManager.getInstance ();
 		level = LevelManager.getInstance ();
@@ -48,8 +55,16 @@ public class PlayerController : MonoBehaviour {
 
 		checkShield ();
 
+
+
 	}
 
+
+	void Update() {
+		if (blinking) {
+			StartCoroutine(blink ());
+		}
+	}
 
 	void OnTriggerEnter2D(Collider2D coll) {
 //		Debug.Log("Collision entered with " + coll.gameObject);
@@ -66,14 +81,19 @@ public class PlayerController : MonoBehaviour {
 			}
 
 			if (coll.gameObject.tag == GameTags.asteroid || coll.gameObject.tag == GameTags.boundaryAsteroid) {
-				if (!isShieldActive) {
-					dead ();
-				} else {
-					Debug.Log("Shield has been destroyed against you");
+				
+				if (isShieldActive) {
+
 					isShieldActive = false;
+					StartCoroutine(setInvulnerable (INVULNERABILITY_DEFAULT));
+					blinking = true;
+
+				} else if (isInvulnerable) {
+					// do nothing
+				} else {
+					dead ();
 				}
 			}
-		
 	}
 	
 	/*
@@ -130,7 +150,6 @@ public class PlayerController : MonoBehaviour {
 
 	private void checkShield() {
 		if (ShopList.getInstance ().getItem (ShopList.shield).isActivatable ()) {
-			Debug.Log("Can activate shield");
 			GameObject shieldObject = (GameObject) Instantiate(shield, transform.position, transform.rotation);
 			shieldObject.transform.SetParent(transform);
 
@@ -143,4 +162,23 @@ public class PlayerController : MonoBehaviour {
 			isShieldActive = true;
 		}
 	}
+
+	public IEnumerator setInvulnerable(float sec) {
+		isInvulnerable = true;
+		yield return new WaitForSeconds (sec);
+		isInvulnerable = false;
+	}
+
+
+	private IEnumerator blink() {
+		while (isInvulnerable) {
+			//spriteRenderer.color = Color.blue;
+			spriteRender.material = alternativeMaterial;
+			yield return new WaitForSeconds (0.15f);
+			//spriteRenderer.color = Color.white;
+			spriteRender.material = originalMaterial;
+			yield return new WaitForSeconds (0.15f);
+		}
+	}
+
 }

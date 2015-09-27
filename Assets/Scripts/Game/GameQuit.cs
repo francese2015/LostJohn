@@ -7,18 +7,16 @@ using System.Collections;
  * scene the application quits.
  */
 public class GameQuit : MonoBehaviour {
-
-	public static bool GAME_IN_PAUSE;
-
-	void Update () {
+	
+	void FixedUpdate () {
 		if (Input.GetKey (KeyCode.Escape)) {
+
 			if (Application.loadedLevel == 0) {
 				Application.Quit ();
 			} else {
-				Debug.Log("Clicked BACK. Game is " + (GAME_IN_PAUSE ? "" : " not") + " in pause");
-
+				//Debug.Log("Clicked BACK. Game is " + (GAME_IN_PAUSE ? "" : " not") + " in pause");
 				// pressing back user will not exit but will pause the game
-				if (!GAME_IN_PAUSE) {
+				if (!GameStatus.isGamePaused()) {
 					pause();
 				} 
 			}

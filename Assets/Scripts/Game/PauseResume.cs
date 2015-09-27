@@ -11,8 +11,7 @@ public class PauseResume : MonoBehaviour {
 			if (Utility.checkInput(gameObject)) {
 				Destroy(pauseWindow, 0.1f);
 				Time.timeScale = 1;
-				GameQuit.GAME_IN_PAUSE = false;
-
+				GameStatus.setGameInPause(false);
 			}
 		}
 	}

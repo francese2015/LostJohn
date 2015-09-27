@@ -17,6 +17,7 @@ public class GameStatus : MonoBehaviour {
 	
 	public static void setGameInPause(bool status) {
 		pause = status;
+		//Debug.Log("GAME IS " + (pause ? "" : "NOT ") + "PAUSED");
 	}
 	
 	public static bool isPlayerAlive() {

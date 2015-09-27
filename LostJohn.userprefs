@@ -1,11 +1,8 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Game\GameQuit.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Player\PlayerController.cs">
     <Files>
-      <File FileName="Assets\Scripts\Menus\Home\ButtonClickEffect.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Game\GameQuit.cs" Line="23" Column="4" />
-      <File FileName="Assets\Scripts\Game\GamePause.cs" Line="21" Column="9" />
-      <File FileName="Assets\Scripts\Game\PauseResume.cs" Line="20" Column="5" />
+      <File FileName="Assets\Scripts\Player\PlayerController.cs" Line="38" Column="16" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

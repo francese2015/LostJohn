@@ -90,7 +90,7 @@ public class ShopManager : MonoBehaviour {
 
 
 	public void destroyItem(string itemName) {
-		Debug.LogError ("destroying " + itemName);
+		//Debug.LogError ("destroying " + itemName);
 		ShopItem item = getItem (itemName);
 
 		if (item == null) {

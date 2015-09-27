@@ -14,7 +14,7 @@ public class Shield : MonoBehaviour {
 			Instantiate(explosion, pos, Quaternion.identity);
 			// boundary asteroids cannot be destroyed
 			if (coll.gameObject.tag == GameTags.asteroid) {
-				Debug.Log("distruggo " + coll.transform.name);
+				//Debug.Log("distruggo " + coll.transform.name);
 				Destroy(coll.gameObject);
 			}
 			Destroy(gameObject);

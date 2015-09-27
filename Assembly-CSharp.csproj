@@ -169,6 +169,7 @@
      <Compile Include="Assets\Scripts\Utility\GameTags.cs" />
      <Compile Include="Assets\Scripts\Utility\PlaySound.cs" />
      <Compile Include="Assets\Scripts\Utility\Utility.cs" />
+     <Compile Include="Assets\testBlinking.cs" />
      <None Include="Assets\Plugins\Android\facebook\res\drawable\com_facebook_top_background.xml" />
      <None Include="Assets\Plugins\Android\facebook\proguard-project.txt" />
      <None Include="Assets\External\dreamlo\README_FIRST.txt" />

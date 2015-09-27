@@ -80,7 +80,7 @@ public class GeneratorV3 : MonoBehaviour {
 	 */
 	private void checkDifficulty() {
 		numAsteroids++;
-		Debug.Log ("#" + numAsteroids);
+//		Debug.Log ("#" + numAsteroids);
 		
 		if (numAsteroids % 10 == 0) {
 			if (timeMin - TIME_REDUCER > MIN_TIME_MIN) {
