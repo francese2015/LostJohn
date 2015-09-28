@@ -46,7 +46,6 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\AutoLoginFacebook.cs" />
      <Compile Include="Assets\Examples\Scripts\ConsoleBase.cs" />
      <Compile Include="Assets\Examples\Scripts\GameGroupsConsole.cs" />
      <Compile Include="Assets\Examples\Scripts\InteractiveConsole.cs" />
@@ -70,7 +69,6 @@
      <Compile Include="Assets\Facebook\Scripts\IOSFacebook.cs" />
      <Compile Include="Assets\Facebook\Scripts\IOSFacebookLoader.cs" />
      <Compile Include="Assets\Facebook\Scripts\NativeDialogModes.cs" />
-     <Compile Include="Assets\MenuButtonAction.cs" />
      <Compile Include="Assets\Scripts\Enemies\Asteroids\Asteroid_Movement.cs" />
      <Compile Include="Assets\Scripts\Enemies\Asteroids\DestroyWithTTL.cs" />
      <Compile Include="Assets\Scripts\Enemies\Asteroids\GeneratorV2.cs" />
@@ -125,6 +123,7 @@
      <Compile Include="Assets\Scripts\Menus\Home\MechanicalArm\AnimateScreen.cs" />
      <Compile Include="Assets\Scripts\Menus\Home\MechanicalArm\LoadBestScore.cs" />
      <Compile Include="Assets\Scripts\Menus\Home\MechanicalArm\LoadLifes.cs" />
+     <Compile Include="Assets\Scripts\Menus\Home\MenuButtonAction.cs" />
      <Compile Include="Assets\Scripts\Menus\Home\PlayClickSound.cs" />
      <Compile Include="Assets\Scripts\Menus\Home\Player_MoveOut.cs" />
      <Compile Include="Assets\Scripts\Menus\Home\Player_RollingOut.cs" />
@@ -137,6 +136,7 @@
      <Compile Include="Assets\Scripts\Menus\Info\TextLevel.cs" />
      <Compile Include="Assets\Scripts\Menus\Info\TwitterLink.cs" />
      <Compile Include="Assets\Scripts\Menus\Info\WebsiteLink.cs" />
+     <Compile Include="Assets\Scripts\Menus\Leaderboard\AutoLoginFacebook.cs" />
      <Compile Include="Assets\Scripts\Menus\Leaderboard\CreateUILeaderBoard.cs" />
      <Compile Include="Assets\Scripts\Menus\Leaderboard\FB_LeaderboardItemManager.cs" />
      <Compile Include="Assets\Scripts\Menus\Recap\LoadData.cs" />
@@ -169,7 +169,6 @@
      <Compile Include="Assets\Scripts\Utility\GameTags.cs" />
      <Compile Include="Assets\Scripts\Utility\PlaySound.cs" />
      <Compile Include="Assets\Scripts\Utility\Utility.cs" />
-     <Compile Include="Assets\testBlinking.cs" />
      <None Include="Assets\Plugins\Android\facebook\res\drawable\com_facebook_top_background.xml" />
      <None Include="Assets\Plugins\Android\facebook\proguard-project.txt" />
      <None Include="Assets\External\dreamlo\README_FIRST.txt" />

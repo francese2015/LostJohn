@@ -28,7 +28,7 @@ public class CameraManager : MonoBehaviour {
 		target = objToActivate;
 	}
 
-	void FixedUpdate () {
+	void Update () {
 		if (Input.GetKey (KeyCode.Escape)) {
 			//if already in home then exit
 			if (isHome()) {
