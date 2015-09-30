@@ -9,11 +9,9 @@ using System.Collections;
 public class ButtonClickEffect : MonoBehaviour {
 
 	private float scaleFactor = 1.1f;
-	private string myName;
 	private SpriteRenderer renderer;
 
 	void Start () {
-		myName = gameObject.name;
 		renderer = gameObject.GetComponent<SpriteRenderer> ();
 	}
 	

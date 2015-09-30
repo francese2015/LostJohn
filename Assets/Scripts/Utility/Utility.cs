@@ -82,7 +82,6 @@ public class Utility : MonoBehaviour {
 			range.Add((int) range[i] + (int) probs[i]);
 		}
 
-		Random rand = new Random ();
 		int val = Random.Range (0, 101);
 
 		for (int i = 0; i < range.Count - 1; i++) {

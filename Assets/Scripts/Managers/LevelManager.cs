@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class LevelManager : MonoBehaviour {
+public class LevelManager {
 		
 	public const int DEFAULT_MULTIPLIER = 0;
 
@@ -22,8 +22,6 @@ public class LevelManager : MonoBehaviour {
 	public static bool isLevelUp = false;
 
 	private static LevelManager instance = new LevelManager();
-
-	int i = 0;
 	
 	private LevelManager(){
 		load ();

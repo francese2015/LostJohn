@@ -54,7 +54,7 @@ public class GraphicButtonManager : MonoBehaviour {
 
 	
 	public void update(ShopItem i) {
-		Debug.Log ("UPDATING " + i.name);
+		//Debug.Log ("UPDATING " + i.name);
 		bool useCoin = i.price == 0;;
 
 		if (i.isActivatable()) {

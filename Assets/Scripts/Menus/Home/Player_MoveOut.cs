@@ -8,24 +8,11 @@ using System.Collections;
  */
 public class Player_MoveOut : MonoBehaviour {
 
-	private bool canMove;
 	public float speed = 3;
-	
-	void Start () {
-		canMove = false;
-	}
+
 	
 	void Update () {
 		transform.Translate(speed * Time.deltaTime, 0, 0);
 	}
-
-	/**
-	 * This method is invocked by external objects to
-	 * start the animation.
-	 */
-	public void anim() {
-		canMove = true;
-	}
-
 
 }

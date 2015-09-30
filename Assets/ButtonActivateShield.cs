@@ -2,7 +2,7 @@
 using System.Collections;
 
 //This script enables/disables the shield activator button
-public class ButtonActivateShield : MonoBehaviour {
+public class ButtonActivateShield : MonoBehaviour{
 
 	// Use this for initialization
 	void Start () {

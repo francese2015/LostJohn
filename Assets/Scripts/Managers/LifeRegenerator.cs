@@ -65,7 +65,7 @@ public class LifeRegenerator : MonoBehaviour {
 		double regenerationTimeInSec = regenerationTime.TotalSeconds;
 		int lifes = (int) (diffSec / regenerationTimeInSec);
 
-		Debug.LogWarning ("Lifes = " + lifes);
+		//Debug.LogWarning ("Lifes increasing = " + lifes);
 
 		lifeManager.increaseLifes (lifes);
 		lastRegeneration = System.DateTime.Now;

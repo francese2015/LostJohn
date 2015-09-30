@@ -8,7 +8,6 @@ using System.Collections;
 public class Player_RollingOut : MonoBehaviour {
 
 	private GameObject player;
-	private bool startAnimation = false;
 	public float speed = 100f;
 	
 	void Start () {
@@ -20,12 +19,5 @@ public class Player_RollingOut : MonoBehaviour {
 		player.transform.Rotate(0, 0, -speed * Time.deltaTime);
 	}
 	
-	/**
-	 * This method is invocked by external objects to
-	 * start the animation.
-	 */	
-	public void startAnim(){
-		startAnimation = true;
-	}
 
 }

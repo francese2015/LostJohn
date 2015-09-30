@@ -132,11 +132,11 @@ public sealed class FB : ScriptableObject
 
             if (versionInfo == null)
             {
-                FbDebug.Warn("Cannot find Facebook SDK Version");
+                //FbDebug.Warn("Cannot find Facebook SDK Version");
             }
             else
             {
-                FbDebug.Info(String.Format("Using SDK {0}, Build {1}", versionInfo.SdkVersion, versionInfo.BuildVersion));
+                //FbDebug.Info(String.Format("Using SDK {0}, Build {1}", versionInfo.SdkVersion, versionInfo.BuildVersion));
             }
 
 #if UNITY_EDITOR
@@ -390,7 +390,7 @@ public sealed class FB : ScriptableObject
         {
             var url = string.Format(IntegratedPluginCanvasLocation.DllUrl, className);
             var www = new WWW(url);
-            FbDebug.Log("loading dll: " + url);
+            //FbDebug.Log("loading dll: " + url);
             yield return www;
 
             if (www.error != null)

@@ -5,7 +5,6 @@ public class progressBar : MonoBehaviour {
 
 	public float percentage = 75;
 	private Vector3 pos;
-	private float lastX = 0;
 
 	// Use this for initialization
 	void Start () {
@@ -14,9 +13,6 @@ public class progressBar : MonoBehaviour {
 		float x = GetComponent<SpriteRenderer>().bounds.size.x * 2;
 		//lastX = pos.x - t;
 		Debug.Log ("x iniziale " + x);
-
-		int start = 0;
-		float max = transform.localScale.x;
 
 		Vector3 ls = transform.localScale;
 		ls.x = 0;

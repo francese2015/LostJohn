@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class PlayerManager : MonoBehaviour {
+public class PlayerManager {
 		
 	public const string DEFAULT_SKIN = "";
 	
@@ -39,11 +39,11 @@ public class PlayerManager : MonoBehaviour {
 	}
 
 	public string getName() {
-		return this.name;
+		return playerName;
 	}
 
 	public void setName(string newName) {
-		this.name = newName;
+		this.playerName = newName;
 		save ();
 	}
 

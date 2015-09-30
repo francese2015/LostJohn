@@ -137,7 +137,7 @@ public class PlayerController : MonoBehaviour {
 		levelManager.increaseExp ();
 		scoreManager.increaseScore ();
 		asteroidsText.text = "" + scoreManager.getScore ();
-		Debug.Log ("actual score: " + ScoreManager.getInstance ().getScore ());
+		//Debug.Log ("actual score: " + ScoreManager.getInstance ().getScore ());
 	}
 
 

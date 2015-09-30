@@ -2,9 +2,7 @@
 using System.Collections;
 
 public class GamePause : MonoBehaviour {
-
-	private static float SCALE_FACTOR = 1.2f;
-
+	
 	public GameObject pauseWindow;
 	public Vector3 pausePosition; 
 

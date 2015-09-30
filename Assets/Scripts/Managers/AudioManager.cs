@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class AudioManager : MonoBehaviour {
+public class AudioManager {
 
 	// Use this for initialization
 	private static AudioManager instance = null;

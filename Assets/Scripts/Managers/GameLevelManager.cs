@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GameLevelManager : MonoBehaviour {
+public class GameLevelManager {
 
 	public const int FIRST_LEVEL = 1;
 	public const int HOME = 0;

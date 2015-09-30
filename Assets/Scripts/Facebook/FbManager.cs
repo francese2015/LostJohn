@@ -32,7 +32,7 @@ public class FbManager : MonoBehaviour {
 			Debug.Log("Log-in done.");
 		}
 		else{
-			Debug.LogError("Can not log-in!");
+			Debug.LogWarning("Can not log-in!");
 		}
 	}
 	//need for documentation
@@ -130,7 +130,7 @@ public class FbManager : MonoBehaviour {
 
 		scoreManager = ScoreManager.getInstance ();
 		int score = scoreManager.getBestScore ();
-		Debug.Log("Score caricato from ScoreManager: "+score);
+		//Debug.Log("Score caricato from ScoreManager: "+score);
 
 			var scoreData = new Dictionary<string,string>();
 			scoreData["score"]=score.ToString();
@@ -144,12 +144,9 @@ public class FbManager : MonoBehaviour {
 		FB.API("/app/scores?fields=score,user.limit(30)",Facebook.HttpMethod.GET,ScoreCallback);
 	}
 
-	private int i = 0;
-
-
 	void ScoreCallback(FBResult result){
 
-		Debug.Log("Rsult text = " + result.Text);
+		//Debug.Log("Rsult text = " + result.Text);
 		scoreList = Util.DeserializeScores(result.Text);
 
 		foreach(Transform item in scrollList.transform){
@@ -157,7 +154,7 @@ public class FbManager : MonoBehaviour {
 		}
 
 		//create a itemList with photo,name,score and put in scroll list
-		Debug.Log ("score list has " + scoreList.Count);
+		//Debug.Log ("score list has " + scoreList.Count);
 
 		foreach(object score in scoreList) {
 

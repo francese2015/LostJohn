@@ -11,7 +11,6 @@ public class ShowBottomBar : MonoBehaviour {
 	private GameObject shopButton;
 
 	private bool hidden = true;
-	private bool canMove = false, moving = false;
 
 	// bottom bar initial and final position 
 	public Transform startPosition;
@@ -63,8 +62,6 @@ public class ShowBottomBar : MonoBehaviour {
 		
 		if (deltaX <= TOLLERANCE_FACTOR && deltaY <= TOLLERANCE_FACTOR) {
 			objectToMove.transform.position = myEnd;
-			canMove = false;
-			moving = false;
 			hidden = !hidden;
 			return true;
 		} else {

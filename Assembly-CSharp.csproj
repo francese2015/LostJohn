@@ -138,7 +138,6 @@
      <Compile Include="Assets\Scripts\Menus\Info\TwitterLink.cs" />
      <Compile Include="Assets\Scripts\Menus\Info\WebsiteLink.cs" />
      <Compile Include="Assets\Scripts\Menus\Leaderboard\AutoLoginFacebook.cs" />
-     <Compile Include="Assets\Scripts\Menus\Leaderboard\CreateUILeaderBoard.cs" />
      <Compile Include="Assets\Scripts\Menus\Leaderboard\FB_LeaderboardItemManager.cs" />
      <Compile Include="Assets\Scripts\Menus\Recap\LoadData.cs" />
      <Compile Include="Assets\Scripts\Menus\Recap\LoadHome.cs" />

@@ -29,7 +29,6 @@ public class GoToTarget : MonoBehaviour {
 	public float timeInSec;
 
 	// vectors usend in the target movement.
-	private Vector3 start;
 	private Vector3 end;
 	private Vector3 velocity;
 
@@ -40,7 +39,6 @@ public class GoToTarget : MonoBehaviour {
 
 	void Start () {
 		//objectToMove = Camera.main.camera.transform;
-		start = startPosition.position;
 		end = targetPosition.position;
 		Vector3 velocity = new Vector3 (0,10,0);
 		canMove = false;

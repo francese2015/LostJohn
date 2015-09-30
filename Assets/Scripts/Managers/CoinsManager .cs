@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class CoinsManager : MonoBehaviour {
+public class CoinsManager {
 		
 	public const int DEFAULT_REDCOINS = 3;
 	
@@ -38,12 +38,13 @@ public class CoinsManager : MonoBehaviour {
 
 	public void spendCoins(int amount){
 		load ();
-		if(coins < amount){
-			throw new System.AccessViolationException("Not enough coins: you have " + this.getCoins() + " and you want spend " + amount);
+		if (coins < amount) {
+			throw new System.AccessViolationException ("Not enough coins: you have " + this.getCoins () + " and you want spend " + amount);
 			return;
+		} else {
+			coins -= amount;
+			save ();
 		}
-		coins -= amount;
-		save ();
 	}
 
 	public bool canSpendCoins(int amount){

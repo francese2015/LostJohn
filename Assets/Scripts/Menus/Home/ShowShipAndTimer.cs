@@ -9,7 +9,6 @@ using System.Collections;
 public class ShowShipAndTimer : MonoBehaviour {
 
 	private LifeManager lifeManager;
-	private bool change = false;
 
 	public GameObject ship;
 	public GameObject timer;

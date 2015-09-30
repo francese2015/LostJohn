@@ -8,7 +8,7 @@ using System.Collections.Generic;
  * 2- can NOT ALWAYS BUY and PERMANENT -> buy once and then you have it forever, like +50% exp
  * 3- can NOT ALWAYS BUY and NOT PERMANENT -> buy it, then use it, then you can buy it again, like shield.
  */
-public class ShopList : MonoBehaviour {
+public class ShopList {
 
 	public const string oneLife  = "buy_life";
 	public const string tenLifes = "buy_lifes";
@@ -17,15 +17,12 @@ public class ShopList : MonoBehaviour {
 	public const string shield 	   = "buy_shield";
 	public const string coinsMul      = "buy_mul";
 	public const string BUY_1000coins = "buy_coins";
-
-	private LevelManager levelManager;
-
+	
 	private static List<ShopItem> items;
 
 	private static ShopList instance = new ShopList();
 
 	private ShopList(){
-		levelManager = LevelManager.getInstance ();
 		items = createList ();
 	}
 
@@ -62,7 +59,6 @@ public class ShopList : MonoBehaviour {
 	}
 	
 	public void update(List<ShopItem> list) {
-		int actualExp = levelManager.getExps ();
 
 		foreach (ShopItem item in list) {
 			// check if activatable, i.e. the object was already bought

@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class StorageManager : MonoBehaviour {
+public class StorageManager {
 
 	public const string SCORE = "score";
 
@@ -65,7 +65,6 @@ public class StorageManager : MonoBehaviour {
 	public static bool storeOnDisk(string key, bool value){
 		PlayerPrefs.SetInt (key, value ? 1 : 0);
 
-		int v = loadIntFromDisk (key);
 		//check if storage process had success
 		return loadBoolFromDisk(key);
 	}

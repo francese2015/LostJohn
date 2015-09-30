@@ -18,7 +18,7 @@ public class GadgetActivator : MonoBehaviour {
 
 
 	public void activate(string itemName) {
-		Debug.Log("activating " + itemName);
+//		Debug.Log("activating " + itemName);
 		ShopItem gadget = ShopManager.getInstance ().getItem (itemName);
 		gadget.use ();
 

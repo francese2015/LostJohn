@@ -20,7 +20,7 @@ public class LoadData : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-		Debug.Log ("record? " + ScoreManager.isLastScoreBest);
+		//Debug.Log ("record? " + ScoreManager.isLastScoreBest);
 
 		// if the performed score is the new best starts the NEW RECORD animation
 		if (ScoreManager.isLastScoreBest) {

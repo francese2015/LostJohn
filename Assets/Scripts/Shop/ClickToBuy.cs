@@ -9,7 +9,6 @@
 		private string ALREADY_BOUGHT = "You already have" + '\n' + " this gadget!";
 
 		private float scaleFactor = 1.1f;
-		private string myName;
 		private string itemName;
 		private string dialogText;
 		private bool clicked = false;
@@ -26,7 +25,6 @@
 		private static GameObject refereceToDialogBox;
 
 		void Start () {
-			myName = gameObject.name;
 
 			Transform[] tList = GetComponentsInChildren<Transform> ();
 			foreach (Transform t in tList) {

@@ -40,9 +40,7 @@ public class ShopFactory : MonoBehaviour {
 
 	private void applyProperties(GameObject o, ShopItem i) {
 		//Debug.Log("aggiungendo " + i.name + ": " + i.description + ", " + i.coins);
-
-		Transform[] tList = o.GetComponentsInChildren<Transform> ();
-
+		
 		GraphicButtonManager button =  o.GetComponent<GraphicButtonManager> ();
 		button.setDescription(i.description);
 		button.setLevel("lvl " + i.lvlToUnlock);

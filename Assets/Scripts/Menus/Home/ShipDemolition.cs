@@ -22,14 +22,12 @@ public class ShipDemolition : MonoBehaviour {
 	public GameObject starter;
 
 	private bool startAnim = false;
-	private Vector3 asteroidPos;
 
 	public AudioClip explosion;
 	private AudioSource source;
 
 	// Use this for initialization
 	void Start () {
-		asteroidPos = asteroid.transform.position;
 		//use the CLICK cource to play explosion sound
 		source = GameObject.FindGameObjectWithTag (GameTags.camera).GetComponents<AudioSource> ()[1];
 		//starter.SetActive (false);

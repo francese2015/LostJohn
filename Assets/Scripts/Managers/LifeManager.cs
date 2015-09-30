@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class LifeManager : MonoBehaviour {
+public class LifeManager {
 		
 	public static int lifes = DEFAULT_LIFES;
 

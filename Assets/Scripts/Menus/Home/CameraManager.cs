@@ -14,7 +14,6 @@ public class CameraManager : MonoBehaviour {
 	public GameObject camera;
 	public Transform homePos;
 
-	private static Vector3 actualPos;
 	private static GameObject source;
 	private static GameObject target;
 
@@ -23,7 +22,6 @@ public class CameraManager : MonoBehaviour {
 	 * can need to be activated before the camera goes on them.
 	 */
 	public static void setActualPosition(Vector3 pos, GameObject objToActivate, GameObject objToDeactivate) {
-		actualPos = pos;
 		source = objToDeactivate;
 		target = objToActivate;
 	}
@@ -32,11 +30,11 @@ public class CameraManager : MonoBehaviour {
 		if (Input.GetKey (KeyCode.Escape)) {
 			//if already in home then exit
 			if (isHome()) {
-				Debug.Log("Exit");
+				//Debug.Log("Exit");
 				Application.Quit();
 			// if not in home then go to it
 			} else {
-				Debug.Log("Will move camera to Home");
+				//Debug.Log("Will move camera to Home");
 				if(!moving) {
 					canMove = true;
 

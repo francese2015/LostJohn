@@ -2,18 +2,15 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class ShopManager : MonoBehaviour {
+public class ShopManager {
 
 	private static ShopManager instance = new ShopManager ();
 
 	private List<ShopItem> items;
-
-	private ShopList shopList;
-
+	
 	private CoinsManager coins;
 
 	private ShopManager() {
-		shopList = ShopList.getInstance ();
 		coins = CoinsManager.getInstance ();
 		this.items = ShopList.getInstance().getItems ();
 	}
