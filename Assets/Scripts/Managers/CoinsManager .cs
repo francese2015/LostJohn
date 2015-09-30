@@ -39,7 +39,7 @@ public class CoinsManager {
 	public void spendCoins(int amount){
 		load ();
 		if (coins < amount) {
-			throw new System.AccessViolationException ("Not enough coins: you have " + this.getCoins () + " and you want spend " + amount);
+			Debug.LogError ("Not enough coins: you have " + this.getCoins () + " and you want spend " + amount);
 			return;
 		} else {
 			coins -= amount;
